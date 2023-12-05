@@ -1,25 +1,24 @@
 package org.bedu.veterinaria.dto;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
 @Data
 public class CreateOwnerDTO {
-    @NotBlank
+
+    @NotEmpty(message = "El nombre del cliente no puede estar vacío")
     private String name;
 
-    @NotNull
+    @NotEmpty(message = "El apellido del cliente no puede estar vacío")
     private String lastname;
 
-    @NotNull
+    @NotEmpty(message = "Debe de ingresar un domicilo")
     private String address;
 
     @NotNull
     private String phone;
 
     @NotNull
+    @Email
     private String email;
 }

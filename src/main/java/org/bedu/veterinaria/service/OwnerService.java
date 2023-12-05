@@ -1,7 +1,8 @@
 package org.bedu.veterinaria.service;
 
 import org.bedu.veterinaria.dto.CreateOwnerDTO;
-import org.bedu.veterinaria.dto.OwnnerDTO;
+import org.bedu.veterinaria.dto.OwnerDTO;
+import org.bedu.veterinaria.dto.UpdateOwnerDTO;
 import org.bedu.veterinaria.mapper.OwnerMapper;
 import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.repository.OwnerRepository;
@@ -18,13 +19,19 @@ public class OwnerService {
     @Autowired
     private OwnerMapper mapper;
 
-    public List<OwnnerDTO> findAll(){
+    public List<OwnerDTO> findAll(){
         return repository.findAll().stream().map(mapper::toDTO).toList();
     }
 
-
-    public OwnnerDTO save(CreateOwnerDTO data){
+    public OwnerDTO save(CreateOwnerDTO data){
         Owner entity = repository.save(mapper.toModel(data));
         return mapper.toDTO(entity);
     }
+
+    public OwnerDTO updateById(Long idOwner, UpdateOwnerDTO data){
+        data.setIdOwner(idOwner);
+        Owner entity = repository.save(mapper.toModel(data));
+        return mapper.toDTO(entity);
+    }
+
 }

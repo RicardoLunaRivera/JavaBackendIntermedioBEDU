@@ -1,11 +1,9 @@
 package org.bedu.veterinaria.dto;
 
-import jakarta.persistence.Column;
 import lombok.Data;
-import org.hibernate.validator.constraints.Range;
 
 @Data
-public class OwnnerDTO {
+public class OwnerDTO {
     private Long idOwner;
     private String name;
     private String lastname;
