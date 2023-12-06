@@ -19,6 +19,11 @@ public class OwnerService {
     @Autowired
     private OwnerMapper mapper;
 
+    public OwnerService(OwnerRepository repository, OwnerMapper mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
+    }
+
     public List<OwnerDTO> findAll(){
         return repository.findAll().stream().map(mapper::toDTO).toList();
     }
@@ -32,6 +37,15 @@ public class OwnerService {
         data.setIdOwner(idOwner);
         Owner entity = repository.save(mapper.toModel(data));
         return mapper.toDTO(entity);
+    }
+
+    public Boolean deleteOwner(Long idOwner){
+        try {
+            repository.deleteById(idOwner);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
     }
 
 }

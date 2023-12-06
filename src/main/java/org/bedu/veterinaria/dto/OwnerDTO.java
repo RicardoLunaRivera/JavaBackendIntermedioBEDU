@@ -1,5 +1,6 @@
 package org.bedu.veterinaria.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
