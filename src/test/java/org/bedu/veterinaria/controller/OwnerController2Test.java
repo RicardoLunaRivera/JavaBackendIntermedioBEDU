@@ -1,15 +1,12 @@
 package org.bedu.veterinaria.controller;
 
-import org.bedu.veterinaria.dto.CreateOwnerDTO;
-import org.bedu.veterinaria.dto.OwnerDTO;
+import CreateOwnerDTO;
+import org.bedu.veterinaria.dto.ownerDTO.OwnerDTO;
 import org.bedu.veterinaria.mapper.OwnerMapper;
-import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.repository.OwnerRepository;
 import org.bedu.veterinaria.service.OwnerService;
-import org.hibernate.AssertionFailure;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.stubbing.OngoingStubbing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;

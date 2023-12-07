@@ -13,6 +13,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "owners")
 public class Owner {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idOwner;
