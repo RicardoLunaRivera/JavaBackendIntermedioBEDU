@@ -26,10 +26,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.mysql:mysql-connector-j'
+	//MSQL //runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+	//SQLITE //implementation 'org.xerial:sqlite-jdbc:3.44.1.0'
+	runtimeOnly 'com.h2database:h2' //H2
+	implementation 'org.hibernate.orm:hibernate-community-dialects:6.4.0.Final'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
