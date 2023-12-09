@@ -1,16 +1,18 @@
 package org.bedu.veterinaria.mapper;
 
 import javax.annotation.processing.Generated;
-import org.bedu.veterinaria.dto.CreateOwnerDTO;
-import org.bedu.veterinaria.dto.OwnerDTO;
-import org.bedu.veterinaria.dto.UpdateOwnerDTO;
+import CreateOwnerDTO;
+import org.bedu.veterinaria.dto.ownerDTO.DeleteOwnerDTO;
+import org.bedu.veterinaria.dto.ownerDTO.CreateOwnerDTO;
+import org.bedu.veterinaria.dto.ownerDTO.OwnerDTO;
+import org.bedu.veterinaria.dto.ownerDTO.UpdateOwnerDTO;
 import org.bedu.veterinaria.model.Owner;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-12-08T20:36:34-0600",
-    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.8.1 (Amazon.com Inc.)"
+    date = "2023-12-07T00:23:32-0600",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 20.0.2 (Oracle Corporation)"
 )
 @Component
 public class OwnerMapperImpl implements OwnerMapper {
@@ -51,20 +53,29 @@ public class OwnerMapperImpl implements OwnerMapper {
     }
 
     @Override
-    public Owner toModel(UpdateOwnerDTO dto) {
-        if ( dto == null ) {
-            return null;
+    public void updateOwner(Owner owner, UpdateOwnerDTO data) {
+        if ( data == null ) {
+            return;
         }
 
-        Owner owner = new Owner();
+        owner.setName( data.getName() );
+        owner.setLastname( data.getLastname() );
+        owner.setAddress( data.getAddress() );
+        owner.setPhone( data.getPhone() );
+        owner.setEmail( data.getEmail() );
+    }
 
-        owner.setIdOwner( dto.getIdOwner() );
-        owner.setName( dto.getName() );
-        owner.setLastname( dto.getLastname() );
-        owner.setAddress( dto.getAddress() );
-        owner.setPhone( dto.getPhone() );
-        owner.setEmail( dto.getEmail() );
+    @Override
+    public void deleteOwner(Owner owner, DeleteOwnerDTO data) {
+        if ( data == null ) {
+            return;
+        }
 
-        return owner;
+        owner.setIdOwner( data.getIdOwner() );
+        owner.setName( data.getName() );
+        owner.setLastname( data.getLastname() );
+        owner.setAddress( data.getAddress() );
+        owner.setPhone( data.getPhone() );
+        owner.setEmail( data.getEmail() );
     }
 }

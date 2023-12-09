@@ -1,4 +1,4 @@
-package org.bedu.veterinaria.dto;
+package org.bedu.veterinaria.dto.veterinarianDTO;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;

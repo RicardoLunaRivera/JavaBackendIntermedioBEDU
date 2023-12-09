@@ -1,8 +1,8 @@
 package org.bedu.veterinaria.mapper;
 
-import org.bedu.veterinaria.dto.CreateVeterinarianDTO;
-import org.bedu.veterinaria.dto.UpdateVeterinarianDTO;
-import org.bedu.veterinaria.dto.VeterinarianDTO;
+import org.bedu.veterinaria.dto.veterinarianDTO.CreateVeterinarianDTO;
+import org.bedu.veterinaria.dto.veterinarianDTO.UpdateVeterinarianDTO;
+import org.bedu.veterinaria.dto.veterinarianDTO.VeterinarianDTO;
 import org.bedu.veterinaria.model.Veterinarian;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;

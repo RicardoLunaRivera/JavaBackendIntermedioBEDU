@@ -1,8 +1,8 @@
 package org.bedu.veterinaria.controller;
 
-import org.bedu.veterinaria.dto.CreateVeterinarianDTO;
-import org.bedu.veterinaria.dto.UpdateVeterinarianDTO;
-import org.bedu.veterinaria.dto.VeterinarianDTO;
+import org.bedu.veterinaria.dto.veterinarianDTO.CreateVeterinarianDTO;
+import org.bedu.veterinaria.dto.veterinarianDTO.UpdateVeterinarianDTO;
+import org.bedu.veterinaria.dto.veterinarianDTO.VeterinarianDTO;
 import org.bedu.veterinaria.repository.VeterinarianRepository;
 import org.bedu.veterinaria.service.VeterinarianService;
 import org.springframework.beans.factory.annotation.Autowired;
