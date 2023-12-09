@@ -1,5 +1,7 @@
 package org.bedu.veterinaria.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.bedu.veterinaria.dto.CreateOwnerDTO;
 import org.bedu.veterinaria.dto.OwnerDTO;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@Tag(name = "Endpoints de Dueños", description = "CRUD de Dueños")
 @RestController
 @RequestMapping("owners")
 public class OwnerController {
@@ -23,6 +26,7 @@ public class OwnerController {
     @Autowired
     private OwnerRepository ownerRepository;
 
+    @Operation(summary = "Lista a todos los dueños almacenados en la base de datos")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @Valid
@@ -30,18 +34,21 @@ public class OwnerController {
         return ownerService.findAll();
     }
 
+    @Operation(summary = "Cra un nuevo dueño")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public OwnerDTO saveOwner(@Valid @RequestBody CreateOwnerDTO data){
          return ownerService.save(data);
     }
 
+    @Operation(summary = "Actualiza información de un Dueño")
     @PutMapping(value = "{idOwner}")
     @ResponseStatus(HttpStatus.CREATED)
     public OwnerDTO updateOwner(@PathVariable("idOwner") Long idOwner,@Valid @RequestBody UpdateOwnerDTO data){
         return ownerService.updateById(idOwner, data);
     }
 
+    @Operation(summary = "Elimina a un dueño de la base de datos")
     @DeleteMapping(value = "{idOwner}")
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String deleteOwner1(@Valid @PathVariable("idOwner") Long id){

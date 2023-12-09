@@ -17,6 +17,7 @@ con Spring y se busca facilitar la gestión de consultas y tratamientos de masco
   - MySQL Driver
 - MapStruct 1.5.5
 - H2
+- Open API 2.3.0
 
 ## Base de datos
 ![db_veterinary.png](src%2Fimg%2Fdb_veterinary.png)
@@ -34,3 +35,6 @@ USER: sa
 PASSWORD:
 
 ![H2_console.png](src%2Fimg%2FH2_console.png)
+
+## OpenAPI Swagger
+URL: http://localhost:8080/swagger-ui/index.html
