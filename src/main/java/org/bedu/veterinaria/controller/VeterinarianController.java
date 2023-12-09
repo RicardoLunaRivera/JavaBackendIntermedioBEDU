@@ -1,5 +1,6 @@
 package org.bedu.veterinaria.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.bedu.veterinaria.dto.veterinarianDTO.CreateVeterinarianDTO;
 import org.bedu.veterinaria.dto.veterinarianDTO.UpdateVeterinarianDTO;
 import org.bedu.veterinaria.dto.veterinarianDTO.VeterinarianDTO;
@@ -7,17 +8,11 @@ import org.bedu.veterinaria.repository.VeterinarianRepository;
 import org.bedu.veterinaria.service.VeterinarianService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
+
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/veterinarians")
@@ -28,6 +23,7 @@ public class VeterinarianController {
     @Autowired
     private VeterinarianRepository veterinarianRepository;
 
+    @Operation(summary = "Se obtiene la lista de citas con los veterinarios")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @Valid
@@ -35,21 +31,24 @@ public class VeterinarianController {
         return veterinarianService.findAll();
     }
 
+    @Operation(summary = "Se crea una nueva cita con el veterinario")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public VeterinarianDTO saveVeterinarian(@Valid @RequestBody CreateVeterinarianDTO data){
+    public VeterinarianDTO saveVeterinarian(@Valid @RequestBody CreateVeterinarianDTO data) {
         return veterinarianService.save(data);
     }
 
+    @Operation(summary = "Se actualiza una cita existente con el veterinario")
     @PutMapping(value = "{idVeterinarian}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public VeterinarianDTO updateVeterinarian(@PathVariable("idVeterinarian") Long idVeterinarian, @Valid @RequestBody UpdateVeterinarianDTO data){
         return veterinarianService.updateById(idVeterinarian, data);
     }
 
+    @Operation(summary = "Se borra una cita con el veterinario")
     @DeleteMapping(value = "{idVeterinarian}")
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String deleteOwner1(@Valid @PathVariable("idVeterinarian") Long id){
+    public String deleteOwner(@Valid @PathVariable("idVeterinarian") Long id){
         boolean ok = this.veterinarianService.deleteVeterinarian(id);
         if(ok){
             return "Veterinarian Deleted";

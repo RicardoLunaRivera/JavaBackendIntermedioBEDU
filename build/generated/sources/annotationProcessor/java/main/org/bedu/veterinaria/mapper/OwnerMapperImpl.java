@@ -1,9 +1,8 @@
 package org.bedu.veterinaria.mapper;
 
 import javax.annotation.processing.Generated;
-import CreateOwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.DeleteOwnerDTO;
 import org.bedu.veterinaria.dto.ownerDTO.CreateOwnerDTO;
+import org.bedu.veterinaria.dto.ownerDTO.DeleteOwnerDTO;
 import org.bedu.veterinaria.dto.ownerDTO.OwnerDTO;
 import org.bedu.veterinaria.dto.ownerDTO.UpdateOwnerDTO;
 import org.bedu.veterinaria.model.Owner;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-12-07T00:23:32-0600",
+    date = "2023-12-09T12:00:27-0600",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 20.0.2 (Oracle Corporation)"
 )
 @Component
