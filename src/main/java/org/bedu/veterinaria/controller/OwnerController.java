@@ -37,7 +37,7 @@ public class OwnerController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public OwnerDTO saveOwner(@Valid @RequestBody CreateOwnerDTO data){
-         return ownerService.save(data);
+        return ownerService.save(data);
     }
 
     @Operation(summary = "Se actualiza un dueño existente")
@@ -65,7 +65,6 @@ public class OwnerController {
 //        } else {
 //            return "Error, eliminando el usuario";
 //        }
-        //ownerRepository.deleteById(id);
+    //ownerRepository.deleteById(id);
 //    }
-  }
-
+}
