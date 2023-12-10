@@ -26,12 +26,12 @@ public class Veterinarian {
     private String name;
 
     @Column(length = 30)
-    private String lastName;
+    private String lastname;
 
     @Column()
     private LocalDateTime schedule;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 13)
     private String phone;
 
     @Column(length = 30)

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Tag(name="Enpoints de Dueños", description = "CRUD de dueños")
+@Tag(name="Enpoints de Dueños", description = "CRUD de dueños.")
 @RestController
 @RequestMapping("owners")
 public class OwnerController {
@@ -25,7 +25,7 @@ public class OwnerController {
     @Autowired
     private OwnerRepository ownerRepository;
 
-    @Operation(summary = "Se obtiene la lista de todos los dueños")
+    @Operation(summary = "Se obtiene la lista de todos los dueños.")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @Valid
@@ -33,14 +33,14 @@ public class OwnerController {
         return ownerService.findAll();
     }
 
-    @Operation(summary = "Se crea un nuevo dueño")
+    @Operation(summary = "Se crea un nuevo dueño.")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public OwnerDTO saveOwner(@Valid @RequestBody CreateOwnerDTO data){
         return ownerService.save(data);
     }
 
-    @Operation(summary = "Se actualiza un dueño existente")
+    @Operation(summary = "Se actualiza un dueño existente.")
     @PutMapping(value = "{idOwner}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateOwner(@PathVariable long idOwner, @Valid @RequestBody UpdateOwnerDTO data) throws OwnerNotFoundException{
@@ -50,7 +50,7 @@ public class OwnerController {
     //    public OwnerDTO updateOwner(@PathVariable("idOwner") Long idOwner,@Valid @RequestBody UpdateOwnerDTO data){
 //        return ownerService.updateById(idOwner, data);
 //    }
-    @Operation(summary = "Se borra un dueño existente")
+    @Operation(summary = "Se borra un dueño existente.")
     @DeleteMapping(value = "{idOwner}")
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public void deleteOwner(@PathVariable("idOwner") long idOwner) throws OwnerNotFoundException {

@@ -27,7 +27,7 @@ public class Owner {
     @Column(length = 100)
     private String address;
 
-    @Column(nullable = false,length = 10)
+    @Column(nullable = false,length = 13)
     private String phone;
 
     @Column(nullable = false, length = 30)

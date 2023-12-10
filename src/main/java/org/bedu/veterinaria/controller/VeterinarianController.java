@@ -1,6 +1,7 @@
 package org.bedu.veterinaria.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.bedu.veterinaria.dto.veterinarianDTO.CreateVeterinarianDTO;
 import org.bedu.veterinaria.dto.veterinarianDTO.UpdateVeterinarianDTO;
 import org.bedu.veterinaria.dto.veterinarianDTO.VeterinarianDTO;
@@ -14,6 +15,7 @@ import jakarta.validation.Valid;
 
 import java.time.LocalDateTime;
 
+@Tag(name = "Endpoint de Veterinarios", description = "CRUD de veterinarios.")
 @RestController
 @RequestMapping("/veterinarians")
 public class VeterinarianController {
@@ -23,7 +25,7 @@ public class VeterinarianController {
     @Autowired
     private VeterinarianRepository veterinarianRepository;
 
-    @Operation(summary = "Se obtiene la lista de citas con los veterinarios")
+    @Operation(summary = "Se obtiene la lista de citas con los veterinarios.")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @Valid
@@ -31,21 +33,21 @@ public class VeterinarianController {
         return veterinarianService.findAll();
     }
 
-    @Operation(summary = "Se crea una nueva cita con el veterinario")
+    @Operation(summary = "Se crea una nueva cita con el veterinario.")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public VeterinarianDTO saveVeterinarian(@Valid @RequestBody CreateVeterinarianDTO data) {
         return veterinarianService.save(data);
     }
 
-    @Operation(summary = "Se actualiza una cita existente con el veterinario")
+    @Operation(summary = "Se actualiza una cita existente con el veterinario.")
     @PutMapping(value = "{idVeterinarian}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public VeterinarianDTO updateVeterinarian(@PathVariable("idVeterinarian") Long idVeterinarian, @Valid @RequestBody UpdateVeterinarianDTO data){
         return veterinarianService.updateById(idVeterinarian, data);
     }
 
-    @Operation(summary = "Se borra una cita con el veterinario")
+    @Operation(summary = "Se borra una cita con el veterinario.")
     @DeleteMapping(value = "{idVeterinarian}")
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String deleteOwner(@Valid @PathVariable("idVeterinarian") Long id){
