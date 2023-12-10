@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.bedu.veterinaria.dto.veterinarianDTO.CreateVeterinarianDTO;
 import org.bedu.veterinaria.dto.veterinarianDTO.UpdateVeterinarianDTO;
 import org.bedu.veterinaria.dto.veterinarianDTO.VeterinarianDTO;
+import org.bedu.veterinaria.exception.VeterinarianNotFoundException;
 import org.bedu.veterinaria.repository.VeterinarianRepository;
 import org.bedu.veterinaria.service.VeterinarianService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +44,14 @@ public class VeterinarianController {
     @Operation(summary = "Se actualiza una cita existente con el veterinario.")
     @PutMapping(value = "{idVeterinarian}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public VeterinarianDTO updateVeterinarian(@PathVariable("idVeterinarian") Long idVeterinarian, @Valid @RequestBody UpdateVeterinarianDTO data){
-        return veterinarianService.updateById(idVeterinarian, data);
+    public void updateVet(@PathVariable long idVeterinarian, @Valid @RequestBody UpdateVeterinarianDTO data) throws VeterinarianNotFoundException{
+        veterinarianService.updateVet(idVeterinarian, data);
     }
+
+
+//    public VeterinarianDTO updateVeterinarian(@PathVariable("idVeterinarian") Long idVeterinarian, @Valid @RequestBody UpdateVeterinarianDTO data){
+//        return veterinarianService.updateById(idVeterinarian, data);
+//    }
 
     @Operation(summary = "Se borra una cita con el veterinario.")
     @DeleteMapping(value = "{idVeterinarian}")

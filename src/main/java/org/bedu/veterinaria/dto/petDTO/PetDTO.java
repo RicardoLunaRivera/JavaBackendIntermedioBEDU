@@ -30,9 +30,9 @@ public class PetDTO {
 
     @Schema(description = "Identificador del dueño de la mascota.", example = "1")
     private Long ownerId;
-/*
-    @Schema(description = "Identificador del veterinario que atenderá a la mascota.", example = "4")
-    private Veterinarian idVeterinarian;
 
- */
+    @Schema(description = "Identificador del veterinario que atenderá a la mascota.", example = "4")
+    private Long veterinarianId;
+
+
 }

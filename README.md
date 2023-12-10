@@ -5,7 +5,8 @@ El proyecto se centra en una API de una veterinaria desarrollada en Java
 con Spring y se busca facilitar la gestión de consultas y tratamientos de mascotas. 
 
 ## Integrantes
-Ricardo Luna Rivera
+- Ricardo Luna Rivera
+- Ana Nathalie González Mena
 
 ## Tecnologías
 - Java 17

@@ -13,11 +13,15 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface PetMapper {
+
+    @Mapping(source = "owner.idOwner", target = "ownerId")
+    @Mapping(source = "veterinarian.idVeterinarian", target = "veterinarianId")
     PetDTO toDTO(Pet model);
 
+       // petDTO.setOwnerId(model.getOwner().getIdOwner());
     @Mapping(target = "idPet", ignore = true)
-    //@Mapping(source = "ownerId", target = "owner.idOwner")
     @Mapping(source = "ownerId", target = "owner.idOwner")
+    @Mapping(source = "veterinarianId", target = "veterinarian.idVeterinarian")
     Pet toModel(CreatePetDTO dto);
 
     @Mapping(target = "idPet", ignore = true)
@@ -25,6 +29,5 @@ public interface PetMapper {
 
     @Mapping(target = "idPet", ignore = false)
     void deletePet(@MappingTarget Pet pet, DeletePetDTO data);
-
 
 }

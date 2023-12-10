@@ -28,14 +28,15 @@ public class Pet {
     @Column(nullable = false, length = 11)
     private String birthDate;
 
-
-    @OneToOne(optional = false) // Relacion con la tabla Owner.
-    @JoinColumn(name = "owner_id") // Nombre de la columna en la tabla Owner.
+    @ManyToOne// Relacion con la tabla Owner.
+    @JoinColumn(name="id_owner")
+    //@JoinColumn(name = "owner_id", referencedColumnName = "id_owner") // Nombre de la columna en la tabla Owner [ONE TO ONE]
     private Owner owner;
 
-/*
-    @OneToOne(optional = false) // Relacion con la tabla Veterinary.
+
+    @ManyToOne// Relacion con la tabla Veterinary.
     @JoinColumn(name = "id_veterinarian") // Nombre de la columna en la tabla Veterinary.
-    private Veterinarian  IdVeterinarian;
-    */
+    //@JoinColumn(name = "veterinarian_id", referencedColumnName = "id_veterinarian")[ONE TO ONE]
+    private Veterinarian veterinarian;
+
 }

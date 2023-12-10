@@ -13,7 +13,6 @@ import lombok.Data;
 public class VeterinarianDTO {
 
     @Schema(description = "Identificador del veterinario", example = "10")
-    @Id
     private Long idVeterinarian;
 
     @Schema(description = "Identificador para ingresar el nombre del veterinario", example = "Pablo")

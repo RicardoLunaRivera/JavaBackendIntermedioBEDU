@@ -24,5 +24,4 @@ public interface OwnerMapper {
     @Mapping(target = "idOwner", ignore = false)
     void deleteOwner(@MappingTarget Owner owner, DeleteOwnerDTO data);
 
-
 }

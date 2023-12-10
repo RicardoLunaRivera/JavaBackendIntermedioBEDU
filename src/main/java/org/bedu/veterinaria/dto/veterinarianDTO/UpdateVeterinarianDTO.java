@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class UpdateVeterinarianDTO {
+
     @Id
     private Long idVeterinarian;
 

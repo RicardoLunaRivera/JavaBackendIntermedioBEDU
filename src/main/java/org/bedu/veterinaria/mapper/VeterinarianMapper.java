@@ -1,12 +1,15 @@
 package org.bedu.veterinaria.mapper;
 
+import org.bedu.veterinaria.dto.ownerDTO.UpdateOwnerDTO;
 import org.bedu.veterinaria.dto.veterinarianDTO.CreateVeterinarianDTO;
 import org.bedu.veterinaria.dto.veterinarianDTO.UpdateVeterinarianDTO;
 import org.bedu.veterinaria.dto.veterinarianDTO.VeterinarianDTO;
+import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Veterinarian;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface VeterinarianMapper {
@@ -16,6 +19,9 @@ public interface VeterinarianMapper {
     @Mapping(target = "idVeterinarian", ignore = true)
     Veterinarian toModel(CreateVeterinarianDTO dto);
 
-   @Mapping(target = "idVeterinarian", ignore = false)
-    Veterinarian toModel(UpdateVeterinarianDTO dto);
+  @Mapping(target = "idVeterinarian", ignore = true)
+  void updateVet(@MappingTarget Veterinarian veterinarian, UpdateVeterinarianDTO data);
+
+//  @Mapping(target = "idVeterinarian", ignore = true)
+//    Veterinarian toModel(UpdateVeterinarianDTO dto);
 }

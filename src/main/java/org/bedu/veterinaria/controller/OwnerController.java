@@ -53,18 +53,15 @@ public class OwnerController {
     @Operation(summary = "Se borra un dueño existente.")
     @DeleteMapping(value = "{idOwner}")
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public void deleteOwner(@PathVariable("idOwner") long idOwner) throws OwnerNotFoundException {
-        ownerRepository.deleteById(idOwner);
-
-
-    }
-//    public String deleteOwner1(@Valid @PathVariable("idOwner") Long id){
-//        boolean ok = this.ownerService.deleteOwner(id);
-//        if(ok){
-//            return "Owner eliminado";
-//        } else {
-//            return "Error, eliminando el usuario";
-//        }
-    //ownerRepository.deleteById(id);
+//    public void deleteOwner(@PathVariable("idOwner") long idOwner) throws OwnerNotFoundException {
+//        ownerRepository.deleteById(idOwner);
 //    }
+    public String deleteOwner(@Valid @PathVariable("idOwner") Long id){
+        boolean ok = this.ownerService.deleteOwner(id);
+        if(ok){
+            return "Owner eliminado";
+        } else {
+            return "Error, eliminando el usuario";
+        }
+    }
 }

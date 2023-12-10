@@ -20,6 +20,7 @@ import lombok.ToString;
 public class Veterinarian {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
+    @Column(name = "id_veterinarian")
     private Long idVeterinarian;
 
     @Column(length = 30)

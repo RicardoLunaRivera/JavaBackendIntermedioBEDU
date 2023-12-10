@@ -1,15 +1,19 @@
 package org.bedu.veterinaria.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.bedu.veterinaria.dto.petDTO.CreatePetDTO;
 import org.bedu.veterinaria.dto.petDTO.DeletePetDTO;
 import org.bedu.veterinaria.dto.petDTO.PetDTO;
 import org.bedu.veterinaria.dto.petDTO.UpdatePetDTO;
 import org.bedu.veterinaria.exception.PetNotFoundException;
 import org.bedu.veterinaria.mapper.PetMapper;
+import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Pet;
+import org.bedu.veterinaria.repository.OwnerRepository;
 import org.bedu.veterinaria.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +24,9 @@ public class PetService {
     private PetRepository repository;
 
     private PetMapper mapper;
+
+    @Autowired
+    private OwnerRepository ownerRepository;
 
     public PetService(PetRepository repository, PetMapper mapper){
         this.repository = repository;
@@ -32,6 +39,7 @@ public class PetService {
     }
 
     //Crear una Mascota
+    @Transactional
     public PetDTO save(CreatePetDTO data){
         Pet entity = repository.save(mapper.toModel(data));
         return mapper.toDTO(entity);
@@ -59,4 +67,6 @@ public class PetService {
         mapper.deletePet(entity, data);
         repository.deleteById(idPet);
     }
+
+
 }

@@ -11,6 +11,7 @@ import org.bedu.veterinaria.repository.PetRepository;
 import org.bedu.veterinaria.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,6 +41,15 @@ public class PetController {
     public PetDTO savePet(@Valid @RequestBody CreatePetDTO data){
         return petService.save(data);
     }
+
+//        @PostMapping("/create")
+//        public ResponseEntity<PetDTO> save(@RequestBody CreatePetDTO createPetDTO, @RequestParam Long ownerId) {
+//            PetDTO createdPet = petService.save(createPetDTO, ownerId);
+//            return new ResponseEntity<>(createdPet, HttpStatus.CREATED);
+//        }
+
+        // Otros métodos del controlador para actualizar, eliminar, obtener mascotas, etc.
+
 
     @Operation(summary = "Se actualiza una mascota existente.")
     @PutMapping(value = "{idPet}")

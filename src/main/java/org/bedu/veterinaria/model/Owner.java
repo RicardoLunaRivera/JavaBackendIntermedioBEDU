@@ -16,6 +16,7 @@ public class Owner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_owner")
     private Long idOwner;
 
     @Column(length = 30)
