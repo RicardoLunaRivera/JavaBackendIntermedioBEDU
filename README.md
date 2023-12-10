@@ -1,9 +1,11 @@
 # PROYECTO FINAL JAVA BACKEND INTERMEDIO - BEDU
 
 ## API Veterinaria
-
 El proyecto se centra en una API de una veterinaria desarrollada en Java
 con Spring y se busca facilitar la gestión de consultas y tratamientos de mascotas. 
+
+## Integrantes
+Ricardo Luna Rivera
 
 ## Tecnologías
 - Java 17
