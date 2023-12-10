@@ -27,10 +27,10 @@ public class PetDTO {
 
     @Schema(description = "Fecha de nacimiento de la mascota.", example = "2023-05-18")
     private String birthDate;
-/*
+
     @Schema(description = "Identificador del dueño de la mascota.", example = "1")
     private Long ownerId;
-
+/*
     @Schema(description = "Identificador del veterinario que atenderá a la mascota.", example = "4")
     private Veterinarian idVeterinarian;
 

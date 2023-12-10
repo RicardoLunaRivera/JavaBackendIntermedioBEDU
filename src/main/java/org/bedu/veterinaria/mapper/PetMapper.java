@@ -16,6 +16,8 @@ public interface PetMapper {
     PetDTO toDTO(Pet model);
 
     @Mapping(target = "idPet", ignore = true)
+    //@Mapping(source = "ownerId", target = "owner.idOwner")
+    @Mapping(source = "ownerId", target = "owner.idOwner")
     Pet toModel(CreatePetDTO dto);
 
     @Mapping(target = "idPet", ignore = true)

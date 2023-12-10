@@ -28,11 +28,11 @@ public class CreatePetDTO {
     @Schema(description = "Fecha de nacimiento de la mascota.", example = "18-05-2023")
     @NotEmpty(message = "La fecha de nacimiento de la mascota no puede ir vacia.")
     private String birthDate;
-/*
+
     @Schema(description = "Identificador del dueño de la mascota.", example = "1")
     //@NotEmpty(message = "Debe indicar el ID del Dueño de la mascota.")
     private Long ownerId;
-
+/*
     @Schema(description = "Identificador del veterinario que atenderá a la mascota.", example = "4")
     @NotEmpty(message = "Debe indicar el ID del veterinario que atenderá a la mascota.")
     private Veterinarian idVeterinarian;
