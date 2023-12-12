@@ -1,10 +1,15 @@
 package org.bedu.veterinaria.dto.veterinarianDTO;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
+import org.springframework.format.Parser;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 public class CreateVeterinarianDTO {
@@ -17,9 +22,9 @@ public class CreateVeterinarianDTO {
     @NotEmpty(message = "Missing lastname, required field")
     private String lastname;
 
-    @Schema(description = "Identificador para ingresar el horario de cita del veterinario", example = "2023-12-09T12:13:20.7851832")
+    @Schema(description = "Identificador para ingresar el horario de cita del veterinario", example = "2023-12-09T12:13")
 //    @NotEmpty(message = "Missing Schedule")
-    private LocalDateTime schedule;
+    private Date schedule;
 
     @Schema(description = "Identificador para ingresar el telefono del veterinario", example = "111-111-1111")
     @NotEmpty(message = "Missing phone")

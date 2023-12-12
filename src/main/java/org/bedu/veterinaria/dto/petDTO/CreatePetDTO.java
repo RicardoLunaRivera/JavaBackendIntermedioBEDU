@@ -1,6 +1,8 @@
 package org.bedu.veterinaria.dto.petDTO;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -27,9 +29,9 @@ public class CreatePetDTO {
     @NotEmpty(message = "Debe indicar la raza de la mascota.")
     private String race;
 
-    @Schema(description = "Fecha de nacimiento de la mascota.", example = "18-05-2023")
-    @NotEmpty(message = "La fecha de nacimiento de la mascota no puede ir vacia.")
-    private String birthDate;
+    @Schema(description = "Fecha de nacimiento de la mascota.", example = "2023-05-18")
+    @NotNull(message = "La fecha de nacimiento de la mascota no puede ir vacia.")
+    private Date birthDate;
 
     @Schema(description = "Identificador del dueño de la mascota.", example = "1")
     @NotNull( message = "Debe indicar el ID del Dueño de la mascota.")

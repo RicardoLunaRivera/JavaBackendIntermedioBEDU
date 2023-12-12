@@ -1,16 +1,13 @@
 package org.bedu.veterinaria.model;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
 @Setter
@@ -30,7 +27,8 @@ public class Veterinarian {
     private String lastname;
 
     @Column()
-    private LocalDateTime schedule;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date schedule;
 
     @Column(nullable = false, length = 13)
     private String phone;

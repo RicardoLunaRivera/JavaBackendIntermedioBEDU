@@ -30,8 +30,8 @@ public class DeletePetDTO {
     private String race;
 
     @Schema(description = "Fecha de nacimiento de la mascota.", example = "2023-05-18")
-    @NotEmpty(message = "La fecha de nacimiento de la mascota no puede ir vacia.")
-    private String birthDate;
+    @NotNull(message = "La fecha de nacimiento de la mascota no puede ir vacia.")
+    private Date birthDate;
 
     @Schema(description = "Identificador del dueño de la mascota.", example = "1")
     @NotNull(message = "Debe indicar el ID del Dueño de la mascota.")

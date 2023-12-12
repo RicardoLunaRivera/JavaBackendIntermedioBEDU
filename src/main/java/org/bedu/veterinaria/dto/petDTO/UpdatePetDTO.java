@@ -1,12 +1,15 @@
 package org.bedu.veterinaria.dto.petDTO;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Species;
 import org.bedu.veterinaria.model.Veterinarian;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -25,8 +28,8 @@ public class UpdatePetDTO {
     private String race;
 
     @Schema(description = "Fecha de nacimiento de la mascota.", example = "2023-05-18")
-    @NotEmpty(message = "La fecha de nacimiento de la mascota no puede ir vacia.")
-    private String birthDate;
+    @NotNull(message = "La fecha de nacimiento de la mascota no puede ir vacia.")
+    private Date birthDate;
 
     @Schema(description = "Identificador del dueño de la mascota.", example = "1")
     @NotNull(message = "Debe indicar el ID del Dueño de la mascota.")
