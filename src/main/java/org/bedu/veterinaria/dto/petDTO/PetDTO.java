@@ -7,6 +7,7 @@ import lombok.Data;
 import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Species;
 import org.bedu.veterinaria.model.Veterinarian;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -26,7 +27,7 @@ public class PetDTO {
     private String race;
 
     @Schema(description = "Fecha de nacimiento de la mascota.", example = "2023-05-18")
-    private String birthDate;
+    private Date birthDate;
 
     @Schema(description = "Identificador del dueño de la mascota.", example = "1")
     private Long ownerId;

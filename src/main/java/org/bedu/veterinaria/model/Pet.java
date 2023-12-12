@@ -5,6 +5,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 @Getter
 @Setter
 @ToString
@@ -25,8 +29,10 @@ public class Pet {
     @Column(nullable = false, length = 30)
     private String race;
 
-    @Column(nullable = false, length = 11)
-    private String birthDate;
+    @Column(name = "birth_date")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthDate;
 
     @ManyToOne// Relacion con la tabla Owner.
     @JoinColumn(name="id_owner")
