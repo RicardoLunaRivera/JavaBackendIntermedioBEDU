@@ -6,10 +6,7 @@ import org.bedu.veterinaria.dto.petDTO.PetDTO;
 import org.bedu.veterinaria.dto.petDTO.UpdatePetDTO;
 import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Pet;
-import org.mapstruct.InjectionStrategy;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
+import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface PetMapper {
