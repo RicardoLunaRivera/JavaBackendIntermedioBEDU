@@ -7,6 +7,7 @@ con Spring y se busca facilitar la gestión de consultas y tratamientos de masco
 ## Integrantes
 - Ricardo Luna Rivera
 - Ana Nathalie González Mena
+- Jose de Jesus Anaya Martinez
 
 ## Tecnologías
 - Java 17
