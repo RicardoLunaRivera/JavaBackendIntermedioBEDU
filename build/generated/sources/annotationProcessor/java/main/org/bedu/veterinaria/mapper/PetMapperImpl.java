@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-12-12T21:42:08-0600",
-    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.8.1 (Amazon.com Inc.)"
+    date = "2023-12-13T05:39:42-0600",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 20.0.1 (Oracle Corporation)"
 )
 @Component
 public class PetMapperImpl implements PetMapper {
@@ -61,6 +61,14 @@ public class PetMapperImpl implements PetMapper {
             return;
         }
 
+        if ( pet.getOwner() == null ) {
+            pet.setOwner( new Owner() );
+        }
+        updatePetDTOToOwner( data, pet.getOwner() );
+        if ( pet.getVeterinarian() == null ) {
+            pet.setVeterinarian( new Veterinarian() );
+        }
+        updatePetDTOToVeterinarian( data, pet.getVeterinarian() );
         pet.setName( data.getName() );
         pet.setSpecies( data.getSpecies() );
         pet.setRace( data.getRace() );
@@ -73,6 +81,14 @@ public class PetMapperImpl implements PetMapper {
             return;
         }
 
+        if ( pet.getOwner() == null ) {
+            pet.setOwner( new Owner() );
+        }
+        deletePetDTOToOwner( data, pet.getOwner() );
+        if ( pet.getVeterinarian() == null ) {
+            pet.setVeterinarian( new Veterinarian() );
+        }
+        deletePetDTOToVeterinarian( data, pet.getVeterinarian() );
         pet.setIdPet( data.getIdPet() );
         pet.setName( data.getName() );
         pet.setSpecies( data.getSpecies() );
@@ -132,5 +148,37 @@ public class PetMapperImpl implements PetMapper {
         veterinarian.setIdVeterinarian( createPetDTO.getVeterinarianId() );
 
         return veterinarian;
+    }
+
+    protected void updatePetDTOToOwner(UpdatePetDTO updatePetDTO, Owner mappingTarget) {
+        if ( updatePetDTO == null ) {
+            return;
+        }
+
+        mappingTarget.setIdOwner( updatePetDTO.getOwnerId() );
+    }
+
+    protected void updatePetDTOToVeterinarian(UpdatePetDTO updatePetDTO, Veterinarian mappingTarget) {
+        if ( updatePetDTO == null ) {
+            return;
+        }
+
+        mappingTarget.setIdVeterinarian( updatePetDTO.getVeterinarianId() );
+    }
+
+    protected void deletePetDTOToOwner(DeletePetDTO deletePetDTO, Owner mappingTarget) {
+        if ( deletePetDTO == null ) {
+            return;
+        }
+
+        mappingTarget.setIdOwner( deletePetDTO.getOwnerId() );
+    }
+
+    protected void deletePetDTOToVeterinarian(DeletePetDTO deletePetDTO, Veterinarian mappingTarget) {
+        if ( deletePetDTO == null ) {
+            return;
+        }
+
+        mappingTarget.setIdVeterinarian( deletePetDTO.getVeterinarianId() );
     }
 }

@@ -22,9 +22,13 @@ public interface PetMapper {
     Pet toModel(CreatePetDTO dto);
 
     @Mapping(target = "idPet", ignore = true)
+    @Mapping(source = "ownerId", target = "owner.idOwner")
+    @Mapping(source = "veterinarianId", target = "veterinarian.idVeterinarian")
     void updatePet(@MappingTarget Pet pet, UpdatePetDTO data);
 
     @Mapping(target = "idPet", ignore = false)
+    @Mapping(source = "ownerId", target = "owner.idOwner")
+    @Mapping(source = "veterinarianId", target = "veterinarian.idVeterinarian")
     void deletePet(@MappingTarget Pet pet, DeletePetDTO data);
 
 }
