@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-12-12T00:01:02-0600",
+    date = "2023-12-12T21:42:08-0600",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.8.1 (Amazon.com Inc.)"
 )
 @Component
@@ -57,21 +57,11 @@ public class OwnerMapperImpl implements OwnerMapper {
             return;
         }
 
-        if ( data.getName() != null ) {
-            owner.setName( data.getName() );
-        }
-        if ( data.getLastname() != null ) {
-            owner.setLastname( data.getLastname() );
-        }
-        if ( data.getAddress() != null ) {
-            owner.setAddress( data.getAddress() );
-        }
-        if ( data.getPhone() != null ) {
-            owner.setPhone( data.getPhone() );
-        }
-        if ( data.getEmail() != null ) {
-            owner.setEmail( data.getEmail() );
-        }
+        owner.setName( data.getName() );
+        owner.setLastname( data.getLastname() );
+        owner.setAddress( data.getAddress() );
+        owner.setPhone( data.getPhone() );
+        owner.setEmail( data.getEmail() );
     }
 
     @Override
@@ -80,23 +70,11 @@ public class OwnerMapperImpl implements OwnerMapper {
             return;
         }
 
-        if ( data.getIdOwner() != null ) {
-            owner.setIdOwner( data.getIdOwner() );
-        }
-        if ( data.getName() != null ) {
-            owner.setName( data.getName() );
-        }
-        if ( data.getLastname() != null ) {
-            owner.setLastname( data.getLastname() );
-        }
-        if ( data.getAddress() != null ) {
-            owner.setAddress( data.getAddress() );
-        }
-        if ( data.getPhone() != null ) {
-            owner.setPhone( data.getPhone() );
-        }
-        if ( data.getEmail() != null ) {
-            owner.setEmail( data.getEmail() );
-        }
+        owner.setIdOwner( data.getIdOwner() );
+        owner.setName( data.getName() );
+        owner.setLastname( data.getLastname() );
+        owner.setAddress( data.getAddress() );
+        owner.setPhone( data.getPhone() );
+        owner.setEmail( data.getEmail() );
     }
 }

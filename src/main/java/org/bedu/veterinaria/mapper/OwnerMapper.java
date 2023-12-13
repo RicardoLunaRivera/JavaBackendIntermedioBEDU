@@ -7,7 +7,7 @@ import org.bedu.veterinaria.dto.ownerDTO.UpdateOwnerDTO;
 import org.bedu.veterinaria.model.Owner;
 import org.mapstruct.*;
 
-@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface OwnerMapper {
 
     OwnerDTO toDTO(Owner model);

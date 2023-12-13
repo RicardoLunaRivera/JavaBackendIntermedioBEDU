@@ -16,7 +16,7 @@ con Spring y se busca facilitar la gestión de consultas y tratamientos de masco
   - Spring Web
   - Spring Data JPA
   - Lombok
-  - MySQL Driver
+  - H2 Database
 - MapStruct 1.5.5
 
 ## Base de datos

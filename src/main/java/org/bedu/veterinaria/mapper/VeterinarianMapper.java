@@ -8,7 +8,7 @@ import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Veterinarian;
 import org.mapstruct.*;
 
-@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface VeterinarianMapper {
     
     VeterinarianDTO toDTO(Veterinarian model);

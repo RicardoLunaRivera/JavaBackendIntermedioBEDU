@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-12-12T00:01:02-0600",
+    date = "2023-12-12T21:42:08-0600",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.8.1 (Amazon.com Inc.)"
 )
 @Component
@@ -64,20 +64,10 @@ public class VeterinarianMapperImpl implements VeterinarianMapper {
             return;
         }
 
-        if ( data.getName() != null ) {
-            veterinarian.setName( data.getName() );
-        }
-        if ( data.getLastname() != null ) {
-            veterinarian.setLastname( data.getLastname() );
-        }
-        if ( data.getSchedule() != null ) {
-            veterinarian.setSchedule( data.getSchedule() );
-        }
-        if ( data.getPhone() != null ) {
-            veterinarian.setPhone( data.getPhone() );
-        }
-        if ( data.getSpecialty() != null ) {
-            veterinarian.setSpecialty( data.getSpecialty() );
-        }
+        veterinarian.setName( data.getName() );
+        veterinarian.setLastname( data.getLastname() );
+        veterinarian.setSchedule( data.getSchedule() );
+        veterinarian.setPhone( data.getPhone() );
+        veterinarian.setSpecialty( data.getSpecialty() );
     }
 }

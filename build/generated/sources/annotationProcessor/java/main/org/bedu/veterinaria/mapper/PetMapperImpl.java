@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-12-12T00:01:02-0600",
+    date = "2023-12-12T21:42:08-0600",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.8.1 (Amazon.com Inc.)"
 )
 @Component
@@ -61,18 +61,10 @@ public class PetMapperImpl implements PetMapper {
             return;
         }
 
-        if ( data.getName() != null ) {
-            pet.setName( data.getName() );
-        }
-        if ( data.getSpecies() != null ) {
-            pet.setSpecies( data.getSpecies() );
-        }
-        if ( data.getRace() != null ) {
-            pet.setRace( data.getRace() );
-        }
-        if ( data.getBirthDate() != null ) {
-            pet.setBirthDate( data.getBirthDate() );
-        }
+        pet.setName( data.getName() );
+        pet.setSpecies( data.getSpecies() );
+        pet.setRace( data.getRace() );
+        pet.setBirthDate( data.getBirthDate() );
     }
 
     @Override
@@ -81,21 +73,11 @@ public class PetMapperImpl implements PetMapper {
             return;
         }
 
-        if ( data.getIdPet() != null ) {
-            pet.setIdPet( data.getIdPet() );
-        }
-        if ( data.getName() != null ) {
-            pet.setName( data.getName() );
-        }
-        if ( data.getSpecies() != null ) {
-            pet.setSpecies( data.getSpecies() );
-        }
-        if ( data.getRace() != null ) {
-            pet.setRace( data.getRace() );
-        }
-        if ( data.getBirthDate() != null ) {
-            pet.setBirthDate( data.getBirthDate() );
-        }
+        pet.setIdPet( data.getIdPet() );
+        pet.setName( data.getName() );
+        pet.setSpecies( data.getSpecies() );
+        pet.setRace( data.getRace() );
+        pet.setBirthDate( data.getBirthDate() );
     }
 
     private Long modelOwnerIdOwner(Pet pet) {
