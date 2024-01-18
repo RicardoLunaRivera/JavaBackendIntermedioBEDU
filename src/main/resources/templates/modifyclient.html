@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layouts/head :: head}">
+    <title>Datos del cliente</title>
+</head>
+<body>
+<header th:insert="~{layouts/header :: header}"></header>
+
+<br/>
+<div class="container">
+    <h1 class="text-center">Datos del cliente</h1>
+    <form th:action="@{/ownersv/update}" th:object="${owner}" method="post" class="col-md-8 offset-md-2">
+        <input type="hidden" name="idowner" th:field="*{idOwner}">
+        <div class="row mb-3">
+            <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" th:field="*{name}"/>
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="lastname" class="col-sm-2 col-form-label">Apellido</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="lastname" th:field="*{lastname}">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="address" class="col-sm-2 col-form-label">Direccion</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="address" th:field="*{address}">
+                <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="phone" class="col-sm-2 col-form-label">Telefono</label>
+            <div class="col-sm-10">
+                <input type="tel" class="form-control" id="phone" th:field="*{phone}">
+                <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" placeholder="name@example.com" th:field="*{email}">
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            </div>
+        </div>
+        <a class="btn btn-primary btn-sm-star" th:href="@{/ownersv}">Regresar</a>
+        <button type="submit" class="btn btn-primary float-sm-end" name="guardar" value="guardar">Guardar</button>
+    </form>
+</div>
+</body>
+</html>

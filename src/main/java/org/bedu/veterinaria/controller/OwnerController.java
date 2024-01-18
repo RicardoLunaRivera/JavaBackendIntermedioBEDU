@@ -11,9 +11,13 @@ import org.bedu.veterinaria.repository.OwnerRepository;
 import org.bedu.veterinaria.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
 
 @Tag(name="Enpoints de Dueños", description = "CRUD de dueños.")
 @RestController
@@ -26,7 +30,7 @@ public class OwnerController {
     private OwnerRepository ownerRepository;
 
     @Operation(summary = "Se obtiene la lista de todos los dueños.")
-    @GetMapping
+    @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     @Valid
     public List<OwnerDTO> findAll(){
@@ -34,7 +38,7 @@ public class OwnerController {
     }
 
     @Operation(summary = "Se crea un nuevo dueño.")
-    @PostMapping
+    @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public OwnerDTO saveOwner(@Valid @RequestBody CreateOwnerDTO data){
         return ownerService.save(data);
@@ -45,7 +49,6 @@ public class OwnerController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateOwner(@PathVariable long idOwner, @Valid @RequestBody UpdateOwnerDTO data) throws OwnerNotFoundException{
         ownerService.updateOwner(idOwner, data);
-
     }
     //    public OwnerDTO updateOwner(@PathVariable("idOwner") Long idOwner,@Valid @RequestBody UpdateOwnerDTO data){
 //        return ownerService.updateById(idOwner, data);
@@ -64,4 +67,5 @@ public class OwnerController {
             return "Error, eliminando el usuario";
         }
     }
+
 }
