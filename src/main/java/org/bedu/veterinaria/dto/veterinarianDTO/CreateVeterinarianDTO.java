@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import org.springframework.format.Parser;
@@ -24,7 +25,7 @@ public class CreateVeterinarianDTO {
 
     @Schema(description = "Identificador para ingresar el horario de cita del veterinario", example = "2023-12-09T12:13")
 //    @NotEmpty(message = "Missing Schedule")
-    private Date schedule;
+    private String schedule;
 
     @Schema(description = "Identificador para ingresar el telefono del veterinario", example = "111-111-1111")
     @NotEmpty(message = "Missing phone")

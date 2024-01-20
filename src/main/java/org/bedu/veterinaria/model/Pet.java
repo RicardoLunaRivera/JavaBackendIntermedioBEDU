@@ -13,8 +13,7 @@ import java.util.Date;
 @Setter
 @ToString
 @Entity
-@Table(name = "mascotas") // Nombre de la tabla en la base de datos.
-
+@Table(name = "pets") // Nombre de la tabla en la base de datos.
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,5 +43,7 @@ public class Pet {
     @JoinColumn(name = "id_veterinarian") // Nombre de la columna en la tabla Veterinary.
     //@JoinColumn(name = "veterinarian_id", referencedColumnName = "id_veterinarian")[ONE TO ONE]
     private Veterinarian veterinarian;
+
+
 
 }

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -27,12 +28,15 @@ public class Veterinarian {
     private String lastname;
 
     @Column()
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date schedule;
+    private String schedule;
 
     @Column(nullable = false, length = 13)
     private String phone;
 
     @Column(length = 30)
     private String specialty;
+
+    public String getNombreCompleto(){
+        return name + " " + lastname;
+    }
 }

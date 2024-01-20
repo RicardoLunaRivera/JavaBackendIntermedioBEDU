@@ -63,4 +63,23 @@ public class VeterinarianService {
             return false;
         }
     }
+
+    public Veterinarian findById(Veterinarian veterinarian) {
+        return repository.findById(veterinarian.getIdVeterinarian()).orElse(null);
+    }
+
+    public void update(Veterinarian veterinarian){
+        repository.save(veterinarian);
+    }
+
+    public List<Veterinarian> findByPalabra(String palabra) {
+        if(palabra != null){
+            return repository.findByPalabra(palabra);
+        }
+        return repository.findAll();
+    }
+
+    public void delete(Veterinarian veterinarian) {
+        repository.delete(veterinarian);
+    }
 }
