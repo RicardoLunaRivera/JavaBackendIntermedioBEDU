@@ -48,8 +48,8 @@
             <td th:text="${pet.species}">Mostrar Especie Mascota</td>
             <td th:text="${pet.race}">Mostrar Raza Mascota</td>
             <td th:text="${pet.birthDate}">Mostrar Fecha Nacimiento</td>
-            <td th:text="${pet.owners.getNombreCompleto()}">Mostrar Nombre Cliente</td>
-            <td th:text="${pet.veterinarians.getNombreCompleto()}">Mostrar Nombre Veterinario</td>
+            <td th:text="${pet.owner.getName()}">Mostrar Nombre Cliente</td>
+            <td th:text="${pet.veterinarian.getName()}">Mostrar Nombre Veterinario</td>
             <td><a class="btn btn-warning btn-sm" th:href="@{/petsv/edit/} + ${pet.idPet}">Editar</a>
             </td>
             <td><a class="btn btn-danger btn-sm" th:href="@{/petsv/delete/} + ${pet.idPet}">Eliminar</a>

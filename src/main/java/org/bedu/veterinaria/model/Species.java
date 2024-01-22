@@ -1,9 +1,9 @@
 package org.bedu.veterinaria.model;
 
 public enum Species {
-    PERRO,
-    GATO,
-    ROEDOR,
-    PEZ,
-    AVE;
+    Perro,
+    Gato,
+    Roedor,
+    Pez,
+    Ave;
 }

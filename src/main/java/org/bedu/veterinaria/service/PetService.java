@@ -68,8 +68,13 @@ public class PetService {
         repository.deleteById(idPet);
     }
 
+
     public void save(Pet pet) {
         repository.save(pet);
+    }
+
+    public List<Pet> findAllpets() {
+        return (List<Pet>) repository.findAll();
     }
 
 

@@ -36,7 +36,7 @@ public class ControllerPet {
 
     @GetMapping()
     public String pets(Model model){
-        var pets = petService.findAll();
+        var pets = petService.findAllpets();
         model.addAttribute("petsv", pets);
         return "petsv";
     }
