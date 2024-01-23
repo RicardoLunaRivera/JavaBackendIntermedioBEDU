@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{layouts/head :: head}">
-    <title>Datos del cliente</title>
+    <title>Datos del veterinario</title>
 </head>
 <body>
 <header th:insert="~{layouts/header :: header}"></header>
 
 <br/>
 <div class="container">
-    <h1 class="text-center">Datos del cliente</h1>
+    <h1 class="text-center">Datos del veterinario</h1>
     <form th:action="@{/veterinariansv/update}" th:object="${veterinarian}" method="post" class="col-md-8 offset-md-2">
         <input type="hidden" name="idowner" th:field="*{idVeterinarian}">
         <div class="row mb-3">

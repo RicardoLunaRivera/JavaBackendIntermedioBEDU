@@ -61,7 +61,7 @@ public class ControllerVeterinarian {
         return "redirect:/veterinariansv";
     }
 
-    @GetMapping("/delete/{idOwner}")
+    @GetMapping("/delete/{idVeterinarian}")
     public String eliminar(Veterinarian veterinarian){
         veterinarianService.delete(veterinarian);
         return "redirect:/veterinariansv";

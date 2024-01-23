@@ -19,7 +19,8 @@ public interface OwnerRepository extends JpaRepository<Owner, Long> {
 
 //    Optional<Owner> findById(Long id);
 
-    @Query("SELECT c FROM Owner c WHERE concat(c.name, c.lastname, c.email,c.address,c.phone) like %?1%")  //se indica que vamos a bucar el cliente por su nombre, apellidos, etc
+    //query para busqueda de un cliente
+    @Query("SELECT c FROM Owner c WHERE concat(c.name, c.lastname, c.email,c.address,c.phone) like %?1%")
     List<Owner> findByPalabra(String palabra);
 
 

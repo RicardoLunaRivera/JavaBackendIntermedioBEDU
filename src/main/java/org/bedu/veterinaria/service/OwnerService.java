@@ -49,6 +49,9 @@ public class OwnerService {
         repository.save(owner);
     }
 
+
+
+    //Metodos para la vistas en thymeleaf
     public Owner findById(Owner owner) {
         return repository.findById(owner.getIdOwner()).orElse(null);
     }

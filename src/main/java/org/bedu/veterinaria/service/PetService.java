@@ -9,6 +9,7 @@ import org.bedu.veterinaria.exception.PetNotFoundException;
 import org.bedu.veterinaria.mapper.PetMapper;
 import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Pet;
+import org.bedu.veterinaria.model.Veterinarian;
 import org.bedu.veterinaria.repository.OwnerRepository;
 import org.bedu.veterinaria.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,8 @@ public class PetService {
     }
 
 
+
+    //Metodos para las vistas en thymeleaf
     public void save(Pet pet) {
         repository.save(pet);
     }
@@ -77,5 +80,23 @@ public class PetService {
         return (List<Pet>) repository.findAll();
     }
 
+    public Pet findById(Pet pet) {
+        return repository.findById(pet.getIdPet()).orElse(null);
+    }
+
+    public void update(Pet pet){
+        repository.save(pet);
+    }
+
+    public void delete(Pet pet) {
+        repository.delete(pet);
+    }
+
+    public List<Pet> findByPalabra(String palabra) {
+        if(palabra != null){
+            return repository.findByPalabra(palabra);
+        }
+        return repository.findAll();
+    }
 
 }

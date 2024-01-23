@@ -64,6 +64,8 @@ public class VeterinarianService {
         }
     }
 
+
+    //Metodos para las vistas en thymeleaf
     public Veterinarian findById(Veterinarian veterinarian) {
         return repository.findById(veterinarian.getIdVeterinarian()).orElse(null);
     }

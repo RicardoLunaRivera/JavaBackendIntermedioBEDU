@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.bedu.veterinaria.dto.petDTO.CreatePetDTO;
 import org.bedu.veterinaria.dto.veterinarianDTO.CreateVeterinarianDTO;
 import org.bedu.veterinaria.model.Pet;
+import org.bedu.veterinaria.model.Veterinarian;
 import org.bedu.veterinaria.service.OwnerService;
 import org.bedu.veterinaria.service.PetService;
 import org.bedu.veterinaria.service.VeterinarianService;
@@ -57,6 +58,28 @@ public class ControllerPet {
             return "createpet";
         }
         petService.save(pet);
+        return "redirect:/petsv";
+    }
+
+    @GetMapping("/edit/{idPet}")
+    public String updatePet(Pet pet, Model model){
+        pet = petService.findById(pet);
+        model.addAttribute("pet", pet);
+        return "modifypet";
+    }
+
+    @PostMapping("/update")
+    public String save(@Valid Pet pet, Errors errors, String nombre){
+        if(errors.hasErrors()){
+            return "modifypet";
+        }
+        petService.update(pet);
+        return "redirect:/petsv";
+    }
+
+    @GetMapping("/delete/{idPet}")
+    public String eliminar(Pet pet){
+        petService.delete(pet);
         return "redirect:/petsv";
     }
 }
