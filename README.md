@@ -36,6 +36,10 @@ PASSWORD:
 
 ![H2_console.png](src%2Fimg%2FH2_console.png)
 
+## Usuario creado para iniciar en el login
+user: admin@gmail.com
+password: 123456789
+
 ## OpenAPI Swagger
 URL: http://localhost:8080/swagger-ui/index.html
 ![documentation.png](src%2Fimg%2Fdocumentation.png)

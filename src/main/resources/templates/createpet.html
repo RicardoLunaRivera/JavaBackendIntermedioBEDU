@@ -65,9 +65,11 @@
                 <span th:if="${#fields.hasErrors('veterinarian')}" th:errors="*{veterinarian}"></span>
             </div>
         </div>
-        <a class="btn btn-primary btn-sm-star" th:href="@{//petsv}">Regresar</a>
+        <a class="btn btn-primary btn-sm-star" th:href="@{/petsv}">Regresar</a>
         <button type="submit" class="btn btn-primary float-sm-end" name="guardar" value="guardar">Guardar</button>
     </form>
 </div>
+<footer th:insert="~{layouts/footer :: footer}">
+</footer>
 </body>
 </html>

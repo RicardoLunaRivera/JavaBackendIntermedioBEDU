@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layouts/head :: head}">
+    <title>Inicio</title>
+</head>
+<body>
+<header th:insert="~{layouts/header :: header}"></header>
+<br>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+        <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Clientes</h5>
+                <p class="card-text">Seccion para dar de alta clientes, asi como poder consultar, modificar y eliminar.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Veterinarios</h5>
+                <p class="card-text">Seccion para poder crear veterinarios y asignarles alguna consulta, tambien permite eliminar y editar.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Mascotas</h5>
+                <p class="card-text">En esta seccion podremos dar de alta mascotas y asignarles a que clientes y veterinario esta asigando. permite editar y eliminar.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Usuario</h5>
+                <p class="card-text">Seccion para poder dar de alta usuarios que puedan ocupar el sistema permite editar y eliminar.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:insert="~{layouts/footer :: footer}">
+</footer>
+</body>
+</html>
