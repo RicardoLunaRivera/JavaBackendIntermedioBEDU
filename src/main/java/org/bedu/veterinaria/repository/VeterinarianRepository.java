@@ -16,5 +16,4 @@ public interface VeterinarianRepository extends CrudRepository<Veterinarian, Lon
     //query para busqueda de un veterinario
     @Query("SELECT v FROM Veterinarian v WHERE concat(v.name, v.lastname, v.schedule,v.phone,v.specialty) like %?1%")
     List<Veterinarian> findByPalabra(String palabra);
-
 }
