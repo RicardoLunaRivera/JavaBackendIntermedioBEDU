@@ -22,13 +22,15 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        return httpSecurity.authorizeHttpRequests(auth  -> auth.requestMatchers("/", "http://localhost:8080/h2-console")
+        return httpSecurity.authorizeHttpRequests(auth  -> auth.requestMatchers("/login","/img/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
                 .formLogin(form -> form
+                        .loginPage("/login")
                         .successHandler(successHandler()).permitAll())
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
@@ -44,7 +46,7 @@ public class SecurityConfig {
 
     public AuthenticationSuccessHandler successHandler(){
         return (((request, response, authentication) -> {
-            response.sendRedirect("/index");
+            response.sendRedirect("/");
         }));
     }
 
