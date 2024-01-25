@@ -40,7 +40,7 @@ public class ControllerUser {
         return "createuser";
     }
 
-    @PostMapping("/guardar")
+    @PostMapping("/save")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String save(@Valid Usuario usuario, Errors errors) {
         if (errors.hasErrors()) {
@@ -66,7 +66,7 @@ public class ControllerUser {
         return "modifyuser";
     }
 
-    @GetMapping("/eliminar/{idUser}")
+    @GetMapping("/delete/{idUser}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String eliminar(Usuario usuario){
         usuarioService.delete(usuario);
