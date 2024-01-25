@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-23T10:45:28-0600",
-    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.9 (Oracle Corporation)"
+    date = "2024-01-24T19:05:09-0600",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.8 (Oracle Corporation)"
 )
 @Component
 public class OwnerMapperImpl implements OwnerMapper {

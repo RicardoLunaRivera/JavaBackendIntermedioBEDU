@@ -4,41 +4,70 @@
     <title>Inicio</title>
 </head>
 <body>
+<header>
+    <div class="p-5 text-center bg-image" style="background-image: url('/img/banner.jpg'); height: 250px;">
+        <div class="mask">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white" >
+                    <h1 class="mb-3">Sistema Veterinaria</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 <br>
-<div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="row row-cols-1 row-cols-md-4 g-4" style="width: 800px; margin: 1.5em auto;">
     <div class="col">
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
+        <div class="card h-100">
+            <a href="/ownersv">
+            <img th:src="@{/img/cliente.png}" class="card-img-top" alt="Clientes"/>
+            </a>
             <div class="card-body">
+                <a href="/ownersv">
                 <h5 class="card-title">Clientes</h5>
-                <p class="card-text">Seccion para dar de alta clientes, asi como poder consultar, modificar y eliminar.</p>
+                    </a>
+                <p class="card-text">
+                    Seccion para dar de alta clientes, asi como poder consultar, modificar y eliminar.
+                </p>
             </div>
         </div>
     </div>
     <div class="col">
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
+        <div class="card h-100">
+            <a href="/veterinariansv">
+            <img th:src="@{/img/veterinario.png}" class="card-img-top" alt="Veterinarios"/>
+            </a>
             <div class="card-body">
+                <a href="/veterinariansv">
                 <h5 class="card-title">Veterinarios</h5>
-                <p class="card-text">Seccion para poder crear veterinarios y asignarles alguna consulta, tambien permite eliminar y editar.</p>
+                </a>
+                <p class="card-text">Seccion para poder crear veterinarios y asignarles alguna consulta, tambien permite
+                    eliminar y editar.</p>
             </div>
         </div>
     </div>
     <div class="col">
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
+        <div class="card h-100">
+            <a href="/petsv">
+            <img th:src="@{/img/mascota.png}" class="card-img-top" alt="Mascotas"/>
+            </a>
             <div class="card-body">
-                <h5 class="card-title">Mascotas</h5>
-                <p class="card-text">En esta seccion podremos dar de alta mascotas y asignarles a que clientes y veterinario esta asigando. permite editar y eliminar.</p>
+                <a href="/petsv">
+                <h5 class="card-title">Mascota</h5>
+                </a>
+                <p class="card-text">En esta seccion podremos dar de alta mascotas y asignarles a que clientes y
+                    veterinario esta asigando. permite editar y eliminar.</p>
             </div>
         </div>
     </div>
     <div class="col">
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
+        <div class="card h-100">
+            <img th:src="@{/img/usuario.png}" class="card-img-top" alt="usuarios"/>
             <div class="card-body">
-                <h5 class="card-title">Usuario</h5>
-                <p class="card-text">Seccion para poder dar de alta usuarios que puedan ocupar el sistema permite editar y eliminar.</p>
+                <h5 class="card-title">Usuarios</h5>
+                <p class="card-text">
+                    Seccion para poder dar de alta usuarios que puedan ocupar el sistema permite editar y eliminar.
+                </p>
             </div>
         </div>
     </div>
