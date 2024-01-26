@@ -8,9 +8,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-    @Query(value = "select * from usuarios where email = ?1",nativeQuery = true)
+
+    @Query(value = "select * from usuarios where email = ?1", nativeQuery = true)
     Optional<Usuario> findByEmail(String email);
 
-    @Query("SELECT u FROM Usuario u WHERE concat(u.email, u.idUsuario, u.roles) like %?1%")
-    List<Usuario> findByNombre(String palabraClave);
+    @Query("select u from Usuario u where concat(u.email, u.roles, u.idUsuario) like %?1%")
+    List<Usuario> findByPalabra(String Palabra);
 }

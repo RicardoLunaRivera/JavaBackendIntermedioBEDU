@@ -5,8 +5,14 @@
 </head>
 <body>
 <header>
+    <div>
     <div class="p-5 text-center bg-image" style="background-image: url('/img/banner.png'); height: 115px;">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <form th:action="@{/logout}" method="post" class="col-md-1 offset-md-2">
+                <button type="submit" class="btn btn-danger float-sm-end" name="cerrar" value="cerrar">Cerrar Sesion</button>
+            </form>
         </div>
+    </div>
     </div>
 </header>
 <br>
@@ -56,11 +62,11 @@
     </div>
     <div class="col">
         <div class="card h-100">
-            <a href="/users">
+            <a href="/usuarios">
             <img th:src="@{/img/usuario.png}" class="card-img-top" alt="usuarios"/>
             </a>
             <div class="card-body">
-                <a href="/users">
+                <a href="/usuarios">
                 <h5 class="card-title">Usuarios</h5>
                 </a>
                 <p class="card-text">

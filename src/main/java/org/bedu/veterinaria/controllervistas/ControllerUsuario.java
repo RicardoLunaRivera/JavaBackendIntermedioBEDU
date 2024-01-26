@@ -1,9 +1,11 @@
 package org.bedu.veterinaria.controllervistas;
 
 import jakarta.validation.Valid;
+import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Usuario;
 import org.bedu.veterinaria.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,61 +18,64 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
-@RequestMapping("/users")
-public class ControllerUser {
+@RequestMapping("/usuarios")
+public class ControllerUsuario {
 
     @Autowired
-    UsuarioService usuarioService;
+    private UsuarioService usuarioService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
     public String usuarios(Model model){
-        var users = usuarioService.findAll();
-        model.addAttribute("users", users);
-        return "users";
+        var usuarios = usuarioService.findAll();
+        model.addAttribute("usuarios", usuarios);
+        return "usuarios";
     }
 
-    @GetMapping("/add")
+    @GetMapping("/agregar")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String agregar(Usuario usuario){
-        return "createuser";
+        return "crearusuario";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/guardar")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public String save(@Valid Usuario usuario, Errors errors) {
-        if (errors.hasErrors()) {
-            return "createuser";
+    public String save(@Valid Usuario usuario, Errors errors){
+        if (errors.hasErrors()){
+            return "crearusuario";
         }
 
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
-        Usuario result = usuarioService.save(usuario);
-        if (result.getIdUsuario() > 0) {
-            System.out.println("Usuario Guardado");
-        }else {
-            System.out.println("Error, Usuario no guardado");
-
-        }
-        return "redirect:/users";
+        usuarioService.save(usuario);
+        return "redirect:/usuarios";
     }
 
-    @GetMapping("/edit/{idUser}")
+    @GetMapping("/editar/{idUsuario}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String update(Usuario usuario, Model model){
         usuario = usuarioService.findById(usuario);
         model.addAttribute("usuario", usuario);
-        return "modifyuser";
+        return "crearusuario";
     }
 
-    @GetMapping("/delete/{idUser}")
+    @GetMapping("/eliminar/{idUsuario}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String eliminar(Usuario usuario){
         usuarioService.delete(usuario);
-        return "redirect:/users";
+        return "redirect:/usuarios";
+    }
+
+    @GetMapping("/buscarN")
+    public String buscarPorPalabra(Model model, @Param("buscarPorPalabra")String buscarPorPalabra){
+        List<Usuario> usuariosFiltrados = usuarioService.findByPalabra(buscarPorPalabra);
+        model.addAttribute("usuarios", usuariosFiltrados);
+        model.addAttribute("buscarPorPalabra", buscarPorPalabra);
+        return "ownersv";
     }
 
     public UserDetails getLoggedInUserDateils(){
@@ -80,4 +85,5 @@ public class ControllerUser {
         }
         return null;
     }
+
 }

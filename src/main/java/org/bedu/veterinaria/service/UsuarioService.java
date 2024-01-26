@@ -1,5 +1,6 @@
 package org.bedu.veterinaria.service;
 
+import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Usuario;
 import org.bedu.veterinaria.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,49 +13,31 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
-
-    public Usuario save(Usuario usuario) {
-
-        return usuario;
+    public List<Usuario> findAll(){
+        return usuarioRepository.findAll();
     }
 
-
-    public List<Usuario> findAll() {
-        return (List<Usuario>) usuarioRepository.findAll();
+    public Usuario save(Usuario usuario){
+        return usuarioRepository.save(usuario);
     }
 
-
-    public Usuario findById(Usuario usuario) {
-        return usuarioRepository.findById(usuario.getIdUsuario()).orElse(null);
-    }
-
-
-    public List<Usuario> findByNombre(String palabraClave) {
-        if (palabraClave != null){
-            return usuarioRepository.findByNombre(palabraClave);
-        }
-        return (List<Usuario>) usuarioRepository.findAll();
-    }
-
-
-
-    public void update(Usuario usuario) {
+    public void update(Usuario usuario){
         usuarioRepository.save(usuario);
     }
 
+    public Usuario findById(Usuario usuario){
+        return usuarioRepository.findById(usuario.getIdUsuario()).orElse(null);
+    }
 
-    public void delete(Usuario usuario) {
+    public void delete(Usuario usuario){
         usuarioRepository.delete(usuario);
     }
 
-
-    public Usuario deleteById(Long id) {
-        usuarioRepository.deleteById(id);
-        return null;
+    public List<Usuario> findByPalabra(String palabra) {
+        if(palabra != null){
+            return usuarioRepository.findByPalabra(palabra);
+        }
+        return usuarioRepository.findAll();
     }
 
-
-    public Usuario findByClienteId(Long id) {
-        return usuarioRepository.findById(id).orElse(null);
-    }
 }

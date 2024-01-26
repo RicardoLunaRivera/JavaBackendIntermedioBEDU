@@ -4,10 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
@@ -16,7 +13,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
@@ -26,10 +22,11 @@ public class Usuario {
     @Email
     private String email;
 
-    @NotBlank(message = "La contraseña no puede estar vacia y debe ser minimo 8 caracteres")
+    @NotBlank(message = "La contraseña debe ser mayor a 8 caracteres")
     @Size(min = 8)
     private String password;
 
     @NotBlank(message = "El rol no puede estar vacio y deben ser mayusculas")
     private String roles;
+
 }

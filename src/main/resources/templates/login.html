@@ -13,7 +13,7 @@
             display: flex;
         }
         .company__info{
-            background-color: #2E5063;
+            background-color: #517387;
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
             display: flex;
@@ -38,7 +38,7 @@
             .main-content{width: 70%;}
         }
         .row > h2{
-            color:#008080;
+            color:#517387;
         }
         .login_form{
             background-color: #fff;
@@ -70,14 +70,14 @@
             transition: all .5s ease;
             width: 60%;
             border-radius: 30px;
-            color:#008080;
+            color:#517387;
             font-weight: 600;
             background-color: #fff;
-            border: 1px solid #008080;
+            border: 1px solid #517387;
             margin: 1.5em auto 1em;
         }
         .btn:hover, .btn:focus{
-            background-color: #008080;
+            background-color: #517387;
             color:#fff;
         }
     </style>
@@ -112,6 +112,7 @@
                         <div class="row">
                             <input type="submit" value="Entrar" class="btn">
                         </div>
+                        <div><p th:if="${param.logout}"> Sesion Finalizada</p></div>
                     </form>
                 </div>
             </div>

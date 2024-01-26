@@ -25,13 +25,14 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        return httpSecurity.authorizeHttpRequests(auth  -> auth.requestMatchers("/login","/img/**")
+        return httpSecurity.authorizeHttpRequests(auth  -> auth.requestMatchers("/login","/img/**", "localhost:8080/h2-console")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")
                         .successHandler(successHandler()).permitAll())
+                .logout((logout) -> logout.logoutSuccessUrl("/login?logout").permitAll())
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                         .invalidSessionUrl("/login")

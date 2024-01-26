@@ -17,10 +17,13 @@
                         <a class="nav-link" href="/petsv" style="color: white">Mascota</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/users" style="color: white">Usuarios</a>
+                        <a class="nav-link" href="/usuarios" style="color: white">Usuarios</a>
                     </li>
                 </ul>
             </div>
+            <form th:action="@{/logout}" method="post" class="col-md-1 offset-md-2">
+                <button type="submit" class="btn btn-danger float-sm-end" name="cerrar" value="cerrar">Cerrar Sesion</button>
+            </form>
         </div>
     </nav>
 </header>

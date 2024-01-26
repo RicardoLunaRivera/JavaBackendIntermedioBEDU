@@ -8,15 +8,8 @@
 
 <br/>
 <div class="container">
-    <div class="row">
-        <div class="col-md-5 col-md-offset-3">
-            <div th:if="${param.exito}">
-                <div class="alert alert-info">Registro de usuario exitoso</div>
-            </div>
-        </div>
-    </div>
     <h1 class="text-center">Registro de usuario</h1>
-    <form th:action="@{/users/save}" th:object="${usuario}" method="post" class="col-md-8 offset-md-2">
+    <form th:action="@{/usuarios/guardar}" th:object="${usuario}" method="post" class="col-md-8 offset-md-2">
         <input type="hidden" name="idusuario" th:field="*{idUsuario}">
         <div class="row mb-3">
             <label for="email" class="col-sm-2 col-form-label">Email</label>
@@ -44,9 +37,11 @@
                 <span th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></span>
             </div>
         </div>
-        <a class="btn btn-primary btn-sm-star" th:href="@{/users}">Regresar</a>
+        <a class="btn btn-primary btn-sm-star" th:href="@{/usuarios}">Regresar</a>
         <button type="submit" class="btn btn-primary float-sm-end" name="guardar" value="guardar">Registrar</button>
     </form>
 </div>
+<footer th:insert="~{layouts/footer :: footer}">
+</footer>
 </body>
 </html>

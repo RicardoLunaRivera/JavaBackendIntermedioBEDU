@@ -9,7 +9,7 @@
     <form class="" th:action="@{/usuarios/buscarN}">
         <div class="row">
             <div class="col-md-2">
-                <a th:href="@{/users/add}">
+                <a th:href="@{/usuarios/agregar}">
                     <button class="btn btn-success me-md-3" type="button">Agregar Usuario</button>
                 </a>
             </div>
@@ -42,15 +42,14 @@
                 <th>Eliminar</th>
             </tr>
             </thead>
-            <tr th:each="user : ${users}">
-                <td th:text="${user.idUsuario}">Mostrar Nombre</td>
-                <td th:text="${user.email}">Mostrar Email</td>
-                <td th:text="${user.password}">Mostrar Passqord</td>
-                <td th:text="${user.roles}">Mostrar Roles</td>
-                <td><a class="btn btn-warning btn-sm" th:href="@{/users/edit/} + ${user.idUsuario}">Editar</a>
+            <tr th:each="usuario : ${usuarios}">
+                <td th:text="${usuario.idUsuario}">Mostrar Nombre</td>
+                <td th:text="${usuario.email}">Mostrar Email</td>
+                <td th:text="${usuario.password}">Mostrar Passqord</td>
+                <td th:text="${usuario.roles}">Mostrar Roles</td>
+                <td><a class="btn btn-warning btn-sm" th:href="@{/usuarios/editar/} + ${usuario.idUsuario}">Editar</a>
                 </td>
-                <td><a class="btn btn-danger btn-sm"
-                       th:href="@{/users/delete/} + ${user.idUsuario}">Eliminar</a></td>
+                <td><a class="btn btn-danger btn-sm" th:href="@{/usuarios/eliminar/} + ${usuario.idUsuario}">Eliminar</a></td>
             </tr>
         </table>
     </div>
