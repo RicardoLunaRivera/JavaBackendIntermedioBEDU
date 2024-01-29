@@ -50,7 +50,7 @@
             <div class="col-sm-10">
                 <select class="form-select" th:field="*{owner}">
                     <option value="" selected>Seleccione un cliente</option>
-                    <option th:each="owner : ${owners}" th:text="${owner.getName()}" th:value="${owner.getIdOwner()}" id="owner">Seleccione Un Cliente</option>
+                    <option th:each="owner : ${owners}" th:text="${owner.getNombreCompleto()}" th:value="${owner.getIdOwner()}" id="owner">Seleccione Un Cliente</option>
                 </select>
                 <span th:if="${#fields.hasErrors('owner')}" th:errors="*{owner}"></span>
             </div>
@@ -60,7 +60,7 @@
             <div class="col-sm-10">
                 <select class="form-select" th:field="*{veterinarian}">
                     <option value="" selected>Seleccione Un Veterinario</option>
-                    <option th:each="veterinarian : ${veterinarians}" th:text="${veterinarian.getName()}" th:value="${veterinarian.getIdVeterinarian()}" id="veterinarian">Seleccione Un Veterianario</option>
+                    <option th:each="veterinarian : ${veterinarians}" th:text="${veterinarian.getNombreCompleto()}" th:value="${veterinarian.getIdVeterinarian()}" id="veterinarian">Seleccione Un Veterianario</option>
                 </select>
                 <span th:if="${#fields.hasErrors('veterinarian')}" th:errors="*{veterinarian}"></span>
             </div>

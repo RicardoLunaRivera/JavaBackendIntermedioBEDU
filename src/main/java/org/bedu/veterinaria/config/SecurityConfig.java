@@ -8,6 +8,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.session.SessionRegistry;
@@ -17,6 +18,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -25,25 +29,26 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        return httpSecurity.authorizeHttpRequests(auth  -> auth.requestMatchers("/login","/img/**", "localhost:8080/h2-console")
+        return httpSecurity.authorizeHttpRequests(auth  -> auth.requestMatchers("/login","/img/**","/h2-console/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
+                .headers(headers -> headers.frameOptions().disable())
+                .csrf(csrf -> csrf.ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")))
                 .formLogin(form -> form
                         .loginPage("/login")
                         .successHandler(successHandler()).permitAll())
                 .logout((logout) -> logout.logoutSuccessUrl("/login?logout").permitAll())
-                .sessionManagement(session -> session
+                .sessionManagement((session) -> session
+                        .sessionFixation((sessionFixation) -> sessionFixation.migrateSession())
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                         .invalidSessionUrl("/login")
-                        .maximumSessions(1)
+                        .maximumSessions(1).maxSessionsPreventsLogin(true)
                         .expiredUrl("/login")
-                        .sessionRegistry(sessionRegistry())
-                        .and()
-                        .sessionFixation()
-                        .migrateSession())
+                        .sessionRegistry(sessionRegistry()))
                 .build();
     }
+
 
     public AuthenticationSuccessHandler successHandler(){
         return (((request, response, authentication) -> {

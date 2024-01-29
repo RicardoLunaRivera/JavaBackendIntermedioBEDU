@@ -34,4 +34,8 @@ public class VeterinarianDTO {
 
     @Schema(description = "Identificador para ingresar la especialidad del veterinario", example = "Cardiologo")
     private String specialty;
+
+    public String getNombreCompleto(){
+        return name + " " + lastname;
+    }
 }
