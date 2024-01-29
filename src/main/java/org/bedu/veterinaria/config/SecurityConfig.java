@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
+import org.springframework.security.config.annotation.web.configurers.SessionManagementConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
@@ -29,18 +31,18 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        return httpSecurity.authorizeHttpRequests(auth  -> auth.requestMatchers("/login","/img/**","/h2-console/**")
+        return httpSecurity.authorizeHttpRequests(auth  -> auth.requestMatchers("/login","/img/**","/h2-console/**","/owners", "/owners/" ,"/veterinarians/**", "/pets/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
-                .headers(headers -> headers.frameOptions().disable())
+                .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
                 .csrf(csrf -> csrf.ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")))
                 .formLogin(form -> form
                         .loginPage("/login")
                         .successHandler(successHandler()).permitAll())
                 .logout((logout) -> logout.logoutSuccessUrl("/login?logout").permitAll())
                 .sessionManagement((session) -> session
-                        .sessionFixation((sessionFixation) -> sessionFixation.migrateSession())
+                        .sessionFixation(SessionManagementConfigurer.SessionFixationConfigurer::migrateSession)
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                         .invalidSessionUrl("/login")
                         .maximumSessions(1).maxSessionsPreventsLogin(true)

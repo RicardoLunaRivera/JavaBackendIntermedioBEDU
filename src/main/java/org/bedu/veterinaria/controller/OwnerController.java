@@ -38,7 +38,7 @@ public class OwnerController {
     }
 
     @Operation(summary = "Se crea un nuevo dueño.")
-    @PostMapping("/new")
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public OwnerDTO saveOwner(@Valid @RequestBody CreateOwnerDTO data){
         return ownerService.save(data);
