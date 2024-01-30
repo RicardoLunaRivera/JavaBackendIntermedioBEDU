@@ -1,15 +1,19 @@
 package org.bedu.veterinaria.controller;
 
+import org.bedu.veterinaria.dto.ownerDTO.CreateOwnerDTO;
 import org.bedu.veterinaria.dto.ownerDTO.OwnerDTO;
 import org.bedu.veterinaria.mapper.OwnerMapper;
 import org.bedu.veterinaria.repository.OwnerRepository;
 import org.bedu.veterinaria.service.OwnerService;
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -18,7 +22,6 @@ import static org.mockito.Mockito.*;
 public class OwnerController2Test {
   @Autowired
   private MockMvc mockMvc;
-
   @MockBean
   private OwnerService ownerService;
   @MockBean
@@ -55,7 +58,7 @@ public class OwnerController2Test {
     // Verifica que los resultados son los esperados
     assertEquals(simulatedOwnerDTO.getIdOwner(), resultado.getIdOwner());
     assertEquals(simulatedOwnerDTO.getName(), resultado.getName());
-    Assertions.assertEquals(simulatedOwnerDTO.getLastname(), resultado.getLastname());
+    assertEquals(simulatedOwnerDTO.getLastname(), resultado.getLastname());
     assertEquals(simulatedOwnerDTO.getAddress(), resultado.getAddress());
     assertEquals(simulatedOwnerDTO.getPhone(), resultado.getPhone());
     assertEquals(simulatedOwnerDTO.getEmail(), resultado.getEmail());
