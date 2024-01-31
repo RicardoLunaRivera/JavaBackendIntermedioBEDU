@@ -10,7 +10,6 @@ import lombok.Data;
 @Data
 public class UpdateOwnerDTO {
 
-
   @Schema(description = "Identificador para ingresar el nombre del cliente", example = "Ana")
   @NotEmpty(message = "El nombre del cliente no puede estar vacío")
   private String name;

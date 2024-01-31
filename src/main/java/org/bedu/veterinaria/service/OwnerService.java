@@ -57,24 +57,24 @@ public class OwnerService {
 
     //Borra un cliente
 
-    public void deleteOwner(long idOwner, DeleteOwnerDTO data) throws OwnerNotFoundException{
-        Optional<Owner> result = repository.findById(idOwner);
-        if(!result.isPresent()){
-            throw new OwnerNotFoundException(idOwner);
-        }
-        Owner entity = result.get();
-        mapper.deleteOwner(entity,data);
-        repository.deleteById(idOwner);
-    }
-
-
-//    public Boolean deleteOwner(Long idOwner){
-//        try {
-//            repository.deleteById(idOwner);
-//            return true;
-//        } catch (Exception e){
-//            return false;
+//    public void deleteOwner(long idOwner, DeleteOwnerDTO data) throws OwnerNotFoundException{
+//        Optional<Owner> result = repository.findById(idOwner);
+//        if(!result.isPresent()){
+//            throw new OwnerNotFoundException(idOwner);
 //        }
+//        Owner entity = result.get();
+//        mapper.deleteOwner(entity,data);
+//        repository.deleteById(idOwner);
 //    }
+
+
+    public Boolean deleteOwner(Long idOwner){
+        try {
+            repository.deleteById(idOwner);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
 
 }

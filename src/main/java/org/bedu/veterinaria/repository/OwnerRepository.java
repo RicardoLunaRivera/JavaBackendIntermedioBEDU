@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface OwnerRepository extends JpaRepository<Owner, Long> {
@@ -14,5 +15,7 @@ public interface OwnerRepository extends JpaRepository<Owner, Long> {
 //    List<Owner> findOwners();
 //
 //    List<Owner> findById();
+
+//    Optional<Owner> findById(Long id);
 
 }
