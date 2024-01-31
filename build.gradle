@@ -51,4 +51,30 @@ jacocoTestReport {
 	reports {
 		xml.required = true
 	}
+
+	test {
+		jacoco {
+			excludes = [
+					'org.bedu.dto.*',
+					'org.bedu.model.*',
+					'org.bedu.mapper.*',
+					'org.bedu.Application.class'
+			]
+		}
+		afterEvaluate {
+			classDirectories.setFrom(files(classDirectories.files.collect {
+				fileTree(dir: it,
+						exclude: [
+								'org/bedu/dto/**',
+								'org/bedu/model/**',
+								'org/bedu/mapper/**',
+								'org/bedu/Application.class'
+						]
+				)
+			}))
+		}
+	}
+}
+tasks.named('sonar') {
+	dependsOn test
 }

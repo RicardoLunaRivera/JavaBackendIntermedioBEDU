@@ -45,7 +45,6 @@ public class OwnerController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateOwner(@PathVariable long idOwner, @Valid @RequestBody UpdateOwnerDTO data) throws OwnerNotFoundException{
         ownerService.updateOwner(idOwner, data);
-
     }
     //    public OwnerDTO updateOwner(@PathVariable("idOwner") Long idOwner,@Valid @RequestBody UpdateOwnerDTO data){
 //        return ownerService.updateById(idOwner, data);
@@ -55,8 +54,6 @@ public class OwnerController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public void deleteOwner(@PathVariable("idOwner") long idOwner) throws OwnerNotFoundException {
         ownerRepository.deleteById(idOwner);
-
-
     }
 //    public String deleteOwner1(@Valid @PathVariable("idOwner") Long id){
 //        boolean ok = this.ownerService.deleteOwner(id);
