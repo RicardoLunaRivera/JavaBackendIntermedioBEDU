@@ -7,6 +7,7 @@ import org.bedu.veterinaria.exception.OwnerNotFoundException;
 import org.bedu.veterinaria.mapper.OwnerMapper;
 import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.repository.OwnerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,10 +16,10 @@ import java.util.Optional;
 @Service
 public class OwnerService {
 
-    private final OwnerRepository repository;
+    private OwnerRepository repository;
+    private OwnerMapper mapper;
 
-    private final OwnerMapper mapper;
-
+    @Autowired
     public OwnerService(OwnerRepository repository, OwnerMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;
@@ -38,11 +39,11 @@ public class OwnerService {
     //Actualiza un cliente existente
     public void updateOwner(long idOwner, UpdateOwnerDTO data) throws OwnerNotFoundException{
         Optional<Owner> result = repository.findById(idOwner);
-        if(!result.isPresent()){
+        if(result.isEmpty()){
             throw new OwnerNotFoundException(idOwner);
         }
         Owner owner = result.get();
-        mapper.updateOwner(owner,data);
+        mapper.updateOwner(data, owner);
         repository.save(owner);
     }
 

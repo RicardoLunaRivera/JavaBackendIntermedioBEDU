@@ -9,15 +9,15 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @Entity
+@ToString
 @Table(name = "owners")
 public class Owner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_owner")
-    private Long idOwner;
+    private long idOwner;
 
     @Column(length = 30)
     private String name;

@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-01T01:20:13-0600",
-    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.5.jar, environment: Java 17.0.9 (Oracle Corporation)"
+    date = "2024-02-01T13:13:15-0600",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.9 (Amazon.com Inc.)"
 )
 @Component
 public class PetMapperImpl implements PetMapper {
@@ -119,10 +119,7 @@ public class PetMapperImpl implements PetMapper {
         if ( owner == null ) {
             return null;
         }
-        Long idOwner = owner.getIdOwner();
-        if ( idOwner == null ) {
-            return null;
-        }
+        long idOwner = owner.getIdOwner();
         return idOwner;
     }
 
@@ -148,7 +145,9 @@ public class PetMapperImpl implements PetMapper {
 
         Owner owner = new Owner();
 
-        owner.setIdOwner( createPetDTO.getOwnerId() );
+        if ( createPetDTO.getOwnerId() != null ) {
+            owner.setIdOwner( createPetDTO.getOwnerId() );
+        }
 
         return owner;
     }
@@ -170,7 +169,9 @@ public class PetMapperImpl implements PetMapper {
             return;
         }
 
-        mappingTarget.setIdOwner( updatePetDTO.getOwnerId() );
+        if ( updatePetDTO.getOwnerId() != null ) {
+            mappingTarget.setIdOwner( updatePetDTO.getOwnerId() );
+        }
     }
 
     protected void updatePetDTOToVeterinarian(UpdatePetDTO updatePetDTO, Veterinarian mappingTarget) {
@@ -186,7 +187,9 @@ public class PetMapperImpl implements PetMapper {
             return;
         }
 
-        mappingTarget.setIdOwner( deletePetDTO.getOwnerId() );
+        if ( deletePetDTO.getOwnerId() != null ) {
+            mappingTarget.setIdOwner( deletePetDTO.getOwnerId() );
+        }
     }
 
     protected void deletePetDTOToVeterinarian(DeletePetDTO deletePetDTO, Veterinarian mappingTarget) {

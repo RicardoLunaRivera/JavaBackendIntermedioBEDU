@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-01T01:20:14-0600",
-    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.5.jar, environment: Java 17.0.9 (Oracle Corporation)"
+    date = "2024-02-01T13:13:15-0600",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.9 (Amazon.com Inc.)"
 )
 @Component
 public class OwnerMapperImpl implements OwnerMapper {
@@ -52,16 +52,16 @@ public class OwnerMapperImpl implements OwnerMapper {
     }
 
     @Override
-    public void updateOwner(Owner owner, UpdateOwnerDTO data) {
-        if ( data == null ) {
+    public void updateOwner(UpdateOwnerDTO updateOwnerDTO, Owner owner) {
+        if ( updateOwnerDTO == null ) {
             return;
         }
 
-        owner.setName( data.getName() );
-        owner.setLastname( data.getLastname() );
-        owner.setAddress( data.getAddress() );
-        owner.setPhone( data.getPhone() );
-        owner.setEmail( data.getEmail() );
+        owner.setName( updateOwnerDTO.getName() );
+        owner.setLastname( updateOwnerDTO.getLastname() );
+        owner.setAddress( updateOwnerDTO.getAddress() );
+        owner.setPhone( updateOwnerDTO.getPhone() );
+        owner.setEmail( updateOwnerDTO.getEmail() );
     }
 
     @Override
@@ -70,7 +70,9 @@ public class OwnerMapperImpl implements OwnerMapper {
             return;
         }
 
-        owner.setIdOwner( data.getIdOwner() );
+        if ( data.getIdOwner() != null ) {
+            owner.setIdOwner( data.getIdOwner() );
+        }
         owner.setName( data.getName() );
         owner.setLastname( data.getLastname() );
         owner.setAddress( data.getAddress() );

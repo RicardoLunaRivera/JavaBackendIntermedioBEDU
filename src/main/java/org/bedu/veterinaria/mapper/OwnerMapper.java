@@ -16,7 +16,7 @@ public interface OwnerMapper {
     Owner toModel(CreateOwnerDTO dto);
 
     @Mapping(target = "idOwner", ignore = true)
-    void updateOwner(@MappingTarget Owner owner, UpdateOwnerDTO data);
+    void updateOwner(UpdateOwnerDTO updateOwnerDTO, @MappingTarget Owner owner);
 
     @Mapping(target = "idOwner", ignore = false)
     void deleteOwner(@MappingTarget Owner owner, DeleteOwnerDTO data);
