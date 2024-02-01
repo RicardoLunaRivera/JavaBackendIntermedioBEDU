@@ -1,17 +1,17 @@
 package org.bedu.veterinaria.mapper;
 
 import javax.annotation.processing.Generated;
-import org.bedu.veterinaria.dto.ownerDTO.CreateOwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.DeleteOwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.OwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.UpdateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.CreateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.DeleteOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.OwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.UpdateOwnerDTO;
 import org.bedu.veterinaria.model.Owner;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-31T18:22:51-0600",
-    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.9 (Amazon.com Inc.)"
+    date = "2024-02-01T01:20:14-0600",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.5.jar, environment: Java 17.0.9 (Oracle Corporation)"
 )
 @Component
 public class OwnerMapperImpl implements OwnerMapper {

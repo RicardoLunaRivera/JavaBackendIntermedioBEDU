@@ -1,9 +1,8 @@
 package org.bedu.veterinaria.controller;
 
-import org.bedu.veterinaria.dto.ownerDTO.CreateOwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.DeleteOwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.OwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.UpdateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.CreateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.OwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.UpdateOwnerDTO;
 import org.bedu.veterinaria.exception.OwnerNotFoundException;
 import org.bedu.veterinaria.repository.OwnerRepository;
 import org.bedu.veterinaria.service.OwnerService;
@@ -20,12 +19,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
-public class OwnerControllerTest {
+class OwnerControllerTest {
 
   @MockBean
   private OwnerService ownerService;
@@ -39,13 +37,13 @@ public class OwnerControllerTest {
   // Smoke Test
   @Test
   @DisplayName("Controller should be injected")
-  public void smokeTest(){
+  void smokeTest(){
     assertNotNull(ownerController);
   }
 
   @Test
   @DisplayName("Lista de dueños de mascotas")
-  public void findAllTest(){
+  void findAllTest(){
     // Pre-condición
     List<OwnerDTO> fakeInfo = new LinkedList<>();
 
@@ -63,18 +61,20 @@ public class OwnerControllerTest {
     when(ownerService.findAll()).thenReturn(fakeInfo);
 
     // Act
-    List<OwnerDTO> resultado = ownerController.findAll();
+    List<OwnerDTO> findOwners = ownerController.findAll();
 
     // Assert
-    assertEquals(fakeInfo,resultado);
+    assertEquals(fakeInfo,findOwners);
 
   }
 
+
   @Test
   @DisplayName("Guardar un dueño escenario positivo")
-  public void saveOwner() throws Exception {
+  void saveOwnerPositive() throws Exception {
     // Configuración comportamiento esperado // Arrange
     CreateOwnerDTO createOwnerDTO = new CreateOwnerDTO();
+
     createOwnerDTO.setName("Nathalie");
     createOwnerDTO.setLastname("Glz");
     createOwnerDTO.setAddress("1224 Nay");
@@ -84,11 +84,11 @@ public class OwnerControllerTest {
     OwnerDTO fakeOwner = new OwnerDTO();
 
     fakeOwner.setIdOwner(1L);
-    fakeOwner.setName("Nathalie");
-    fakeOwner.setLastname("Glz");
-    fakeOwner.setAddress("1224 Nay");
-    fakeOwner.setPhone("111-111-1111");
-    fakeOwner.setEmail("ana@mail.com");
+    fakeOwner.setName(createOwnerDTO.getName());
+    fakeOwner.setLastname(createOwnerDTO.getLastname());
+    fakeOwner.setAddress(createOwnerDTO.getAddress());
+    fakeOwner.setPhone(createOwnerDTO.getPhone());
+    fakeOwner.setEmail(createOwnerDTO.getEmail());
 
     when(ownerService.save(any(CreateOwnerDTO.class))).thenReturn(fakeOwner);
 
@@ -110,34 +110,34 @@ public class OwnerControllerTest {
   }
 
   @Test
-  @DisplayName("Actualizar un cliente")
-  public void updateOwner() throws OwnerNotFoundException {
+  @DisplayName("Actualizar un dueño")
+  void updateOwner() throws OwnerNotFoundException {
     // Arrage
     long idOwner = 1L;
-    UpdateOwnerDTO update = new UpdateOwnerDTO();
+    UpdateOwnerDTO dto = new UpdateOwnerDTO();
 
-    doNothing().when(ownerService).updateOwner(idOwner,update);
+    dto.setName("Nathalie");
+    dto.setLastname("G. Mena");
+    dto.setAddress("1224 Nay");
+    dto.setPhone("111-111-1111");
+    dto.setEmail("ana@mail.com");
+
 
     // Act
-    ownerController.updateOwner(idOwner,update);
+    ownerController.updateOwner(idOwner,dto);
 
     // Assert
-    assertNotNull(update);
+    verify(ownerService,times(1)).updateOwner(idOwner,dto);
   }
 
   @Test
-  @DisplayName("Eliminar un cliente")
-  public void deleteOwner() throws OwnerNotFoundException {
+  @DisplayName("Eliminar un dueño")
+  void deleteOwner() throws OwnerNotFoundException {
     // Arrange
     long idOwner = 1L;
-    DeleteOwnerDTO delete = new DeleteOwnerDTO();
-
-    doNothing().when(ownerRepository).deleteById(idOwner);
-
-    // Act
     ownerController.deleteOwner(idOwner);
 
-    // Assert
-    assertNotNull(delete);
+    verify(ownerRepository, times(1)).deleteById(idOwner);
   }
+
 }

@@ -1,10 +1,11 @@
 package org.bedu.veterinaria.mapper;
 
+import java.text.SimpleDateFormat;
 import javax.annotation.processing.Generated;
-import org.bedu.veterinaria.dto.petDTO.CreatePetDTO;
-import org.bedu.veterinaria.dto.petDTO.DeletePetDTO;
-import org.bedu.veterinaria.dto.petDTO.PetDTO;
-import org.bedu.veterinaria.dto.petDTO.UpdatePetDTO;
+import org.bedu.veterinaria.dto.pet_dto.CreatePetDTO;
+import org.bedu.veterinaria.dto.pet_dto.DeletePetDTO;
+import org.bedu.veterinaria.dto.pet_dto.PetDTO;
+import org.bedu.veterinaria.dto.pet_dto.UpdatePetDTO;
 import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Pet;
 import org.bedu.veterinaria.model.Veterinarian;
@@ -12,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-31T18:22:51-0600",
-    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.9 (Amazon.com Inc.)"
+    date = "2024-02-01T01:20:13-0600",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.5.jar, environment: Java 17.0.9 (Oracle Corporation)"
 )
 @Component
 public class PetMapperImpl implements PetMapper {
@@ -28,11 +29,13 @@ public class PetMapperImpl implements PetMapper {
 
         petDTO.setOwnerId( modelOwnerIdOwner( model ) );
         petDTO.setVeterinarianId( modelVeterinarianIdVeterinarian( model ) );
+        if ( model.getBirthDate() != null ) {
+            petDTO.setBirthDate( new SimpleDateFormat().format( model.getBirthDate() ) );
+        }
         petDTO.setIdPet( model.getIdPet() );
         petDTO.setName( model.getName() );
         petDTO.setSpecies( model.getSpecies() );
         petDTO.setRace( model.getRace() );
-        petDTO.setBirthDate( model.getBirthDate() );
 
         return petDTO;
     }
@@ -47,10 +50,12 @@ public class PetMapperImpl implements PetMapper {
 
         pet.setOwner( createPetDTOToOwner( dto ) );
         pet.setVeterinarian( createPetDTOToVeterinarian( dto ) );
+        if ( dto.getBirthDate() != null ) {
+            pet.setBirthDate( new SimpleDateFormat().format( dto.getBirthDate() ) );
+        }
         pet.setName( dto.getName() );
         pet.setSpecies( dto.getSpecies() );
         pet.setRace( dto.getRace() );
-        pet.setBirthDate( dto.getBirthDate() );
 
         return pet;
     }
@@ -69,10 +74,15 @@ public class PetMapperImpl implements PetMapper {
             pet.setVeterinarian( new Veterinarian() );
         }
         updatePetDTOToVeterinarian( data, pet.getVeterinarian() );
+        if ( data.getBirthDate() != null ) {
+            pet.setBirthDate( new SimpleDateFormat().format( data.getBirthDate() ) );
+        }
+        else {
+            pet.setBirthDate( null );
+        }
         pet.setName( data.getName() );
         pet.setSpecies( data.getSpecies() );
         pet.setRace( data.getRace() );
-        pet.setBirthDate( data.getBirthDate() );
     }
 
     @Override
@@ -90,10 +100,15 @@ public class PetMapperImpl implements PetMapper {
         }
         deletePetDTOToVeterinarian( data, pet.getVeterinarian() );
         pet.setIdPet( data.getIdPet() );
+        if ( data.getBirthDate() != null ) {
+            pet.setBirthDate( new SimpleDateFormat().format( data.getBirthDate() ) );
+        }
+        else {
+            pet.setBirthDate( null );
+        }
         pet.setName( data.getName() );
         pet.setSpecies( data.getSpecies() );
         pet.setRace( data.getRace() );
-        pet.setBirthDate( data.getBirthDate() );
     }
 
     private Long modelOwnerIdOwner(Pet pet) {

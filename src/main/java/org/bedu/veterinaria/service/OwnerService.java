@@ -1,14 +1,12 @@
 package org.bedu.veterinaria.service;
 
-import org.bedu.veterinaria.dto.ownerDTO.DeleteOwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.CreateOwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.OwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.UpdateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.CreateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.OwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.UpdateOwnerDTO;
 import org.bedu.veterinaria.exception.OwnerNotFoundException;
 import org.bedu.veterinaria.mapper.OwnerMapper;
 import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.repository.OwnerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,11 +14,10 @@ import java.util.Optional;
 
 @Service
 public class OwnerService {
-    @Autowired
-    private OwnerRepository repository;
 
-    @Autowired
-    private OwnerMapper mapper;
+    private final OwnerRepository repository;
+
+    private final OwnerMapper mapper;
 
     public OwnerService(OwnerRepository repository, OwnerMapper mapper) {
         this.repository = repository;
@@ -48,25 +45,6 @@ public class OwnerService {
         mapper.updateOwner(owner,data);
         repository.save(owner);
     }
-
-//    public OwnerDTO updateById(Long idOwner, UpdateOwnerDTO data){
-//        data.setIdOwner(idOwner);
-//        Owner entity = repository.save(mapper.toModel(data));
-//        return mapper.toDTO(entity);
-//    }
-
-    //Borra un cliente
-
-//    public void deleteOwner(long idOwner, DeleteOwnerDTO data) throws OwnerNotFoundException{
-//        Optional<Owner> result = repository.findById(idOwner);
-//        if(!result.isPresent()){
-//            throw new OwnerNotFoundException(idOwner);
-//        }
-//        Owner entity = result.get();
-//        mapper.deleteOwner(entity,data);
-//        repository.deleteById(idOwner);
-//    }
-
 
     public Boolean deleteOwner(Long idOwner){
         try {

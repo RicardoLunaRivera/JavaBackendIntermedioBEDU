@@ -27,8 +27,6 @@ public class ExcepHandler {
             .message("Los datos de entrada contiene errores")
             .details(errors)
             .build();
-    //return new ErrorDTO("ERR_VALID","Hubo un error al procesar los datos de entrada :(",errors);
-
   }
 
   @ExceptionHandler(RuntimeException.class)

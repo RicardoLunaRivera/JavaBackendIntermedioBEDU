@@ -1,15 +1,10 @@
-package org.bedu.veterinaria.dto.veterinarianDTO;
-import java.time.LocalDateTime;
+package org.bedu.veterinaria.dto.veterinarian_dto;
 import java.util.Date;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
-import org.springframework.format.Parser;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 public class CreateVeterinarianDTO {
@@ -28,11 +23,14 @@ public class CreateVeterinarianDTO {
 
     @Schema(description = "Identificador para ingresar el telefono del veterinario", example = "111-111-1111")
     @NotEmpty(message = "Missing phone")
-    @Pattern(regexp = "^(\\d{3}[-]?){2}\\d{4}$") //formato ###-###-####
+    @Pattern(regexp = "^(\\d{3}-?){2}\\d{4}$") //formato ###-###-####
     private String phone;
 
     @Schema(description = "Identificador para ingresar la especialidad del veterinario", example = "Cardiologo")
     @NotEmpty(message = "Missing specialty")
     private String specialty;
 
+  public void setSchedule(String s) {
+      // Metodo creado para pruebas unitarias
+  }
 }

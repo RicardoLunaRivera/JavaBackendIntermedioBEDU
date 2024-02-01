@@ -1,4 +1,4 @@
-package org.bedu.veterinaria.dto.ownerDTO;
+package org.bedu.veterinaria.dto.owner_dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
