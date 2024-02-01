@@ -65,12 +65,12 @@ public class OwnerController {
 //        }
     //ownerRepository.deleteById(id);
 //    }
-    public String deleteOwner(@Valid @PathVariable("idOwner") Long id){
-        boolean ok = this.ownerService.deleteOwner(id);
-        if(ok){
-            return "Owner eliminado";
-        } else {
-            return "Error, eliminando el usuario";
-        }
-    }
+//    public String deleteOwner(@Valid @PathVariable("idOwner") Long id){
+//        boolean ok = this.ownerService.deleteOwner(id);
+//        if(ok){
+//            return "Owner eliminado";
+//        } else {
+//            return "Error, eliminando el usuario";
+//        }
+//    }
 }

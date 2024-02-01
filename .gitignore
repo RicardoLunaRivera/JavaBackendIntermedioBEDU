@@ -163,3 +163,5 @@ replay_pid*
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,visualstudiocode,java
+src/test/java/org/bedu/veterinaria/controller/OwnerController2Test.java
+src/test/java/org/bedu/veterinaria/controller/OwnerController2Test.java

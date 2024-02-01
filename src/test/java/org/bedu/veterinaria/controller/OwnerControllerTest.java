@@ -5,6 +5,7 @@ import org.bedu.veterinaria.dto.ownerDTO.DeleteOwnerDTO;
 import org.bedu.veterinaria.dto.ownerDTO.OwnerDTO;
 import org.bedu.veterinaria.dto.ownerDTO.UpdateOwnerDTO;
 import org.bedu.veterinaria.exception.OwnerNotFoundException;
+import org.bedu.veterinaria.repository.OwnerRepository;
 import org.bedu.veterinaria.service.OwnerService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,6 +29,9 @@ public class OwnerControllerTest {
 
   @MockBean
   private OwnerService ownerService;
+
+  @MockBean
+  private OwnerRepository ownerRepository;
 
   @Autowired
   private OwnerController ownerController;
@@ -77,16 +81,16 @@ public class OwnerControllerTest {
     createOwnerDTO.setPhone("111-111-1111");
     createOwnerDTO.setEmail("ana@mail.com");
 
-    OwnerDTO simulatedOwnerDTO = new OwnerDTO();
+    OwnerDTO fakeOwner = new OwnerDTO();
 
-    simulatedOwnerDTO.setIdOwner(1L);
-    simulatedOwnerDTO.setName("Nathalie");
-    simulatedOwnerDTO.setLastname("Glz");
-    simulatedOwnerDTO.setAddress("1224 Nay");
-    simulatedOwnerDTO.setPhone("111-111-1111");
-    simulatedOwnerDTO.setEmail("ana@mail.com");
+    fakeOwner.setIdOwner(1L);
+    fakeOwner.setName("Nathalie");
+    fakeOwner.setLastname("Glz");
+    fakeOwner.setAddress("1224 Nay");
+    fakeOwner.setPhone("111-111-1111");
+    fakeOwner.setEmail("ana@mail.com");
 
-    when(ownerService.save(any(CreateOwnerDTO.class))).thenReturn(simulatedOwnerDTO);
+    when(ownerService.save(any(CreateOwnerDTO.class))).thenReturn(fakeOwner);
 
     //Act
     OwnerDTO resultado = ownerService.save(createOwnerDTO);
@@ -97,12 +101,12 @@ public class OwnerControllerTest {
 
     // Verifica que los resultados son los esperados
     assertNotNull(resultado);
-    assertEquals(simulatedOwnerDTO.getIdOwner(), resultado.getIdOwner());
-    assertEquals(simulatedOwnerDTO.getName(), resultado.getName());
-    assertEquals(simulatedOwnerDTO.getLastname(), resultado.getLastname());
-    assertEquals(simulatedOwnerDTO.getAddress(), resultado.getAddress());
-    assertEquals(simulatedOwnerDTO.getPhone(), resultado.getPhone());
-    assertEquals(simulatedOwnerDTO.getEmail(), resultado.getEmail());
+    assertEquals(fakeOwner.getIdOwner(), resultado.getIdOwner());
+    assertEquals(fakeOwner.getName(), resultado.getName());
+    assertEquals(fakeOwner.getLastname(), resultado.getLastname());
+    assertEquals(fakeOwner.getAddress(), resultado.getAddress());
+    assertEquals(fakeOwner.getPhone(), resultado.getPhone());
+    assertEquals(fakeOwner.getEmail(), resultado.getEmail());
   }
 
   @Test
@@ -123,10 +127,17 @@ public class OwnerControllerTest {
 
   @Test
   @DisplayName("Eliminar un cliente")
-  public void deleteOwner(){
+  public void deleteOwner() throws OwnerNotFoundException {
     // Arrange
     long idOwner = 1L;
     DeleteOwnerDTO delete = new DeleteOwnerDTO();
 
+    doNothing().when(ownerRepository).deleteById(idOwner);
+
+    // Act
+    ownerController.deleteOwner(idOwner);
+
+    // Assert
+    assertNotNull(delete);
   }
 }
