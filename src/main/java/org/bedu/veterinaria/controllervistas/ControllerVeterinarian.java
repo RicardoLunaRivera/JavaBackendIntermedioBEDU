@@ -1,9 +1,7 @@
 package org.bedu.veterinaria.controllervistas;
 
 import jakarta.validation.Valid;
-import org.bedu.veterinaria.dto.ownerDTO.CreateOwnerDTO;
 import org.bedu.veterinaria.dto.veterinarianDTO.CreateVeterinarianDTO;
-import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Veterinarian;
 import org.bedu.veterinaria.service.VeterinarianService;
 import org.springframework.beans.factory.annotation.Autowired;

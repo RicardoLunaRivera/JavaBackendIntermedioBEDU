@@ -1,15 +1,9 @@
 package org.bedu.veterinaria.dto.petDTO;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.*;
-import lombok.Data;
-import org.bedu.veterinaria.model.Owner;
-import org.bedu.veterinaria.model.Species;
-import org.bedu.veterinaria.model.Veterinarian;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+import org.bedu.veterinaria.model.Species;
 import java.util.Date;
 
 @Data

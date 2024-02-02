@@ -5,9 +5,7 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Species;
-import org.bedu.veterinaria.model.Veterinarian;
 
 import java.util.Date;
 

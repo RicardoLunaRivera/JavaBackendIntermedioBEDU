@@ -1,16 +1,11 @@
 package org.bedu.veterinaria.dto.veterinarianDTO;
-import java.time.LocalDateTime;
-import java.util.Date;
+
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Data
 @AllArgsConstructor

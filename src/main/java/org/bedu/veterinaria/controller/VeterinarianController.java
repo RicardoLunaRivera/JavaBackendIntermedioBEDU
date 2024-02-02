@@ -11,10 +11,8 @@ import org.bedu.veterinaria.service.VeterinarianService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import jakarta.validation.Valid;
 
-import java.time.LocalDateTime;
 
 @Tag(name = "Endpoint de Veterinarios", description = "CRUD de veterinarios.")
 @RestController
@@ -48,10 +46,6 @@ public class VeterinarianController {
         veterinarianService.updateVet(idVeterinarian, data);
     }
 
-
-//    public VeterinarianDTO updateVeterinarian(@PathVariable("idVeterinarian") Long idVeterinarian, @Valid @RequestBody UpdateVeterinarianDTO data){
-//        return veterinarianService.updateById(idVeterinarian, data);
-//    }
 
     @Operation(summary = "Se borra una cita con el veterinario.")
     @DeleteMapping(value = "{idVeterinarian}")

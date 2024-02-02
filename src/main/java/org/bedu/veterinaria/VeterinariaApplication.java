@@ -15,11 +15,12 @@ public class VeterinariaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(VeterinariaApplication.class, args);
 	}
-	@Autowired
-	PasswordEncoder passwordEncoder;
 
 	@Autowired
-	UsuarioRepository usuarioRepository;
+	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
 	@Bean
 	CommandLineRunner init(){

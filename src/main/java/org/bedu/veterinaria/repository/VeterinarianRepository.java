@@ -2,7 +2,6 @@ package org.bedu.veterinaria.repository;
 
 import java.util.List;
 
-import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Veterinarian;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

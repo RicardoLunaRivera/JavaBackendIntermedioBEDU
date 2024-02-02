@@ -1,10 +1,7 @@
 package org.bedu.veterinaria.controllervistas;
 
 import jakarta.validation.Valid;
-import org.bedu.veterinaria.dto.petDTO.CreatePetDTO;
-import org.bedu.veterinaria.dto.veterinarianDTO.CreateVeterinarianDTO;
 import org.bedu.veterinaria.model.Pet;
-import org.bedu.veterinaria.model.Veterinarian;
 import org.bedu.veterinaria.service.OwnerService;
 import org.bedu.veterinaria.service.PetService;
 import org.bedu.veterinaria.service.VeterinarianService;

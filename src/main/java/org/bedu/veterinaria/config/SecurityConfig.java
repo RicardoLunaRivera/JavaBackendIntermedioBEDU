@@ -4,12 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.annotation.web.configurers.SessionManagementConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -22,7 +19,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
+
 
 @Configuration
 @EnableWebSecurity
@@ -31,7 +28,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        return httpSecurity.authorizeHttpRequests(auth  -> auth.requestMatchers("/login","/img/**","/h2-console/**","/owners", "/owners/" ,"/veterinarians/**", "/pets/**")
+        return httpSecurity.authorizeHttpRequests(auth  -> auth.requestMatchers("/img/**","/h2-console/**","/owners", "/owners/" ,"/veterinarians/**", "/pets/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
@@ -40,8 +37,8 @@ public class SecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/login")
                         .successHandler(successHandler()).permitAll())
-                .logout((logout) -> logout.logoutSuccessUrl("/login?logout").permitAll())
-                .sessionManagement((session) -> session
+                .logout(logout -> logout.logoutSuccessUrl("/login?logout").permitAll())
+                .sessionManagement(session -> session
                         .sessionFixation(SessionManagementConfigurer.SessionFixationConfigurer::migrateSession)
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                         .invalidSessionUrl("/login")
@@ -53,9 +50,9 @@ public class SecurityConfig {
 
 
     public AuthenticationSuccessHandler successHandler(){
-        return (((request, response, authentication) -> {
+        return (request, response, authentication) -> {
             response.sendRedirect("/");
-        }));
+        };
     }
 
     public SessionRegistry sessionRegistry(){

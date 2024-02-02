@@ -1,15 +1,13 @@
 package org.bedu.veterinaria.service;
 
-import jakarta.persistence.EntityNotFoundException;
+
 import org.bedu.veterinaria.dto.petDTO.CreatePetDTO;
 import org.bedu.veterinaria.dto.petDTO.DeletePetDTO;
 import org.bedu.veterinaria.dto.petDTO.PetDTO;
 import org.bedu.veterinaria.dto.petDTO.UpdatePetDTO;
 import org.bedu.veterinaria.exception.PetNotFoundException;
 import org.bedu.veterinaria.mapper.PetMapper;
-import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Pet;
-import org.bedu.veterinaria.model.Veterinarian;
 import org.bedu.veterinaria.repository.OwnerRepository;
 import org.bedu.veterinaria.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +75,7 @@ public class PetService {
     }
 
     public List<Pet> findAllpets() {
-        return (List<Pet>) repository.findAll();
+        return repository.findAll();
     }
 
     public Pet findById(Pet pet) {

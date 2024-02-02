@@ -1,14 +1,12 @@
 package org.bedu.veterinaria.model;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Getter
 @Setter

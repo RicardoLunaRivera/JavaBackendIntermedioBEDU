@@ -6,7 +6,8 @@
 <body>
 <header>
     <div>
-    <div class="p-5 text-center bg-image" style="background-image: url('/img/banner.png'); height: 115px;">
+    <div class="p-5 text-center bg-image" style="background-image: url('/img/banner.png'); height: 115px; position: relative;
+    height: auto; border-radius: 10px; overflow: hidden; background-repeat: no-repeat;">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <form th:action="@{/logout}" method="post" class="col-md-1 offset-md-2">
                 <button type="submit" class="btn btn-danger float-sm-end" name="cerrar" value="cerrar">Cerrar Sesion</button>

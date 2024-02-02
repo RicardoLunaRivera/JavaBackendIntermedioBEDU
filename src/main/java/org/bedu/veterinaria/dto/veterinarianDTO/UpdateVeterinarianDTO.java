@@ -2,15 +2,9 @@ package org.bedu.veterinaria.dto.veterinarianDTO;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 public class UpdateVeterinarianDTO {

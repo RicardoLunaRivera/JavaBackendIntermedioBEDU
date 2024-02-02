@@ -11,13 +11,9 @@ import org.bedu.veterinaria.repository.OwnerRepository;
 import org.bedu.veterinaria.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
 import java.util.List;
-import java.util.Map;
+
 
 @Tag(name="Enpoints de Dueños", description = "CRUD de dueños.")
 @RestController
@@ -50,15 +46,11 @@ public class OwnerController {
     public void updateOwner(@PathVariable long idOwner, @Valid @RequestBody UpdateOwnerDTO data) throws OwnerNotFoundException{
         ownerService.updateOwner(idOwner, data);
     }
-    //    public OwnerDTO updateOwner(@PathVariable("idOwner") Long idOwner,@Valid @RequestBody UpdateOwnerDTO data){
-//        return ownerService.updateById(idOwner, data);
-//    }
+
     @Operation(summary = "Se borra un dueño existente.")
     @DeleteMapping(value = "{idOwner}")
     @ResponseStatus(HttpStatus.NOT_FOUND)
-//    public void deleteOwner(@PathVariable("idOwner") long idOwner) throws OwnerNotFoundException {
-//        ownerRepository.deleteById(idOwner);
-//    }
+
     public String deleteOwner(@Valid @PathVariable("idOwner") Long id){
         boolean ok = this.ownerService.deleteOwner(id);
         if(ok){

@@ -1,15 +1,10 @@
 package org.bedu.veterinaria.dto.petDTO;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Species;
-import org.bedu.veterinaria.model.Veterinarian;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
