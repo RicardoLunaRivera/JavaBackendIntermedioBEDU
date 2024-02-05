@@ -16,16 +16,16 @@ public class Owner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_owner")
+    @Column(nullable = false,name = "id_owner")
     private Long idOwner;
 
-    @Column(length = 30)
+    @Column(nullable = false,length = 30)
     private String name;
 
-    @Column(length = 30)
+    @Column(nullable = false,length = 30)
     private String lastname;
 
-    @Column(length = 100)
+    @Column(nullable = false,length = 100)
     private String address;
 
     @Column(nullable = false,length = 13)
