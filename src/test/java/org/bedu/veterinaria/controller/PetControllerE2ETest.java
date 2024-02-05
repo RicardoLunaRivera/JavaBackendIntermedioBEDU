@@ -63,7 +63,7 @@ public class PetControllerE2ETest {
                 .andExpect(status().isBadRequest()).andReturn();
 
         String content = result.getResponse().getContentAsString();
-        String expectedResponse = "{\"code\":\"ERR_VALID\",\"message\":\"Los datos de entrada contiene errores\",\"details\":[\"Debe indicar el ID del veterinario que atenderÃ¡ a la mascota.\",\"La fecha de nacimiento de la mascota no puede ir vacia.\"]}";
+        String expectedResponse = "{\"code\":\"ERR_VALID\",\"message\":\"Los datos de entrada contiene errores\",\"details\":[\"La fecha de nacimiento de la mascota no puede ir vacia.\",\"Debe indicar el ID del veterinario que atenderÃ¡ a la mascota.\"]}";
         assertEquals(expectedResponse, content);
     }
 
