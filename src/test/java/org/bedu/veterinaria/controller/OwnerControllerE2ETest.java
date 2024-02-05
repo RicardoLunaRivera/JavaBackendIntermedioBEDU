@@ -37,7 +37,7 @@ public class OwnerControllerE2ETest {
         String content = result.getResponse().getContentAsString();
         assertEquals("[]", content);
     }
-/*
+
     @Test
     @DisplayName("POST /owners should return an error if some data is missing")
     // Realiza un POST a la ruta /owners con un cuerpo JSON que contiene datos faltantes y espera que la respuesta sea un código de estado 400 (Bad Request).
@@ -49,7 +49,7 @@ public class OwnerControllerE2ETest {
         String expectedResponse = "{\"code\":\"ERR_VALID\",\"message\":\"Los datos de entrada contiene errores\",\"details\":[\"Debe proporcionar un email\",\"must not be null\"]}";
         assertEquals(expectedResponse, content);
     }
-*/
+
     @Test
     @DisplayName("PUT /owners/id should return an error if some data is missing to update owner")
     void dataMisssingInPutRequestBodyTest() throws Exception{
