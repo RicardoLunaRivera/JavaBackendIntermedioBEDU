@@ -34,4 +34,8 @@ public class Veterinarian {
 
     @Column(length = 30)
     private String specialty;
+
+  public void setSchedule(String date) {
+      //Metodo creado para testing
+  }
 }
