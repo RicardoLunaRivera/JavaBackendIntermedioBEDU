@@ -72,6 +72,4 @@ class PetRepositoryTest {
     assertEquals("Katto", foundPet.getName());
 
   }
-
-
 }
