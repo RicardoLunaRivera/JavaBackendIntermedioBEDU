@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -54,7 +55,7 @@ public class PetControllerE2ETest {
     @DisplayName("PUT /pets/id should return an error if some data is missing to update pet")
     void dataMisssingInPutRequestBodyTest() throws Exception {
         //Realiza un PUT a la ruta /pet/{id} con un cuerpo JSON que contiene datos faltantes y espera que la respuesta sea un código de estado 400 (Bad Request).
-        MvcResult result = mockMvc.perform(put("/pets/{idPet}", 1L).contentType("application/json").content("{" +
+        MvcResult result = mockMvc.perform(put("/pets/{idPet}", 1).contentType("application/json").content("{" +
                         "\"name\":\"Bruce\"" +
                         ",\"species\":\"1\"" +
                         ",\"race\":\"Pug\"" +
@@ -65,6 +66,7 @@ public class PetControllerE2ETest {
         String content = result.getResponse().getContentAsString();
         String expectedResponse = "{\"code\":\"ERR_VALID\",\"message\":\"Los datos de entrada contiene errores\",\"details\":[\"La fecha de nacimiento de la mascota no puede ir vacia.\",\"Debe indicar el ID del veterinario que atenderÃ¡ a la mascota.\"]}";
         assertEquals(expectedResponse, content);
+        //assertNotEquals(expectedResponse, content);
     }
 
     @Test
