@@ -1,10 +1,8 @@
 package org.bedu.veterinaria.mapper;
 
-import org.bedu.veterinaria.dto.ownerDTO.UpdateOwnerDTO;
-import org.bedu.veterinaria.dto.veterinarianDTO.CreateVeterinarianDTO;
-import org.bedu.veterinaria.dto.veterinarianDTO.UpdateVeterinarianDTO;
-import org.bedu.veterinaria.dto.veterinarianDTO.VeterinarianDTO;
-import org.bedu.veterinaria.model.Owner;
+import org.bedu.veterinaria.dto.veterinarian_dto.CreateVeterinarianDTO;
+import org.bedu.veterinaria.dto.veterinarian_dto.UpdateVeterinarianDTO;
+import org.bedu.veterinaria.dto.veterinarian_dto.VeterinarianDTO;
 import org.bedu.veterinaria.model.Veterinarian;
 import org.mapstruct.*;
 
@@ -19,6 +17,6 @@ public interface VeterinarianMapper {
   @Mapping(target = "idVeterinarian", ignore = true)
   void updateVet(@MappingTarget Veterinarian veterinarian, UpdateVeterinarianDTO data);
 
-//  @Mapping(target = "idVeterinarian", ignore = true)
-//    Veterinarian toModel(UpdateVeterinarianDTO dto);
+   @Mapping(target = "idVeterinarian", ignore = true)
+    Veterinarian toModel(UpdateVeterinarianDTO dto);
 }

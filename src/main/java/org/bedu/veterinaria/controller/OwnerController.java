@@ -3,9 +3,9 @@ package org.bedu.veterinaria.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.bedu.veterinaria.dto.ownerDTO.CreateOwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.OwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.UpdateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.CreateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.OwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.UpdateOwnerDTO;
 import org.bedu.veterinaria.exception.OwnerNotFoundException;
 import org.bedu.veterinaria.repository.OwnerRepository;
 import org.bedu.veterinaria.service.OwnerService;
@@ -19,11 +19,17 @@ import java.util.List;
 @RestController
 @RequestMapping("owners")
 public class OwnerController {
-    @Autowired
-    private OwnerService ownerService;
+    private final OwnerService ownerService;
+    private final OwnerRepository ownerRepository;
 
     @Autowired
-    private OwnerRepository ownerRepository;
+    public OwnerController (OwnerService ownerService, OwnerRepository ownerRepository){
+        this.ownerService = ownerService;
+        this.ownerRepository = ownerRepository;
+    }
+
+    @Autowired
+
 
     @Operation(summary = "Se obtiene la lista de todos los dueños.")
     @GetMapping
@@ -46,31 +52,13 @@ public class OwnerController {
     public void updateOwner(@PathVariable long idOwner, @Valid @RequestBody UpdateOwnerDTO data) throws OwnerNotFoundException{
         ownerService.updateOwner(idOwner, data);
     }
-    //    public OwnerDTO updateOwner(@PathVariable("idOwner") Long idOwner,@Valid @RequestBody UpdateOwnerDTO data){
-//        return ownerService.updateById(idOwner, data);
-//    }
+
     @Operation(summary = "Se borra un dueño existente.")
     @DeleteMapping(value = "{idOwner}")
     @ResponseStatus(HttpStatus.NOT_FOUND)
 
-    public void deleteOwner(@PathVariable("idOwner") long idOwner) throws OwnerNotFoundException {
+    public void deleteOwner(@PathVariable("idOwner") long idOwner) {
         ownerRepository.deleteById(idOwner);
     }
-//    public String deleteOwner1(@Valid @PathVariable("idOwner") Long id){
-//        boolean ok = this.ownerService.deleteOwner(id);
-//        if(ok){
-//            return "Owner eliminado";
-//        } else {
-//            return "Error, eliminando el usuario";
-//        }
-    //ownerRepository.deleteById(id);
-//    }
-    public String deleteOwner(@Valid @PathVariable("idOwner") Long id){
-        boolean ok = this.ownerService.deleteOwner(id);
-        if(ok){
-            return "Owner eliminado";
-        } else {
-            return "Error, eliminando el usuario";
-        }
-    }
+
 }

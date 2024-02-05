@@ -45,4 +45,7 @@ public class Pet {
     //@JoinColumn(name = "veterinarian_id", referencedColumnName = "id_veterinarian")[ONE TO ONE]
     private Veterinarian veterinarian;
 
+    public void setBirthDate(String date) {
+        //Metodo creado para pruebas unitarias
+    }
 }

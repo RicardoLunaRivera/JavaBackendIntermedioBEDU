@@ -9,8 +9,8 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @Entity
+@ToString
 @Table(name = "owners")
 public class Owner {
 

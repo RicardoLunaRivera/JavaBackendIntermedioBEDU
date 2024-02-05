@@ -2,29 +2,27 @@ package org.bedu.veterinaria.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.bedu.veterinaria.dto.veterinarianDTO.CreateVeterinarianDTO;
-import org.bedu.veterinaria.dto.veterinarianDTO.UpdateVeterinarianDTO;
-import org.bedu.veterinaria.dto.veterinarianDTO.VeterinarianDTO;
+import org.bedu.veterinaria.dto.veterinarian_dto.CreateVeterinarianDTO;
+import org.bedu.veterinaria.dto.veterinarian_dto.UpdateVeterinarianDTO;
+import org.bedu.veterinaria.dto.veterinarian_dto.VeterinarianDTO;
 import org.bedu.veterinaria.exception.VeterinarianNotFoundException;
-import org.bedu.veterinaria.repository.VeterinarianRepository;
 import org.bedu.veterinaria.service.VeterinarianService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 
-import java.time.LocalDateTime;
 
 @Tag(name = "Endpoint de Veterinarios", description = "CRUD de veterinarios.")
 @RestController
 @RequestMapping("/veterinarians")
 public class VeterinarianController {
-    @Autowired
-    private VeterinarianService veterinarianService;
 
-    @Autowired
-    private VeterinarianRepository veterinarianRepository;
+    private final VeterinarianService veterinarianService;
+
+    public VeterinarianController(VeterinarianService veterinarianService) {
+        this.veterinarianService = veterinarianService;
+    }
 
     @Operation(summary = "Se obtiene la lista de citas con los veterinarios.")
     @GetMapping
@@ -47,11 +45,6 @@ public class VeterinarianController {
     public void updateVet(@PathVariable long idVeterinarian, @Valid @RequestBody UpdateVeterinarianDTO data) throws VeterinarianNotFoundException{
         veterinarianService.updateVet(idVeterinarian, data);
     }
-
-
-//    public VeterinarianDTO updateVeterinarian(@PathVariable("idVeterinarian") Long idVeterinarian, @Valid @RequestBody UpdateVeterinarianDTO data){
-//        return veterinarianService.updateById(idVeterinarian, data);
-//    }
 
     @Operation(summary = "Se borra una cita con el veterinario.")
     @DeleteMapping(value = "{idVeterinarian}")

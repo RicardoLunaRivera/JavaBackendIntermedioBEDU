@@ -1,6 +1,5 @@
 package org.bedu.veterinaria.model;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import jakarta.persistence.*;

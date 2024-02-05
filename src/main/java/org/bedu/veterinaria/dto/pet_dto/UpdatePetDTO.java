@@ -1,32 +1,25 @@
-package org.bedu.veterinaria.dto.petDTO;
+package org.bedu.veterinaria.dto.pet_dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Species;
-import org.bedu.veterinaria.model.Veterinarian;
-import org.hibernate.annotations.NotFound;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 @Data
-public class CreatePetDTO {
+public class UpdatePetDTO {
     @Schema(description = "Nombre de la mascota.", example = "Bruce")
-    @NotEmpty(message = "El nombre de la mascota no puede ir vacío.")
+    @NotEmpty(message = "El nombre de la mascota a actualizar no puede ir vacío.")
     private String name;
 
-    @Schema(description = "Tipo de especie de la mascota.", example = "0 => PERRO")
-    @NotNull(message = "Debe ingresar la especie de la mascota.")
+    @Schema(description = "Tipo de especie de la mascota a actualizar.", example = "0 => PERRO")
+    @NotNull(message = "Debe ingresar la especie de la mascota a actualizar.")
     private Species species;
 
     @Schema(description = "Raza de la mascota", example = "Pug")
-    @NotEmpty(message = "Debe indicar la raza de la mascota.")
+    @NotEmpty(message = "Debe indicar la raza de la mascota a actualizar.")
     private String race;
 
     @Schema(description = "Fecha de nacimiento de la mascota.", example = "2023-05-18")
@@ -34,11 +27,14 @@ public class CreatePetDTO {
     private Date birthDate;
 
     @Schema(description = "Identificador del dueño de la mascota.", example = "1")
-    @NotNull( message = "Debe indicar el ID del Dueño de la mascota.")
+    @NotNull(message = "Debe indicar el ID del Dueño de la mascota.")
     private Long ownerId;
 
     @Schema(description = "Identificador del veterinario que atenderá a la mascota.", example = "4")
     @NotNull(message = "Debe indicar el ID del veterinario que atenderá a la mascota.")
     private Long veterinarianId;
 
+    public void setBirthDate(String date) {
+        // Metodo creado para pruebas unitarias
+    }
 }

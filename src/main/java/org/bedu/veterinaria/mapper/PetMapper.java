@@ -1,10 +1,9 @@
 package org.bedu.veterinaria.mapper;
 
-import org.bedu.veterinaria.dto.petDTO.CreatePetDTO;
-import org.bedu.veterinaria.dto.petDTO.DeletePetDTO;
-import org.bedu.veterinaria.dto.petDTO.PetDTO;
-import org.bedu.veterinaria.dto.petDTO.UpdatePetDTO;
-import org.bedu.veterinaria.model.Owner;
+import org.bedu.veterinaria.dto.pet_dto.CreatePetDTO;
+import org.bedu.veterinaria.dto.pet_dto.DeletePetDTO;
+import org.bedu.veterinaria.dto.pet_dto.PetDTO;
+import org.bedu.veterinaria.dto.pet_dto.UpdatePetDTO;
 import org.bedu.veterinaria.model.Pet;
 import org.mapstruct.*;
 
@@ -15,7 +14,6 @@ public interface PetMapper {
     @Mapping(source = "veterinarian.idVeterinarian", target = "veterinarianId")
     PetDTO toDTO(Pet model);
 
-       // petDTO.setOwnerId(model.getOwner().getIdOwner());
     @Mapping(target = "idPet", ignore = true)
     @Mapping(source = "ownerId", target = "owner.idOwner")
     @Mapping(source = "veterinarianId", target = "veterinarian.idVeterinarian")

@@ -1,17 +1,22 @@
 package org.bedu.veterinaria.mapper;
 
 import javax.annotation.processing.Generated;
-import org.bedu.veterinaria.dto.ownerDTO.CreateOwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.DeleteOwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.OwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.UpdateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.CreateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.DeleteOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.OwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.UpdateOwnerDTO;
 import org.bedu.veterinaria.model.Owner;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
+<<<<<<< HEAD
     date = "2024-02-04T21:31:20-0600",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.8.1 (Amazon.com Inc.)"
+=======
+    date = "2024-02-01T13:13:15-0600",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.9 (Amazon.com Inc.)"
+>>>>>>> Nathalie
 )
 @Component
 public class OwnerMapperImpl implements OwnerMapper {
@@ -52,16 +57,16 @@ public class OwnerMapperImpl implements OwnerMapper {
     }
 
     @Override
-    public void updateOwner(Owner owner, UpdateOwnerDTO data) {
-        if ( data == null ) {
+    public void updateOwner(UpdateOwnerDTO updateOwnerDTO, Owner owner) {
+        if ( updateOwnerDTO == null ) {
             return;
         }
 
-        owner.setName( data.getName() );
-        owner.setLastname( data.getLastname() );
-        owner.setAddress( data.getAddress() );
-        owner.setPhone( data.getPhone() );
-        owner.setEmail( data.getEmail() );
+        owner.setName( updateOwnerDTO.getName() );
+        owner.setLastname( updateOwnerDTO.getLastname() );
+        owner.setAddress( updateOwnerDTO.getAddress() );
+        owner.setPhone( updateOwnerDTO.getPhone() );
+        owner.setEmail( updateOwnerDTO.getEmail() );
     }
 
     @Override
@@ -70,7 +75,9 @@ public class OwnerMapperImpl implements OwnerMapper {
             return;
         }
 
-        owner.setIdOwner( data.getIdOwner() );
+        if ( data.getIdOwner() != null ) {
+            owner.setIdOwner( data.getIdOwner() );
+        }
         owner.setName( data.getName() );
         owner.setLastname( data.getLastname() );
         owner.setAddress( data.getAddress() );

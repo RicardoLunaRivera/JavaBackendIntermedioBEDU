@@ -3,15 +3,13 @@ package org.bedu.veterinaria.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.bedu.veterinaria.dto.petDTO.CreatePetDTO;
-import org.bedu.veterinaria.dto.petDTO.PetDTO;
-import org.bedu.veterinaria.dto.petDTO.UpdatePetDTO;
+import org.bedu.veterinaria.dto.pet_dto.CreatePetDTO;
+import org.bedu.veterinaria.dto.pet_dto.PetDTO;
+import org.bedu.veterinaria.dto.pet_dto.UpdatePetDTO;
 import org.bedu.veterinaria.exception.PetNotFoundException;
 import org.bedu.veterinaria.repository.PetRepository;
 import org.bedu.veterinaria.service.PetService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,12 +18,14 @@ import java.util.List;
 @RestController
 @RequestMapping("pets")
 public class PetController {
+    private final PetService petService;
 
-    @Autowired
-    private PetService petService;
+    private final PetRepository petRepository;
 
-    @Autowired
-    private PetRepository repository;
+    public PetController(PetService petService, PetRepository petRepository){
+        this.petService = petService;
+        this.petRepository = petRepository;
+    }
 
     @Operation(summary = "Se obtiene la lista de todas las Mascotas.")
     @GetMapping
@@ -42,27 +42,17 @@ public class PetController {
         return petService.save(data);
     }
 
-//        @PostMapping("/create")
-//        public ResponseEntity<PetDTO> save(@RequestBody CreatePetDTO createPetDTO, @RequestParam Long ownerId) {
-//            PetDTO createdPet = petService.save(createPetDTO, ownerId);
-//            return new ResponseEntity<>(createdPet, HttpStatus.CREATED);
-//        }
-
-        // Otros métodos del controlador para actualizar, eliminar, obtener mascotas, etc.
-
-
     @Operation(summary = "Se actualiza una mascota existente.")
     @PutMapping(value = "{idPet}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updatePet(@PathVariable long idPet, @Valid @RequestBody UpdatePetDTO data) throws PetNotFoundException {
         petService.updatePet(idPet, data);
-
     }
 
     @Operation(summary = "Se borra una mascota existente.")
     @DeleteMapping(value = "{idPet}")
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public void deletePet(@PathVariable("idPet") Long idPet) throws PetNotFoundException {
-        repository.deleteById(idPet);
+    public void deletePet(@PathVariable("idPet") Long idPet){
+        petRepository.deleteById(idPet);
     }
 }
