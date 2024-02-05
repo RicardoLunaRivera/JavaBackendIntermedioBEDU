@@ -40,7 +40,7 @@ public class OwnerControllerE2ETest {
 
     @Test
     @DisplayName("POST /owners should return an error if some data is missing")
-    // Realiza un POST a la ruta /owners con un cuerpo JSON que contiene datos faltantes y espera que la respuesta sea un código de estado 400 (Bad Request).
+        // Realiza un POST a la ruta /owners con un cuerpo JSON que contiene datos faltantes y espera que la respuesta sea un código de estado 400 (Bad Request).
     void dataMissingInRequestBodyTest() throws Exception {
         MvcResult result = mockMvc.perform(post("/owners").contentType("application/json").content("{\"name\":\"Ricardo\",\"lastname\":\"Luna\", \"address\": \"avenida siempre viva\", \"phone\": \"1234567890\"}"))
                 .andExpect(status().isBadRequest()).andReturn();
@@ -52,7 +52,7 @@ public class OwnerControllerE2ETest {
 
     @Test
     @DisplayName("PUT /owners/id should return an error if some data is missing to update owner")
-    void dataMisssingInPutRequestBodyTest() throws Exception{
+    void dataMisssingInPutRequestBodyTest() throws Exception {
         //Realiza un PUT a la ruta /owners/{id} con un cuerpo JSON que contiene datos faltantes y espera que la respuesta sea un código de estado 400 (Bad Request).
         MvcResult result = mockMvc.perform(put("/owners/{idOwner}", 1L).contentType("application/json").content("{\"idOwner\": \"1\",\"name\":\"Ricardo\",\"lastname\":\"Luna\", \"address\": \"avenida siempre viva\", \"phone\": \"1234567890\"}"))
                 .andExpect(status().isBadRequest()).andReturn();
@@ -64,8 +64,8 @@ public class OwnerControllerE2ETest {
 
     @Test
     @DisplayName("DELETE /owners/id should return an error if owner id is not found")
-    void idMissingInRequestBodyTest() throws Exception{
-        //Realiza un DELETE a la ruta /owners/{id} con un cuerpo JSON que contiene datos faltantes y espera que la respuesta sea un código de estado 400 (Bad Request).
+    void idMissingInRequestBodyTest() throws Exception {
+        //Realiza un DELETE a la ruta /owners/{id} con un cuerpo JSON que contiene datos, sino encuentra el id del owner manda un notFound (404)
         MvcResult result = mockMvc.perform(delete("/owners/{idOwner}", 1L).contentType("application/json").content("{\"idOwner\": \"1\"}"))
                 .andExpect(status().isNotFound()).andReturn();
 
@@ -76,7 +76,7 @@ public class OwnerControllerE2ETest {
 
     @Test
     @DisplayName("DELETE /owners/id should return Ok if owner is delete")
-    void deleteIsOk() throws Exception{
+    void deleteIsOk() throws Exception {
         MvcResult result = mockMvc.perform(delete("/owners/{idOwner}", "1L").contentType("application/json").content("{\"idOwner\": \"1L\",\"name\":\"Ricardo\",\"lastname\":\"Luna\", \"address\": \"avenida siempre viva\", \"phone\": \"1234567890\", \"email\":\"ricardo@mail.com\"}"))
                 .andExpect(status().isOk()).andReturn();
 
