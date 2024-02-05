@@ -27,12 +27,8 @@ public class CreateOwnerDTO {
 
     @Schema(description = "Identificador para ingresar el telefono del cliente", example = "123-123-1234")
     @NotEmpty(message = "Debe de ingresar un telefono")
-<<<<<<< HEAD:src/main/java/org/bedu/veterinaria/dto/ownerDTO/CreateOwnerDTO.java
     @Pattern(regexp = "^(\\d{3}[-]?){2}\\d{4}$") //formato ###-###-####
     @NotNull
-=======
-    @Pattern(regexp = "^(\\d{3}-?){2}\\d{4}$") //formato ###-###-####
->>>>>>> Nathalie:src/main/java/org/bedu/veterinaria/dto/owner_dto/CreateOwnerDTO.java
     private String phone;
 
     @Schema(description = "Identificador para ingresar el email del cliente",example = "ana@mail.com")

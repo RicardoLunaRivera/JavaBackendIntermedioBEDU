@@ -13,13 +13,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< HEAD
-    date = "2024-02-05T11:32:43-0600",
-    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.8.1 (Amazon.com Inc.)"
-=======
-    date = "2024-02-01T13:13:15-0600",
-    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.4.jar, environment: Java 17.0.9 (Amazon.com Inc.)"
->>>>>>> Nathalie
+    date = "2024-02-05T14:35:59-0600",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.jar, environment: Java 17.0.8.1 (Amazon.com Inc.)"
 )
 @Component
 public class PetMapperImpl implements PetMapper {
@@ -124,7 +119,10 @@ public class PetMapperImpl implements PetMapper {
         if ( owner == null ) {
             return null;
         }
-        long idOwner = owner.getIdOwner();
+        Long idOwner = owner.getIdOwner();
+        if ( idOwner == null ) {
+            return null;
+        }
         return idOwner;
     }
 
@@ -150,9 +148,7 @@ public class PetMapperImpl implements PetMapper {
 
         Owner owner = new Owner();
 
-        if ( createPetDTO.getOwnerId() != null ) {
-            owner.setIdOwner( createPetDTO.getOwnerId() );
-        }
+        owner.setIdOwner( createPetDTO.getOwnerId() );
 
         return owner;
     }
@@ -174,9 +170,7 @@ public class PetMapperImpl implements PetMapper {
             return;
         }
 
-        if ( updatePetDTO.getOwnerId() != null ) {
-            mappingTarget.setIdOwner( updatePetDTO.getOwnerId() );
-        }
+        mappingTarget.setIdOwner( updatePetDTO.getOwnerId() );
     }
 
     protected void updatePetDTOToVeterinarian(UpdatePetDTO updatePetDTO, Veterinarian mappingTarget) {
@@ -192,9 +186,7 @@ public class PetMapperImpl implements PetMapper {
             return;
         }
 
-        if ( deletePetDTO.getOwnerId() != null ) {
-            mappingTarget.setIdOwner( deletePetDTO.getOwnerId() );
-        }
+        mappingTarget.setIdOwner( deletePetDTO.getOwnerId() );
     }
 
     protected void deletePetDTOToVeterinarian(DeletePetDTO deletePetDTO, Veterinarian mappingTarget) {
