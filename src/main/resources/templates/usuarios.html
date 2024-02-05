@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layouts/head :: head}">
+</head>
+<body>
+<header th:insert="~{layouts/header :: header}"></header>
+<br>
+<div class="container-fluid">
+    <form class="" th:action="@{/usuarios/buscarN}">
+        <div class="row">
+            <div class="col-md-2">
+                <a th:href="@{/usuarios/agregar}">
+                    <button class="btn btn-success me-md-3" type="button">Agregar Usuario</button>
+                </a>
+            </div>
+            <div class="col-md-1 text-end">
+                <label class="align-middle" for="buscarPorNombre">Filtrar</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="buscarPorNombre" class="form-control me-md-3" id="buscarPorNombre"
+                       th:value="${buscarPorNombre}" placeholder="Escriba el cliente a buscar" required>
+            </div>
+            <div class="col-md-3">
+                <input type="submit" class="btn btn-info me-md-3" value="Buscar">
+                &nbsp,&nbsp;
+                <input type="button" class="btn btn-secondary me-md-3" value="Limpiar" onclick="limpiarCampos()">
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <br>
+    <div th:if="${usuarios != null and !usuarios.isEmpty()}">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th>Id de usuario:</th>
+                <th>Nombre de usuario:</th>
+                <th>Password:</th>
+                <th>Roles</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            </thead>
+            <tr th:each="usuario : ${usuarios}">
+                <td th:text="${usuario.idUsuario}">Mostrar Nombre</td>
+                <td th:text="${usuario.email}">Mostrar Email</td>
+                <td th:text="${usuario.password}">Mostrar Passqord</td>
+                <td th:text="${usuario.roles}">Mostrar Roles</td>
+                <td><a class="btn btn-warning btn-sm" th:href="@{/usuarios/editar/} + ${usuario.idUsuario}">Editar</a>
+                </td>
+                <td><a class="btn btn-danger btn-sm" th:href="@{/usuarios/eliminar/} + ${usuario.idUsuario}">Eliminar</a></td>
+            </tr>
+        </table>
+    </div>
+    <div th:if="${usuarios == null or usuarios.isEmpty()}">
+        La lista de personas esta vacia
+    </div>
+</div>
+<script type="text/javascript">
+    function limpiarCampos(){
+        window.location='/usuarios';
+    }
+</script>
+<footer th:insert="~{layouts/footer :: footer}">
+</footer>
+</body>
+</html>

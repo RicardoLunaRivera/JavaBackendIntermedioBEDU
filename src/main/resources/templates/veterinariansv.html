@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layouts/head :: head}">
+</head>
+<body>
+<header th:insert="~{layouts/header :: header}"></header>
+<br>
+<div class="container-fluid">
+    <form class="" th:action="@{/veterinariansv/buscarN}">
+        <div class="row">
+            <div class="col-md-2">
+                <a th:href="@{/veterinariansv/add}">
+                    <button class="btn btn-success me-md-3" type="button">Agregar Veterinario</button>
+                </a>
+            </div>
+            <div class="col-md-1 text-end">
+                <label class="align-middle" for="buscarPorPalabra">Filtrar</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="buscarPorPalabra" class="form-control me-md-3" id="buscarPorPalabra"
+                       th:value="${buscarPorPalabra}" placeholder="Escriba el veterinario a buscar" required>
+            </div>
+            <div class="col-md-3">
+                <input type="submit" class="btn btn-info me-md-3" value="Buscar">
+                &nbsp,&nbsp;
+                <input type="button" class="btn btn-secondary me-md-3" value="Limpiar" onclick="limpiarCampos()">
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <br>
+    <div th:if="${veterinariansv != null and !veterinariansv.isEmpty()}">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th>Nombre:</th>
+                <th>Apellido:</th>
+                <th>Fecha de Cita:</th>
+                <th>Telefono:</th>
+                <th>Especialidad:</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+
+            </tr>
+            </thead>
+            <tr th:each="veterinarian : ${veterinariansv}">
+                <td th:text="${veterinarian.name}">Mostrar Nombre</td>
+                <td th:text="${veterinarian.lastname}">Mostrar Apellido</td>
+                <td th:text="${veterinarian.schedule}">Mostrar Direccion</td>
+                <td th:text="${veterinarian.phone}">Mostrar Telefono</td>
+                <td th:text="${veterinarian.specialty}">Mostrar Email</td>
+                <td><a class="btn btn-warning btn-sm" th:href="@{/veterinariansv/edit/} + ${veterinarian.idVeterinarian}">Editar</a></td>
+                <td><a class="btn btn-danger btn-sm" th:href="@{/veterinariansv/delete/} + ${veterinarian.idVeterinarian}">Eliminar</a></td>
+            </tr>
+        </table>
+    </div>
+    <div th:if="${veterinariansv == null or veterinariansv.isEmpty()}">
+        La lista de veterinarios esta vacia
+    </div>
+</div>
+<script type="text/javascript">
+    function limpiarCampos(){
+        window.location='/veterinariansv';
+    }
+</script>
+<footer th:insert="~{layouts/footer :: footer}">
+</footer>
+</body>
+</html>

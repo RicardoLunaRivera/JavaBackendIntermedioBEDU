@@ -13,8 +13,7 @@ import java.util.Date;
 @Setter
 @ToString
 @Entity
-@Table(name = "mascotas") // Nombre de la tabla en la base de datos.
-
+@Table(name = "pets") // Nombre de la tabla en la base de datos.
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,4 +47,5 @@ public class Pet {
     public void setBirthDate(String date) {
         //Metodo creado para pruebas unitarias
     }
+
 }

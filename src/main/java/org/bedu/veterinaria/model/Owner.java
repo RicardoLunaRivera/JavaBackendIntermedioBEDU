@@ -35,5 +35,9 @@ public class Owner {
     @Email
     private String email;
 
+    public String getNombreCompleto(){
+        return name + " " + lastname;
+    }
+
 
 }

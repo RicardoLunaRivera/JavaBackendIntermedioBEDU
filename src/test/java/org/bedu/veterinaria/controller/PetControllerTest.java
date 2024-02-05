@@ -50,7 +50,7 @@ class PetControllerTest {
 
     fakePet.setIdPet(100L);
     fakePet.setName("Mezcal");
-    fakePet.setSpecies(Species.PERRO);
+    fakePet.setSpecies(Species.Perro);
     fakePet.setRace("Corriente con callejero");
     fakePet.setBirthDate("2022-08-30");
     fakePet.setOwnerId(1L);
@@ -72,7 +72,7 @@ class PetControllerTest {
     CreatePetDTO createPetDTO = new CreatePetDTO();
 
     createPetDTO.setName("Katto");
-    createPetDTO.setSpecies(Species.GATO);
+    createPetDTO.setSpecies(Species.Gato);
     createPetDTO.setRace("Calico");
     createPetDTO.setBirthDate("2020-01-31");
     createPetDTO.setOwnerId(1L);
@@ -113,7 +113,7 @@ class PetControllerTest {
     UpdatePetDTO update = new UpdatePetDTO();
 
     update.setName("Katto");
-    update.setSpecies(Species.GATO);
+    update.setSpecies(Species.Gato);
     update.setRace("Calico");
     update.setBirthDate("2020-01-31");
     update.setOwnerId(1L);

@@ -12,8 +12,8 @@ import org.bedu.veterinaria.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
 
 @Tag(name="Enpoints de Dueños", description = "CRUD de dueños.")
 @RestController
@@ -32,7 +32,7 @@ public class OwnerController {
 
 
     @Operation(summary = "Se obtiene la lista de todos los dueños.")
-    @GetMapping
+    @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     @Valid
     public List<OwnerDTO> findAll(){
@@ -40,7 +40,7 @@ public class OwnerController {
     }
 
     @Operation(summary = "Se crea un nuevo dueño.")
-    @PostMapping
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public OwnerDTO saveOwner(@Valid @RequestBody CreateOwnerDTO data){
         return ownerService.save(data);

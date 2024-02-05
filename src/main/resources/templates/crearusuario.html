@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layouts/head :: head}">
+    <title>Registro de usuarios</title>
+</head>
+<body>
+<header th:insert="~{layouts/header :: header}"></header>
+
+<br/>
+<div class="container">
+    <h1 class="text-center">Registro de usuario</h1>
+    <form th:action="@{/usuarios/guardar}" th:object="${usuario}" method="post" class="col-md-8 offset-md-2">
+        <input type="hidden" name="idusuario" th:field="*{idUsuario}">
+        <div class="row mb-3">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" th:field="*{email}" required autofocus="autofocus"/>
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="password" th:field="*{password}" required autofocus="autofocus">
+                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Roles</label>
+            <div class="col-sm-10">
+                <select class="form-select" th:field="*{roles}">
+                    <option value="" selected>Seleccione un rol para el usuario</option>
+                    <option value="ADMIN" th:field="*{roles}">ADMIN</option>
+                    <option value="USER" th:field="*{roles}">USER</option>
+                    <option value="INVITED" th:field="*{roles}">INVITED</option>
+                </select>
+                <span th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></span>
+            </div>
+        </div>
+        <a class="btn btn-primary btn-sm-star" th:href="@{/usuarios}">Regresar</a>
+        <button type="submit" class="btn btn-primary float-sm-end" name="guardar" value="guardar">Registrar</button>
+    </form>
+</div>
+<footer th:insert="~{layouts/footer :: footer}">
+</footer>
+</body>
+</html>
