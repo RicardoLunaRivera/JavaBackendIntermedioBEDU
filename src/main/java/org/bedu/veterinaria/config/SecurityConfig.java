@@ -28,7 +28,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        return httpSecurity.authorizeHttpRequests(auth  -> auth.requestMatchers("/img/**","/h2-console/**","/owners", "/owners/" ,"/veterinarians/**", "/pets/**")
+        return httpSecurity.authorizeHttpRequests(auth  -> auth.requestMatchers("/img/**","/h2-console/**","/owners", "/owners/" ,"/veterinarians/**", "/pets/**", "/swagger-ui/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
