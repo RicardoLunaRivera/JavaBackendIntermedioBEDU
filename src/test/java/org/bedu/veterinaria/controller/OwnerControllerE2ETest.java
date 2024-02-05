@@ -46,7 +46,7 @@ public class OwnerControllerE2ETest {
                 .andExpect(status().isBadRequest()).andReturn();
 
         String content = result.getResponse().getContentAsString();
-        String expectedResponse = "{\"code\":\"ERR_VALID\",\"message\":\"Los datos de entrada contiene errores\",\"details\":[\"Debe proporcionar un email\",\"must not be null\"]}";
+        String expectedResponse = "{\"code\":\"ERR_VALID\",\"message\":\"Los datos de entrada contiene errores\",\"details\":[\"must not be null\",\"Debe proporcionar un email\"]}";
         assertEquals(expectedResponse, content);
     }
 
