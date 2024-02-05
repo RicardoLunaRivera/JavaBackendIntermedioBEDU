@@ -1,4 +1,4 @@
-name: Veterinaria API
+name: Veterinaria API / Unit Test
 
 on:
   push:
