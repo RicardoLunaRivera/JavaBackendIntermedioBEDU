@@ -14,7 +14,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: corretto
-          java-version: 17.0.8.1
+          java-version: 17.0
 
       - name: Configuración de Gradle
         uses: gradle/gradle-build-action@v2
