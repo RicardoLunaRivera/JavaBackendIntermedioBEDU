@@ -35,7 +35,7 @@ class OwnerRepositoryTest {
   }
 
   @Test
-  @DisplayName("Filter the Owners by Id")
+  @DisplayName("Filtro por nombre de dueños de mascota")
   void findOwnerByName(){
     Owner owner1 = new Owner();
     Owner owner2 = new Owner();
@@ -67,5 +67,4 @@ class OwnerRepositoryTest {
     Owner foundOwner = result.get(0);
     assertEquals("Daniel", foundOwner.getName());
   }
-
 }

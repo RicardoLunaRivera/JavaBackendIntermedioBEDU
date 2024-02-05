@@ -9,5 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface VeterinarianRepository extends CrudRepository<Veterinarian, Long> {
     List<Veterinarian> findAll();
+    List<Veterinarian> findByName(String name);
 
 }
