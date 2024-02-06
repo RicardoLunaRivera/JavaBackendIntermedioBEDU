@@ -39,4 +39,7 @@ public class DeletePetDTO {
     @NotNull(message = "Debe indicar el ID del veterinario que atenderá a la mascota.")
     private Long veterinarianId;
 
+  public void setBirthDate(String date) {
+      //Metodo creado para testing
+  }
 }

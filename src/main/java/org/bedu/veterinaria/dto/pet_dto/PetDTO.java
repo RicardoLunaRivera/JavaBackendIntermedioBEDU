@@ -3,6 +3,7 @@ package org.bedu.veterinaria.dto.pet_dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.bedu.veterinaria.model.Species;
+import org.bedu.veterinaria.model.Veterinarian;
 
 import java.util.Date;
 
@@ -28,8 +29,10 @@ public class PetDTO {
 
     @Schema(description = "Identificador del veterinario que atenderá a la mascota.", example = "4")
     private Long veterinarianId;
+  private Veterinarian veterinarian;
 
   public void setBirthDate(String date) {
       //Metodo creado para pruebas unitarias
   }
+
 }

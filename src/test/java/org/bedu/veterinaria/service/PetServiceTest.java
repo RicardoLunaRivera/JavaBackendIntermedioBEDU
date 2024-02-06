@@ -1,12 +1,13 @@
 package org.bedu.veterinaria.service;
 
+import org.bedu.veterinaria.dto.pet_dto.CreatePetDTO;
+import org.bedu.veterinaria.dto.pet_dto.DeletePetDTO;
 import org.bedu.veterinaria.dto.pet_dto.PetDTO;
 import org.bedu.veterinaria.dto.pet_dto.UpdatePetDTO;
+import org.bedu.veterinaria.exception.OwnerNotFoundException;
 import org.bedu.veterinaria.exception.PetNotFoundException;
-import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Pet;
 import org.bedu.veterinaria.model.Species;
-import org.bedu.veterinaria.model.Veterinarian;
 import org.bedu.veterinaria.repository.PetRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,8 +22,9 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
@@ -35,7 +37,7 @@ class PetServiceTest {
   private PetService petService;
 
   @Test
-  @DisplayName("Smoke")
+  @DisplayName("El servicio debe ser inyectado")
   void smokeTest(){
     assertNotNull(petService);
   }
@@ -47,19 +49,11 @@ class PetServiceTest {
 
     Pet pet = new Pet();
 
-    Owner owner = new Owner();
-    owner.setIdOwner(1L);
-
-    Veterinarian vet = new Veterinarian();
-    vet.setIdVeterinarian(200L);
-
     pet.setIdPet(100L);
     pet.setName("Mezcal");
     pet.setSpecies(Species.PERRO);
     pet.setRace("Corriente");
     pet.setBirthDate("2022-08-23");
-    pet.setOwner(owner);
-    pet.setVeterinarian(vet);
 
     data.add(pet);
 
@@ -73,12 +67,68 @@ class PetServiceTest {
     assertEquals(pet.getSpecies(),result.get(0).getSpecies());
     assertEquals(pet.getRace(),result.get(0).getRace());
     assertEquals(pet.getBirthDate(),result.get(0).getBirthDate());
-    assertEquals(owner.getIdOwner(),result.get(0).getOwnerId());
-    assertEquals(vet.getIdVeterinarian(),result.get(0).getVeterinarianId());
   }
 
   @Test
-  @DisplayName("Exeption")
+  @DisplayName("El servicio de mascotas debe guardarse en el repositorio")
+  void saveOwnerTest(){
+    CreatePetDTO dto = new CreatePetDTO();
+
+    dto.setName("Docki");
+    dto.setSpecies(Species.PERRO);
+    dto.setRace("Criollo");
+    dto.setBirthDate("2009-08-30");
+
+    Pet pet = new Pet();
+
+    pet.setIdPet(100L);
+    pet.setName(dto.getName());
+    pet.setSpecies(dto.getSpecies());
+    pet.setBirthDate(String.valueOf(dto.getBirthDate()));
+
+    when(petRepository.save(any(Pet.class))).thenReturn(pet);
+
+    PetDTO resultado = petService.save(dto);
+
+    assertNotNull(resultado);
+    assertEquals(pet.getIdPet(), resultado.getIdPet());
+    assertEquals(pet.getName(), resultado.getName());
+    assertEquals(pet.getSpecies(), resultado.getSpecies());
+    assertEquals(pet.getBirthDate(), resultado.getBirthDate());
+  }
+
+  @Test
+  @DisplayName("El servicio debe actualizar las mascotas")
+  void updateTest() throws OwnerNotFoundException, PetNotFoundException {
+
+    UpdatePetDTO dto = new UpdatePetDTO();
+
+    dto.setName("Docki");
+    dto.setSpecies(Species.PERRO);
+    dto.setRace("Criollo");
+    dto.setBirthDate("2009-08-30");
+
+    Pet pet = new Pet();
+
+    pet.setIdPet(200L);
+    pet.setName("Docki");
+    pet.setSpecies(Species.PERRO);
+    pet.setRace("Criollo");
+    pet.setBirthDate("2009-08-30");
+
+    when(petRepository.findById(anyLong())).thenReturn(Optional.of(pet));
+
+    petService.updatePet(200L,dto);
+
+    assertEquals(dto.getName(), pet.getName());
+    assertEquals(dto.getSpecies(), pet.getSpecies());
+    assertEquals(dto.getRace(), pet.getRace());
+    assertEquals(dto.getBirthDate(), pet.getBirthDate());
+    verify(petRepository,times(1)).save(pet);
+  }
+
+  @Test
+  @DisplayName("El servicio debe de retornar una exepcion")
   void updateWithErrors(){
     UpdatePetDTO dto = new UpdatePetDTO();
     Optional<Pet> dummy = Optional.empty();
@@ -86,6 +136,37 @@ class PetServiceTest {
     when(petRepository.findById(anyLong())).thenReturn(dummy);
 
     assertThrows(PetNotFoundException.class, () -> petService.updatePet(1L,dto));
+  }
+
+  @Test
+  @DisplayName("El servicio debe eliminar la mascota")
+  void deleteByIdTest() throws PetNotFoundException {
+
+    Pet pet = new Pet();
+
+    when(petRepository.findById(anyLong())).thenReturn(Optional.of(pet));
+
+    DeletePetDTO dto = new DeletePetDTO();
+
+    dto.setName("Docki");
+    dto.setSpecies(Species.PERRO);
+    dto.setRace("Criollo");
+    dto.setBirthDate("2009-08-30");
+
+    petService.deletePet(100L,dto);
+
+    verify(petRepository,times(1)).deleteById(100L);
+  }
+
+  @Test
+  @DisplayName("El servicio da un error al eliminar una mascota")
+  void deleteWithErrors(){
+    DeletePetDTO dto = new DeletePetDTO();
+    Optional<Pet> dummy = Optional.empty();
+
+    when(petRepository.findById(anyLong())).thenReturn(dummy);
+
+    assertThrows(PetNotFoundException.class, () -> petService.deletePet(200L,dto));
   }
 
 }

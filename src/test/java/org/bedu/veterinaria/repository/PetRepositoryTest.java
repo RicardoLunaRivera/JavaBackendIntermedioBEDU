@@ -44,6 +44,7 @@ class PetRepositoryTest {
     pet1.setSpecies(Species.PERRO);
     pet1.setRace("Criollo");
     pet1.setBirthDate("2022-08-15");
+
     pet2.setName("Katto");
     pet2.setSpecies(Species.GATO);
     pet2.setRace("Criollo");

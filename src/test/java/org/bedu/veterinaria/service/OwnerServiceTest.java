@@ -1,10 +1,14 @@
 package org.bedu.veterinaria.service;
 
 import org.bedu.veterinaria.dto.owner_dto.CreateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.DeleteOwnerDTO;
 import org.bedu.veterinaria.dto.owner_dto.OwnerDTO;
 import org.bedu.veterinaria.dto.owner_dto.UpdateOwnerDTO;
+import org.bedu.veterinaria.dto.pet_dto.DeletePetDTO;
 import org.bedu.veterinaria.exception.OwnerNotFoundException;
+import org.bedu.veterinaria.exception.PetNotFoundException;
 import org.bedu.veterinaria.model.Owner;
+import org.bedu.veterinaria.model.Pet;
 import org.bedu.veterinaria.repository.OwnerRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,7 +38,7 @@ class OwnerServiceTest {
   private OwnerService ownerService;
 
   @Test
-  @DisplayName("Smoke")
+  @DisplayName("El servicio debe ser inyectado")
   void smokeTest(){
     assertNotNull(ownerService);
   }
@@ -69,7 +73,7 @@ class OwnerServiceTest {
   }
 
   @Test
-  @DisplayName("Service should save a movie in repository")
+  @DisplayName("El servicio de dueños debe guardarse en el repositorio")
   void saveOwnerTest(){
     CreateOwnerDTO dto = new CreateOwnerDTO();
 
@@ -103,7 +107,7 @@ class OwnerServiceTest {
   }
 
   @Test
-  @DisplayName("Actualizar dueños")
+  @DisplayName("El servicio debe actualizar los dueños")
   void updateTest() throws OwnerNotFoundException {
     UpdateOwnerDTO dto = new UpdateOwnerDTO();
 
@@ -135,7 +139,7 @@ class OwnerServiceTest {
   }
 
   @Test
-  @DisplayName("Exeption")
+  @DisplayName("El servicio debe de retornar una exepcion")
   void updateWithErrors(){
     UpdateOwnerDTO dto = new UpdateOwnerDTO();
     Optional<Owner> dummy = Optional.empty();
@@ -146,10 +150,22 @@ class OwnerServiceTest {
   }
 
   @Test
-  @DisplayName("Dueño eliminado")
+  @DisplayName("El servicio debe eliminar un dueño")
   void deleteByIdTest(){
     ownerService.deleteOwner(1L);
 
+    verify(ownerRepository,times(1)).deleteById(1L);
+  }
+
+  @Test
+  @DisplayName("El servicio da un error al eliminar un dueño")
+  void deleteWithErrors(){
+
+    doThrow(new RuntimeException("Cliente no encontrado")).when(ownerRepository).deleteById(1L);
+
+    boolean result = ownerService.deleteOwner(1L);
+
+    assertFalse(result);
     verify(ownerRepository,times(1)).deleteById(1L);
   }
 

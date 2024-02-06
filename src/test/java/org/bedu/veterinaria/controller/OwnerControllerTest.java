@@ -1,9 +1,13 @@
 package org.bedu.veterinaria.controller;
 
 import org.bedu.veterinaria.dto.owner_dto.CreateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.DeleteOwnerDTO;
 import org.bedu.veterinaria.dto.owner_dto.OwnerDTO;
 import org.bedu.veterinaria.dto.owner_dto.UpdateOwnerDTO;
 import org.bedu.veterinaria.exception.OwnerNotFoundException;
+import org.bedu.veterinaria.exception.PetNotFoundException;
+import org.bedu.veterinaria.model.Owner;
+import org.bedu.veterinaria.model.Pet;
 import org.bedu.veterinaria.repository.OwnerRepository;
 import org.bedu.veterinaria.service.OwnerService;
 import org.junit.jupiter.api.DisplayName;
@@ -16,6 +20,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;

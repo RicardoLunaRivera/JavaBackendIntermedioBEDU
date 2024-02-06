@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-05T15:55:20-0600",
-    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.jar, environment: Java 17.0.8.1 (Amazon.com Inc.)"
+    date = "2024-02-05T19:01:37-0600",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.5.jar, environment: Java 17.0.9 (Oracle Corporation)"
 )
 @Component
 public class VeterinarianMapperImpl implements VeterinarianMapper {
@@ -44,9 +44,11 @@ public class VeterinarianMapperImpl implements VeterinarianMapper {
 
         Veterinarian veterinarian = new Veterinarian();
 
+        if ( dto.getSchedule() != null ) {
+            veterinarian.setSchedule( new SimpleDateFormat().format( dto.getSchedule() ) );
+        }
         veterinarian.setName( dto.getName() );
         veterinarian.setLastname( dto.getLastname() );
-        veterinarian.setSchedule( dto.getSchedule() );
         veterinarian.setPhone( dto.getPhone() );
         veterinarian.setSpecialty( dto.getSpecialty() );
 
@@ -59,9 +61,14 @@ public class VeterinarianMapperImpl implements VeterinarianMapper {
             return;
         }
 
+        if ( data.getSchedule() != null ) {
+            veterinarian.setSchedule( new SimpleDateFormat().format( data.getSchedule() ) );
+        }
+        else {
+            veterinarian.setSchedule( null );
+        }
         veterinarian.setName( data.getName() );
         veterinarian.setLastname( data.getLastname() );
-        veterinarian.setSchedule( data.getSchedule() );
         veterinarian.setPhone( data.getPhone() );
         veterinarian.setSpecialty( data.getSpecialty() );
     }
@@ -74,9 +81,11 @@ public class VeterinarianMapperImpl implements VeterinarianMapper {
 
         Veterinarian veterinarian = new Veterinarian();
 
+        if ( dto.getSchedule() != null ) {
+            veterinarian.setSchedule( new SimpleDateFormat().format( dto.getSchedule() ) );
+        }
         veterinarian.setName( dto.getName() );
         veterinarian.setLastname( dto.getLastname() );
-        veterinarian.setSchedule( dto.getSchedule() );
         veterinarian.setPhone( dto.getPhone() );
         veterinarian.setSpecialty( dto.getSpecialty() );
 
