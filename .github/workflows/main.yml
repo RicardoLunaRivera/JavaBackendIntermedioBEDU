@@ -2,6 +2,8 @@ name: Veterinaria API
 
 on:
   push:
+  pull_request:
+  merge_group:
 
 jobs:
   continuous-integration:
