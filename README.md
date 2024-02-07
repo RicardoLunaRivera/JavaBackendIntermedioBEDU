@@ -10,8 +10,10 @@ con Spring y se busca facilitar la gestión de consultas y tratamientos de masco
 - Jose de Jesus Anaya Martinez
 
 
-A la API de la veterinaria le fueron aplicadas las siguintes pruebas
+A la API de la veterinaria le fueron aplicadas las siguientes pruebas
 de Testing:
+
+# TESTING
 
 ### Smoke Test
 Un Smoke Test es una prueba de software que se realiza para verificar 
@@ -25,7 +27,7 @@ Las pruebas unitarias pretenden probar el comportamiento correcto de
 las clases de manera aislada. Esto significa que se prueba la 
 clase aislándola de su interacción con otras clases.
 
-Las pruebas unitarias, se realizaron con audade:
+Las pruebas unitarias, se realizaron con ayuda de:
 - JUnit
 - Mockito
 
@@ -36,7 +38,7 @@ de testing y sirve para detectar fallas en la interfaz del usuario
 funcionamiento de toda una aplicación, de principio a fin, por ello, 
 se le conoce como pruebas de extremo a extremo o pruebas end-to-end (e2e).
 
-Las pruebas E2E se realizareron a los controllers de:
+Las pruebas E2E se realizaron a los controllers de:
 - Owner
 - Veterinarian
 - Pet
@@ -45,6 +47,8 @@ Con la finalizar de testear el CRUD de estos modelos.
 
 ![testing.png](src%2Fimg%2Ftesting.png)
 Evidencia de la ejecución de pruebas.
+
+# ANÁLISIS DE CÓDIGO
 
 ## Sonarqube
 
@@ -64,9 +68,6 @@ Analisis de Sonarqube al API Veterinaria
 
 ## JaCoCo
 JaCoCo es una herramienta que analiza la cobertura en 
-pruebas que se tienen y te genera un reporte en formato HTML 
-en una manera similar a como funciona Javadoc, en el presente 
-Tutorial explicaremos cómo integrar JaCoCo a un proyecto hecho 
-con Java utilizando Maven. 
+pruebas que se tienen y te genera un reporte en formato HTML. 
 
 ![Jacoco.png](src%2Fimg%2FJacoco.png)
