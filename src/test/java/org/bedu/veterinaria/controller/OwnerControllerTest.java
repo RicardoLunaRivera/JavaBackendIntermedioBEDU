@@ -41,13 +41,13 @@ class OwnerControllerTest {
 
   // Smoke Test
   @Test
-  @DisplayName("Controller should be injected")
+  @DisplayName("Controller should be inyected")
   void smokeTest(){
     assertNotNull(ownerController);
   }
 
   @Test
-  @DisplayName("Lista de dueños de mascotas")
+  @DisplayName("Controller should return a list for the Owners")
   void findAllTest(){
     // Pre-condición
     List<OwnerDTO> fakeInfo = new LinkedList<>();
@@ -73,10 +73,9 @@ class OwnerControllerTest {
 
   }
 
-
   @Test
-  @DisplayName("Guardar un dueño escenario positivo")
-  void saveOwnerPositive() throws Exception {
+  @DisplayName("Controller should return confirmation that a new owner is added")
+  void saveOwner() throws Exception {
     // Configuración comportamiento esperado // Arrange
     CreateOwnerDTO createOwnerDTO = new CreateOwnerDTO();
 
@@ -115,7 +114,7 @@ class OwnerControllerTest {
   }
 
   @Test
-  @DisplayName("Actualizar un dueño")
+  @DisplayName("Controller should return confirmation that the owner is updated")
   void updateOwner() throws OwnerNotFoundException {
     // Arrage
     long idOwner = 1L;
@@ -136,7 +135,7 @@ class OwnerControllerTest {
   }
 
   @Test
-  @DisplayName("Eliminar un dueño")
+  @DisplayName("Controller should return confirmation that the owner is deleted")
   void deleteOwner() throws OwnerNotFoundException {
     // Arrange
     long idOwner = 1L;

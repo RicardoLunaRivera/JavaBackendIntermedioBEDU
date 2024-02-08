@@ -26,13 +26,13 @@ class VeterinarianRepositoryTest {
   private TestEntityManager manager;
 
   @Test
-  @DisplayName("Debe inyectarse el repositorio")
+  @DisplayName("Repository should be injected")
   void smokeTest(){
     assertNotNull(vetRepository);
   }
 
   @Test
-  @DisplayName("Filto por nombre de veterinario")
+  @DisplayName("Repository should find a Veterinarian")
   void findVetByName() {
     Veterinarian vet1 = new Veterinarian();
     Veterinarian vet2 = new Veterinarian();

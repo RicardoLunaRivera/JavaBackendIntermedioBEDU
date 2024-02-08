@@ -38,13 +38,13 @@ class OwnerServiceTest {
   private OwnerService ownerService;
 
   @Test
-  @DisplayName("El servicio debe ser inyectado")
+  @DisplayName("Service should be injected")
   void smokeTest(){
     assertNotNull(ownerService);
   }
 
   @Test
-  @DisplayName("El sevicio debe regresar la lista")
+  @DisplayName("Service should return a list for the Owners")
   void findAllTest(){
     List<Owner> data = new LinkedList<>();
 
@@ -73,7 +73,7 @@ class OwnerServiceTest {
   }
 
   @Test
-  @DisplayName("El servicio de dueños debe guardarse en el repositorio")
+  @DisplayName("Service should return confirmation that a new owner is added")
   void saveOwnerTest(){
     CreateOwnerDTO dto = new CreateOwnerDTO();
 
@@ -107,7 +107,7 @@ class OwnerServiceTest {
   }
 
   @Test
-  @DisplayName("El servicio debe actualizar los dueños")
+  @DisplayName("Service should return confirmation that the owner is updated")
   void updateTest() throws OwnerNotFoundException {
     UpdateOwnerDTO dto = new UpdateOwnerDTO();
 
@@ -139,7 +139,7 @@ class OwnerServiceTest {
   }
 
   @Test
-  @DisplayName("El servicio debe de retornar una exepcion")
+  @DisplayName("Service should return an exception that the owner is missing")
   void updateWithErrors(){
     UpdateOwnerDTO dto = new UpdateOwnerDTO();
     Optional<Owner> dummy = Optional.empty();
@@ -150,7 +150,7 @@ class OwnerServiceTest {
   }
 
   @Test
-  @DisplayName("El servicio debe eliminar un dueño")
+  @DisplayName("Service should return confirmation that the owner is deleted")
   void deleteByIdTest(){
     ownerService.deleteOwner(1L);
 
@@ -158,7 +158,7 @@ class OwnerServiceTest {
   }
 
   @Test
-  @DisplayName("El servicio da un error al eliminar un dueño")
+  @DisplayName("Service should return an exception that the owner is missing")
   void deleteWithErrors(){
 
     doThrow(new RuntimeException("Cliente no encontrado")).when(ownerRepository).deleteById(1L);

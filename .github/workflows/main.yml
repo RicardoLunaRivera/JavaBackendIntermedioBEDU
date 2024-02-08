@@ -23,3 +23,6 @@ jobs:
 
       - name: Compilar el proyecto
         run: gradle build
+
+      - name: Correr puebas
+        run: gradle test

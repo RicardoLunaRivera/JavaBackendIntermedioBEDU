@@ -28,13 +28,13 @@ class PetRepositoryTest {
   private TestEntityManager manager;
 
   @Test
-  @DisplayName("Debe inyectarse el repositorio")
+  @DisplayName("Repository should be injected")
   void smokeTest(){
     assertNotNull(petRepository);
   }
 
   @Test
-  @DisplayName("Filtro por nombre de la mascota")
+  @DisplayName("Repository should find a Pet")
   void findPetByName(){
 
     Pet pet1 = new Pet();
@@ -44,6 +44,7 @@ class PetRepositoryTest {
     pet1.setSpecies(Species.PERRO);
     pet1.setRace("Criollo");
     pet1.setBirthDate("2022-08-15");
+
 
     pet2.setName("Katto");
     pet2.setSpecies(Species.GATO);

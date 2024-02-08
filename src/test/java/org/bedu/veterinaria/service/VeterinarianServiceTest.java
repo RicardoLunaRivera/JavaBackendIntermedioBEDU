@@ -33,13 +33,13 @@ class VeterinarianServiceTest {
   private VeterinarianService vetService;
 
   @Test
-  @DisplayName("El servicio debe ser inyectado")
+  @DisplayName("Service should be injected")
   void smokeTest(){
     assertNotNull(vetService);
   }
 
   @Test
-  @DisplayName("El servicio debe regresar la lista")
+  @DisplayName("Service should return a list for the Veterinarians")
   void findAllTest(){
     List<Veterinarian> data = new LinkedList<>();
 
@@ -67,7 +67,7 @@ class VeterinarianServiceTest {
   }
 
   @Test
-  @DisplayName("El servicio de veterinarios debe guardarse en el repositorio")
+  @DisplayName("Service should return confirmation that a new veterinarian is added")
   void saveVetTest(){
     CreateVeterinarianDTO dto = new CreateVeterinarianDTO();
 
@@ -100,7 +100,7 @@ class VeterinarianServiceTest {
   }
 
   @Test
-  @DisplayName("El servicio debe actualizar los veterinarios en el servicio")
+  @DisplayName("Service should return confirmation that the veterinarian is updated")
   void updateTest() throws VeterinarianNotFoundException {
 
     UpdateVeterinarianDTO dto = new UpdateVeterinarianDTO();
@@ -133,7 +133,7 @@ class VeterinarianServiceTest {
     verify(vetRepository,times(1)).save(vet);
   }
   @Test
-  @DisplayName("El servicio debe de dar un excepcion")
+  @DisplayName("Service should return an exception that the veterinarian is missing")
   void updateWithErrors(){
 
     UpdateVeterinarianDTO dto = new UpdateVeterinarianDTO();
@@ -145,7 +145,7 @@ class VeterinarianServiceTest {
   }
 
   @Test
-  @DisplayName("El servicio debe eliminar el veterinario")
+  @DisplayName("Service should return confirmation that the veterinarian is deleted")
   void deleteByIdTest(){
     vetService.deleteVeterinarian(200L);
 
