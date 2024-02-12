@@ -1,9 +1,13 @@
 package org.bedu.veterinaria.controller;
 
 import org.bedu.veterinaria.dto.owner_dto.CreateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.DeleteOwnerDTO;
 import org.bedu.veterinaria.dto.owner_dto.OwnerDTO;
 import org.bedu.veterinaria.dto.owner_dto.UpdateOwnerDTO;
 import org.bedu.veterinaria.exception.OwnerNotFoundException;
+import org.bedu.veterinaria.exception.PetNotFoundException;
+import org.bedu.veterinaria.model.Owner;
+import org.bedu.veterinaria.model.Pet;
 import org.bedu.veterinaria.repository.OwnerRepository;
 import org.bedu.veterinaria.service.OwnerService;
 import org.junit.jupiter.api.DisplayName;
@@ -16,6 +20,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -36,13 +41,13 @@ class OwnerControllerTest {
 
   // Smoke Test
   @Test
-  @DisplayName("Controller should be injected")
+  @DisplayName("Controller should be inyected")
   void smokeTest(){
     assertNotNull(ownerController);
   }
 
   @Test
-  @DisplayName("Lista de dueños de mascotas")
+  @DisplayName("Controller should return a list for the Owners")
   void findAllTest(){
     // Pre-condición
     List<OwnerDTO> fakeInfo = new LinkedList<>();
@@ -68,10 +73,9 @@ class OwnerControllerTest {
 
   }
 
-
   @Test
-  @DisplayName("Guardar un dueño escenario positivo")
-  void saveOwnerPositive() throws Exception {
+  @DisplayName("Controller should return confirmation that a new owner is added")
+  void saveOwner() throws Exception {
     // Configuración comportamiento esperado // Arrange
     CreateOwnerDTO createOwnerDTO = new CreateOwnerDTO();
 
@@ -110,7 +114,7 @@ class OwnerControllerTest {
   }
 
   @Test
-  @DisplayName("Actualizar un dueño")
+  @DisplayName("Controller should return confirmation that the owner is updated")
   void updateOwner() throws OwnerNotFoundException {
     // Arrage
     long idOwner = 1L;
@@ -131,7 +135,7 @@ class OwnerControllerTest {
   }
 
   @Test
-  @DisplayName("Eliminar un dueño")
+  @DisplayName("Controller should return confirmation that the owner is deleted")
   void deleteOwner() throws OwnerNotFoundException {
     // Arrange
     long idOwner = 1L;

@@ -8,10 +8,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
 @Setter
-@ToString
 @Entity
 @Table (name= "veterinarians")
 public class Veterinarian {
@@ -35,7 +35,13 @@ public class Veterinarian {
     @Column(length = 30)
     private String specialty;
 
+
     public String getNombreCompleto(){
         return name + " " + lastname;
     }
+
+  public void setSchedule(String date) {
+      //Metodo creado para pruebas
+  }
+
 }

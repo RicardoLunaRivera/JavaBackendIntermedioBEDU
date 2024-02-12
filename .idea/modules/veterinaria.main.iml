@@ -11,6 +11,11 @@
     <content url="file://$MODULE_DIR$/../../build/generated/sources/annotationProcessor/java/main">
       <sourceFolder url="file://$MODULE_DIR$/../../build/generated/sources/annotationProcessor/java/main" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../build/generated/sources/annotationProcessor/java/main" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../build/generated/sources/annotationProcessor/java/main" isTestSource="false" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/main/resources" type="java-resource" />
     </content>
     <content url="file://$MODULE_DIR$/../../src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../src/main/java" isTestSource="false" />
@@ -134,6 +139,6 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: net.java.dev.jna:jna:5.13.0" level="project" />
   </component>
   <component name="SonarLintModuleSettings">
-    <option name="uniqueId" value="2c1de17e-222e-4b2c-85f9-17836e7a8df9" />
+    <option name="uniqueId" value="ae727344-ee80-43cc-bd84-8901db5f61bb" />
   </component>
 </module>

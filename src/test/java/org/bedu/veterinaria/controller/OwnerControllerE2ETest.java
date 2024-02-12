@@ -3,6 +3,7 @@ package org.bedu.veterinaria.controller;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -23,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class OwnerControllerE2ETest {
+class OwnerControllerE2ETest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -47,7 +48,7 @@ public class OwnerControllerE2ETest {
 
         String content = result.getResponse().getContentAsString();
         String expectedResponse = "{\"code\":\"ERR_VALID\",\"message\":\"Los datos de entrada contiene errores\",\"details\":[\"must not be null\",\"Debe proporcionar un email\"]}";
-        assertEquals(expectedResponse, content);
+        JSONAssert.assertEquals(expectedResponse, content,false);
     }
 
     @Test
