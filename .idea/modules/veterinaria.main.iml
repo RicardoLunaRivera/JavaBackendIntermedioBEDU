@@ -6,6 +6,10 @@
     </content>
   </component>
   <component name="SonarLintModuleSettings">
+<<<<<<< HEAD
     <option name="uniqueId" value="73d7e51b-215e-47a3-b420-b75da098494e" />
+=======
+    <option name="uniqueId" value="ae727344-ee80-43cc-bd84-8901db5f61bb" />
+>>>>>>> testing
   </component>
 </module>

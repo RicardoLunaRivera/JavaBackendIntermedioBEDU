@@ -1,17 +1,13 @@
 package org.bedu.veterinaria.service;
 
-import jakarta.persistence.EntityNotFoundException;
-import org.bedu.veterinaria.dto.petDTO.CreatePetDTO;
-import org.bedu.veterinaria.dto.petDTO.DeletePetDTO;
-import org.bedu.veterinaria.dto.petDTO.PetDTO;
-import org.bedu.veterinaria.dto.petDTO.UpdatePetDTO;
+import org.bedu.veterinaria.dto.pet_dto.CreatePetDTO;
+import org.bedu.veterinaria.dto.pet_dto.DeletePetDTO;
+import org.bedu.veterinaria.dto.pet_dto.PetDTO;
+import org.bedu.veterinaria.dto.pet_dto.UpdatePetDTO;
 import org.bedu.veterinaria.exception.PetNotFoundException;
 import org.bedu.veterinaria.mapper.PetMapper;
-import org.bedu.veterinaria.model.Owner;
 import org.bedu.veterinaria.model.Pet;
-import org.bedu.veterinaria.repository.OwnerRepository;
 import org.bedu.veterinaria.repository.PetRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,13 +16,9 @@ import java.util.Optional;
 
 @Service
 public class PetService {
-    @Autowired
-    private PetRepository repository;
 
-    private PetMapper mapper;
-
-    @Autowired
-    private OwnerRepository ownerRepository;
+    private final PetRepository repository;
+    private final PetMapper mapper;
 
     public PetService(PetRepository repository, PetMapper mapper){
         this.repository = repository;
@@ -67,6 +59,5 @@ public class PetService {
         mapper.deletePet(entity, data);
         repository.deleteById(idPet);
     }
-
 
 }

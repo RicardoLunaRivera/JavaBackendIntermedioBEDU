@@ -2,6 +2,8 @@ name: Veterinaria API
 
 on:
   push:
+  pull_request:
+  merge_group:
 
 jobs:
   continuous-integration:
@@ -13,11 +15,14 @@ jobs:
       - name: Instalar Java 17
         uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 17
+          distribution: corretto
+          java-version: 17.0
 
       - name: Configuración de Gradle
         uses: gradle/gradle-build-action@v2
 
       - name: Compilar el proyecto
         run: gradle build
+
+      - name: Correr puebas
+        run: gradle test

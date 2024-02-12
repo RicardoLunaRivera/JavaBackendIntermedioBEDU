@@ -4,14 +4,12 @@ package org.bedu.veterinaria.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 @Getter
 @Setter
-@ToString
 @Entity
 @Table(name = "mascotas") // Nombre de la tabla en la base de datos.
 
@@ -44,5 +42,9 @@ public class Pet {
     @JoinColumn(name = "id_veterinarian") // Nombre de la columna en la tabla Veterinary.
     //@JoinColumn(name = "veterinarian_id", referencedColumnName = "id_veterinarian")[ONE TO ONE]
     private Veterinarian veterinarian;
+
+    public void setBirthDate(String date) {
+        //Metodo creado para pruebas unitarias
+    }
 
 }

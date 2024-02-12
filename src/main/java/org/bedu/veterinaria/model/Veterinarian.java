@@ -1,17 +1,14 @@
 package org.bedu.veterinaria.model;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
 @Setter
-@ToString
 @Entity
 @Table (name= "veterinarians")
 public class Veterinarian {
@@ -35,4 +32,8 @@ public class Veterinarian {
 
     @Column(length = 30)
     private String specialty;
+
+  public void setSchedule(String date) {
+      //Metodo creado para pruebas
+  }
 }

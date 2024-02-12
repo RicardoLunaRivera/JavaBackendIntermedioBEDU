@@ -1,9 +1,8 @@
 package org.bedu.veterinaria.service;
 
-import org.bedu.veterinaria.dto.ownerDTO.DeleteOwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.CreateOwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.OwnerDTO;
-import org.bedu.veterinaria.dto.ownerDTO.UpdateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.CreateOwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.OwnerDTO;
+import org.bedu.veterinaria.dto.owner_dto.UpdateOwnerDTO;
 import org.bedu.veterinaria.exception.OwnerNotFoundException;
 import org.bedu.veterinaria.mapper.OwnerMapper;
 import org.bedu.veterinaria.model.Owner;
@@ -16,12 +15,11 @@ import java.util.Optional;
 
 @Service
 public class OwnerService {
-    @Autowired
-    private OwnerRepository repository;
 
-    @Autowired
+    private OwnerRepository repository;
     private OwnerMapper mapper;
 
+    @Autowired
     public OwnerService(OwnerRepository repository, OwnerMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;
@@ -41,32 +39,13 @@ public class OwnerService {
     //Actualiza un cliente existente
     public void updateOwner(long idOwner, UpdateOwnerDTO data) throws OwnerNotFoundException{
         Optional<Owner> result = repository.findById(idOwner);
-        if(!result.isPresent()){
+        if(result.isEmpty()){
             throw new OwnerNotFoundException(idOwner);
         }
         Owner owner = result.get();
-        mapper.updateOwner(owner,data);
+        mapper.updateOwner(data, owner);
         repository.save(owner);
     }
-
-//    public OwnerDTO updateById(Long idOwner, UpdateOwnerDTO data){
-//        data.setIdOwner(idOwner);
-//        Owner entity = repository.save(mapper.toModel(data));
-//        return mapper.toDTO(entity);
-//    }
-
-    //Borra un cliente
-
-//    public void deleteOwner(long idOwner, DeleteOwnerDTO data) throws OwnerNotFoundException{
-//        Optional<Owner> result = repository.findById(idOwner);
-//        if(!result.isPresent()){
-//            throw new OwnerNotFoundException(idOwner);
-//        }
-//        Owner entity = result.get();
-//        mapper.deleteOwner(entity,data);
-//        repository.deleteById(idOwner);
-//    }
-
 
     public Boolean deleteOwner(Long idOwner){
         try {
