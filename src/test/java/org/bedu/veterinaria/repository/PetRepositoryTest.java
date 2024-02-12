@@ -41,13 +41,13 @@ class PetRepositoryTest {
     Pet pet2 = new Pet();
 
     pet1.setName("Mezcal");
-    pet1.setSpecies(Species.PERRO);
+    pet1.setSpecies(Species.Perro);
     pet1.setRace("Criollo");
     pet1.setBirthDate("2022-08-15");
 
 
     pet2.setName("Katto");
-    pet2.setSpecies(Species.GATO);
+    pet2.setSpecies(Species.Gato);
     pet2.setRace("Criollo");
     pet2.setBirthDate("2021-08-15");
 

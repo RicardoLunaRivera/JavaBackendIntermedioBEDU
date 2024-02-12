@@ -75,7 +75,7 @@ class PetServiceTest {
     CreatePetDTO dto = new CreatePetDTO();
 
     dto.setName("Docki");
-    dto.setSpecies(Species.PERRO);
+    dto.setSpecies(Species.Perro);
     dto.setRace("Criollo");
     dto.setBirthDate("2009-08-30");
 
@@ -104,7 +104,7 @@ class PetServiceTest {
     UpdatePetDTO dto = new UpdatePetDTO();
 
     dto.setName("Docki");
-    dto.setSpecies(Species.PERRO);
+    dto.setSpecies(Species.Perro);
     dto.setRace("Criollo");
     dto.setBirthDate("2009-08-30");
 
@@ -112,7 +112,7 @@ class PetServiceTest {
 
     pet.setIdPet(200L);
     pet.setName("Docki");
-    pet.setSpecies(Species.PERRO);
+    pet.setSpecies(Species.Perro);
     pet.setRace("Criollo");
     pet.setBirthDate("2009-08-30");
 
@@ -149,7 +149,7 @@ class PetServiceTest {
     DeletePetDTO dto = new DeletePetDTO();
 
     dto.setName("Docki");
-    dto.setSpecies(Species.PERRO);
+    dto.setSpecies(Species.Perro);
     dto.setRace("Criollo");
     dto.setBirthDate("2009-08-30");
 
