@@ -1,5 +1,6 @@
 package org.bedu.veterinaria.service;
 
+
 import org.bedu.veterinaria.dto.veterinarian_dto.CreateVeterinarianDTO;
 import org.bedu.veterinaria.dto.veterinarian_dto.UpdateVeterinarianDTO;
 import org.bedu.veterinaria.dto.veterinarian_dto.VeterinarianDTO;
@@ -34,6 +35,7 @@ public class VeterinarianService {
         return mapper.toDTO(entity);
     }
 
+
     public void updateVet(long idVeterinarian, UpdateVeterinarianDTO data) throws VeterinarianNotFoundException{
         Optional<Veterinarian> result = repository.findById(idVeterinarian);
         if(!result.isPresent()){
@@ -51,5 +53,26 @@ public class VeterinarianService {
         } catch (Exception e){
             return false;
         }
+    }
+
+
+    //Metodos para las vistas en thymeleaf
+    public Veterinarian findById(Veterinarian veterinarian) {
+        return repository.findById(veterinarian.getIdVeterinarian()).orElse(null);
+    }
+
+    public void update(Veterinarian veterinarian){
+        repository.save(veterinarian);
+    }
+
+    public List<Veterinarian> findByPalabra(String palabra) {
+        if(palabra != null){
+            return repository.findByPalabra(palabra);
+        }
+        return repository.findAll();
+    }
+
+    public void delete(Veterinarian veterinarian) {
+        repository.delete(veterinarian);
     }
 }

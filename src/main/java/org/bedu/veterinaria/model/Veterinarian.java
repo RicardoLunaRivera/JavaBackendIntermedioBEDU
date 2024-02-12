@@ -3,8 +3,11 @@ package org.bedu.veterinaria.model;
 import java.util.Date;
 
 import jakarta.persistence.*;
+
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
@@ -24,8 +27,7 @@ public class Veterinarian {
     private String lastname;
 
     @Column()
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date schedule;
+    private String schedule;
 
     @Column(nullable = false, length = 13)
     private String phone;
@@ -33,7 +35,13 @@ public class Veterinarian {
     @Column(length = 30)
     private String specialty;
 
+
+    public String getNombreCompleto(){
+        return name + " " + lastname;
+    }
+
   public void setSchedule(String date) {
       //Metodo creado para pruebas
   }
+
 }

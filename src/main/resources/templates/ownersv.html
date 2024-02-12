@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layouts/head :: head}">
+</head>
+<body>
+<header th:insert="~{layouts/header :: header}"></header>
+<br>
+<div class="container-fluid">
+    <form class="" th:action="@{/ownersv/buscarN}">
+        <div class="row">
+            <div class="col-md-2">
+                <a th:href="@{/ownersv/add}">
+                    <button class="btn btn-success me-md-3" type="button">Agregar Cliente</button>
+                </a>
+            </div>
+            <div class="col-md-1 text-end">
+                <label class="align-middle" for="buscarPorPalabra">Filtrar</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="buscarPorPalabra" class="form-control me-md-3" id="buscarPorPalabra"
+                       th:value="${buscarPorPalabra}" placeholder="Escriba el cliente a buscar" required>
+            </div>
+            <div class="col-md-3">
+                <input type="submit" class="btn btn-info me-md-3" value="Buscar">
+                &nbsp,&nbsp;
+                <input type="button" class="btn btn-secondary me-md-3" value="Limpiar" onclick="limpiarCampos()">
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <br>
+    <div th:if="${ownersv != null and !ownersv.isEmpty()}">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th>Nombre:</th>
+                <th>Apellido:</th>
+                <th>Direccion:</th>
+                <th>Telefono:</th>
+                <th>Email:</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+
+            </tr>
+            </thead>
+            <tr th:each="owner : ${ownersv}">
+                <td th:text="${owner.name}">Mostrar Nombre</td>
+                <td th:text="${owner.lastname}">Mostrar Apellido</td>
+                <td th:text="${owner.address}">Mostrar Direccion</td>
+                <td th:text="${owner.phone}">Mostrar Telefono</td>
+                <td th:text="${owner.email}">Mostrar Email</td>
+                <td><a class="btn btn-warning btn-sm" th:href="@{/ownersv/edit/} + ${owner.idOwner}">Editar</a></td>
+                <td><a class="btn btn-danger btn-sm" th:href="@{/ownersv/delete/} + ${owner.idOwner}">Eliminar</a></td>
+            </tr>
+        </table>
+    </div>
+    <div th:if="${ownersv == null or ownersv.isEmpty()}">
+        La lista de clientes esta vacia
+    </div>
+</div>
+<script type="text/javascript">
+    function limpiarCampos(){
+        window.location='/ownersv';
+    }
+</script>
+<footer th:insert="~{layouts/footer :: footer}">
+</footer>
+</body>
+</html>

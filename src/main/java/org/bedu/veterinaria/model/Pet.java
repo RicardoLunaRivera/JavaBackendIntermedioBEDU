@@ -11,8 +11,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "mascotas") // Nombre de la tabla en la base de datos.
-
+@Table(name = "pets") // Nombre de la tabla en la base de datos.
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

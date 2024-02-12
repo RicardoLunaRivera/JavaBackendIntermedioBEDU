@@ -4,6 +4,7 @@ import org.bedu.veterinaria.dto.pet_dto.CreatePetDTO;
 import org.bedu.veterinaria.dto.pet_dto.DeletePetDTO;
 import org.bedu.veterinaria.dto.pet_dto.PetDTO;
 import org.bedu.veterinaria.dto.pet_dto.UpdatePetDTO;
+
 import org.bedu.veterinaria.exception.PetNotFoundException;
 import org.bedu.veterinaria.mapper.PetMapper;
 import org.bedu.veterinaria.model.Pet;
@@ -58,6 +59,36 @@ public class PetService {
         Pet entity = result.get();
         mapper.deletePet(entity, data);
         repository.deleteById(idPet);
+    }
+
+
+
+    //Metodos para las vistas en thymeleaf
+    public void save(Pet pet) {
+        repository.save(pet);
+    }
+
+    public List<Pet> findAllpets() {
+        return repository.findAll();
+    }
+
+    public Pet findById(Pet pet) {
+        return repository.findById(pet.getIdPet()).orElse(null);
+    }
+
+    public void update(Pet pet){
+        repository.save(pet);
+    }
+
+    public void delete(Pet pet) {
+        repository.delete(pet);
+    }
+
+    public List<Pet> findByPalabra(String palabra) {
+        if(palabra != null){
+            return repository.findByPalabra(palabra);
+        }
+        return repository.findAll();
     }
 
 }

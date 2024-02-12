@@ -23,4 +23,8 @@ public class OwnerDTO {
     @Schema(description = "Identificador para ingresar el email del cliente",example = "ana@mail.com")
     private String email;
 
+    public String getNombreCompleto(){
+        return name + " " + lastname;
+    }
+
 }

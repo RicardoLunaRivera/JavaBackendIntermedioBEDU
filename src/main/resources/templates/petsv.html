@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layouts/head :: head}">
+</head>
+<body>
+<header th:insert="~{layouts/header :: header}"></header>
+<br>
+<div class="container-fluid">
+    <form class="" th:action="@{/petsv/buscarN}">
+        <div class="row">
+            <div class="col-md-2">
+                <a th:href="@{/petsv/add}">
+                    <button class="btn btn-success me-md-3" type="button">Registrar Mascota</button>
+                </a>
+            </div>
+            <div class="col-md-1 text-end">
+                <label class="align-middle" for="buscarPorPalabra">Filtrar</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="buscarPorPalabra" class="form-control me-md-3" id="buscarPorPalabra"
+                       th:value="${buscarPorPalabra}" placeholder="Escriba la mascota a buscar" required>
+            </div>
+            <div class="col-md-3">
+                <input type="submit" class="btn btn-info me-md-3" value="Buscar">
+                &nbsp,&nbsp;
+                <input type="button" class="btn btn-secondary me-md-3" value="Limpiar" onclick="limpiarCampos()">
+            </div>
+        </div>
+    </form>
+</div>
+<br>
+<div th:if="${petsv != null and !petsv.isEmpty()}">
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>Nombre:</th>
+            <th>Especie:</th>
+            <th>Raza:</th>
+            <th>Fecha De Nacimiento:</th>
+            <th>CLiente:</th>
+            <th>Veterinario:</th>
+            <th>Editar:</th>
+            <th>Eliminar:</th>
+        </tr>
+        </thead>
+        <tr th:each="pet : ${petsv}">
+            <td th:text="${pet.name}">Mostrar Nombre Mascota</td>
+            <td th:text="${pet.species}">Mostrar Especie Mascota</td>
+            <td th:text="${pet.race}">Mostrar Raza Mascota</td>
+            <td th:text="${pet.birthDate}">Mostrar Fecha Nacimiento</td>
+            <td th:text="${pet.owner.getName()}">Mostrar Nombre Cliente</td>
+            <td th:text="${pet.veterinarian.getName()}">Mostrar Nombre Veterinario</td>
+            <td><a class="btn btn-warning btn-sm" th:href="@{/petsv/edit/} + ${pet.idPet}">Editar</a>
+            </td>
+            <td><a class="btn btn-danger btn-sm" th:href="@{/petsv/delete/} + ${pet.idPet}">Eliminar</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div th:if="${petsv == null or petsv.isEmpty()}">
+    No se ah registrado ninguna mascota
+</div>
+<script type="text/javascript">
+    function limpiarCampos() {
+        window.location = '/petsv';
+    }
+</script>
+<footer th:insert="~{layouts/footer :: footer}">
+</footer>
+</body>
+</html>

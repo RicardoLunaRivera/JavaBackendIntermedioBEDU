@@ -1,6 +1,5 @@
 package org.bedu.veterinaria.mapper;
 
-import java.text.SimpleDateFormat;
 import javax.annotation.processing.Generated;
 import org.bedu.veterinaria.dto.veterinarian_dto.CreateVeterinarianDTO;
 import org.bedu.veterinaria.dto.veterinarian_dto.UpdateVeterinarianDTO;
@@ -10,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-06T22:02:59-0600",
-    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.jar, environment: Java 17.0.9 (Amazon.com Inc.)"
+    date = "2024-02-12T08:19:19-0600",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.jar, environment: Java 17.0.8.1 (Amazon.com Inc.)"
 )
 @Component
 public class VeterinarianMapperImpl implements VeterinarianMapper {
@@ -24,9 +23,7 @@ public class VeterinarianMapperImpl implements VeterinarianMapper {
 
         VeterinarianDTO veterinarianDTO = new VeterinarianDTO();
 
-        if ( model.getSchedule() != null ) {
-            veterinarianDTO.setSchedule( new SimpleDateFormat().format( model.getSchedule() ) );
-        }
+        veterinarianDTO.setSchedule( model.getSchedule() );
         veterinarianDTO.setIdVeterinarian( model.getIdVeterinarian() );
         veterinarianDTO.setName( model.getName() );
         veterinarianDTO.setLastname( model.getLastname() );
@@ -44,9 +41,7 @@ public class VeterinarianMapperImpl implements VeterinarianMapper {
 
         Veterinarian veterinarian = new Veterinarian();
 
-        if ( dto.getSchedule() != null ) {
-            veterinarian.setSchedule( new SimpleDateFormat().format( dto.getSchedule() ) );
-        }
+        veterinarian.setSchedule( dto.getSchedule() );
         veterinarian.setName( dto.getName() );
         veterinarian.setLastname( dto.getLastname() );
         veterinarian.setPhone( dto.getPhone() );
@@ -61,34 +56,10 @@ public class VeterinarianMapperImpl implements VeterinarianMapper {
             return;
         }
 
-        if ( data.getSchedule() != null ) {
-            veterinarian.setSchedule( new SimpleDateFormat().format( data.getSchedule() ) );
-        }
-        else {
-            veterinarian.setSchedule( null );
-        }
+        veterinarian.setSchedule( data.getSchedule() );
         veterinarian.setName( data.getName() );
         veterinarian.setLastname( data.getLastname() );
         veterinarian.setPhone( data.getPhone() );
         veterinarian.setSpecialty( data.getSpecialty() );
-    }
-
-    @Override
-    public Veterinarian toModel(UpdateVeterinarianDTO dto) {
-        if ( dto == null ) {
-            return null;
-        }
-
-        Veterinarian veterinarian = new Veterinarian();
-
-        if ( dto.getSchedule() != null ) {
-            veterinarian.setSchedule( new SimpleDateFormat().format( dto.getSchedule() ) );
-        }
-        veterinarian.setName( dto.getName() );
-        veterinarian.setLastname( dto.getLastname() );
-        veterinarian.setPhone( dto.getPhone() );
-        veterinarian.setSpecialty( dto.getSpecialty() );
-
-        return veterinarian;
     }
 }

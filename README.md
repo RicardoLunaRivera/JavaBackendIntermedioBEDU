@@ -9,6 +9,58 @@ con Spring y se busca facilitar la gestión de consultas y tratamientos de masco
 - Ana Nathalie González Mena
 - Jose de Jesus Anaya Martinez
 
+## Tecnologías
+- Java 17
+- Spring 3.2.0
+    - Spring Web
+    - Spring Data JPA
+- Lombok
+- H2 Database
+- MapStruct 1.5.5
+
+## FRONTEND
+
+La aplicación cuenta con un frontend:
+
+- Login
+
+![login.png](src%2Fimg%2Flogin.png)
+
+- Pantalla de Inicio
+![index.png](src%2Fimg%2Findex.png)
+
+- Panel de administración CRUD para Veterinarios, Dueños, Mascotas.
+![registro.png](src%2Fimg%2Fregistro.png)
+![veteterinario.png](src%2Fimg%2Fveteterinario.png)
+![pet.png](src%2Fimg%2Fpet.png)
+
+- Panel de administración para los usuarios que operan el sistema,
+cuenta con roles y permisos.
+![usrs.png](src%2Fimg%2Fusrs.png)
+
+
+## Base de datos
+![db_veterinary.png](src%2Fimg%2Fdb_veterinary.png)
+
+## Ejecutar aplicación
+`./gradlew bootRun`
+
+## Usar consola H2
+URL CONSOLA H2: http://localhost:8080/h2-console
+
+JDBCURL: jdbc:h2:mem:veterian;DB_CLOSE_ON_EXIT=FALSE
+
+USER: sa
+
+PASSWORD:
+
+![H2_console.png](src%2Fimg%2FH2_console.png)
+
+## OpenAPI Swagger
+URL: http://localhost:8080/swagger-ui/index.html
+![documentation.png](src%2Fimg%2Fdocumentation.png)
+
+
 
 A la API de la veterinaria le fueron aplicadas las siguientes pruebas
 de Testing:
@@ -71,3 +123,4 @@ JaCoCo es una herramienta que analiza la cobertura en
 pruebas que se tienen y te genera un reporte en formato HTML. 
 
 ![Jacoco.png](src%2Fimg%2FJacoco.png)
+

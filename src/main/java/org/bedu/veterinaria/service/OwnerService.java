@@ -1,5 +1,7 @@
 package org.bedu.veterinaria.service;
 
+
+import jakarta.validation.Valid;
 import org.bedu.veterinaria.dto.owner_dto.CreateOwnerDTO;
 import org.bedu.veterinaria.dto.owner_dto.OwnerDTO;
 import org.bedu.veterinaria.dto.owner_dto.UpdateOwnerDTO;
@@ -26,12 +28,12 @@ public class OwnerService {
     }
 
     //Obtener todos los clientes
-    public List<OwnerDTO> findAll(){
+    public List<OwnerDTO> findAll() {
         return repository.findAll().stream().map(mapper::toDTO).toList();
     }
 
     //Crear un nuevo cliente
-    public OwnerDTO save(CreateOwnerDTO data){
+    public OwnerDTO save(@Valid CreateOwnerDTO data) {
         Owner entity = repository.save(mapper.toModel(data));
         return mapper.toDTO(entity);
     }
@@ -47,13 +49,34 @@ public class OwnerService {
         repository.save(owner);
     }
 
-    public Boolean deleteOwner(Long idOwner){
+
+    //Metodos para la vistas en thymeleaf
+    public Owner findById(Owner owner) {
+        return repository.findById(owner.getIdOwner()).orElse(null);
+    }
+
+    public void update(Owner owner){
+        repository.save(owner);
+    }
+
+    public void delete(Owner owner) {
+        repository.delete(owner);
+    }
+
+    public List<Owner> findByPalabra(String palabra) {
+        if(palabra != null){
+            return repository.findByPalabra(palabra);
+        }
+        return repository.findAll();
+    }
+
+
+    public Boolean deleteOwner(Long idOwner) {
         try {
             repository.deleteById(idOwner);
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
-
 }

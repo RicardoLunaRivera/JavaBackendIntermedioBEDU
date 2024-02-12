@@ -51,7 +51,7 @@ class PetServiceTest {
 
     pet.setIdPet(100L);
     pet.setName("Mezcal");
-    pet.setSpecies(Species.PERRO);
+    pet.setSpecies(Species.Perro);
     pet.setRace("Corriente");
     pet.setBirthDate("2022-08-23");
 
