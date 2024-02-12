@@ -18,7 +18,7 @@ con Spring y se busca facilitar la gestión de consultas y tratamientos de masco
 - H2 Database
 - MapStruct 1.5.5
 
-## FRONTEND
+# FRONTEND
 
 La aplicación cuenta con un frontend:
 
@@ -38,7 +38,7 @@ La aplicación cuenta con un frontend:
 cuenta con roles y permisos.
 ![usrs.png](src%2Fimg%2Fusrs.png)
 
-
+#BACKEND
 ## Base de datos
 ![db_veterinary.png](src%2Fimg%2Fdb_veterinary.png)
 
