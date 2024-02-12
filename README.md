@@ -58,6 +58,7 @@ PASSWORD:
 
 ## OpenAPI Swagger
 URL: http://localhost:8080/swagger-ui/index.html
+
 ![documentation.png](src%2Fimg%2Fdocumentation.png)
 
 
