@@ -67,6 +67,8 @@ A la API de la veterinaria le fueron aplicadas las siguientes pruebas
 de Testing:
 
 # TESTING
+Las pruebas se realizaorn en la rama "TESTING" y se pueden consultar en:
+https://github.com/RicardoLunaRivera/JavaBackendIntermedioBEDU/tree/testing
 
 ### Smoke Test
 Un Smoke Test es una prueba de software que se realiza para verificar 

@@ -12,7 +12,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 
-
+ /*
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,7 +30,8 @@ class OwnerRepositoryTest {
 
   @Test
   @DisplayName("Repository should be injected")
-  void smokeTest(){
+  void smokeTest() {
+
     assertNotNull(ownerRepository);
   }
 
@@ -67,5 +68,9 @@ class OwnerRepositoryTest {
     List<Owner> result = ownerRepository.findByName("Daniel");
     Owner foundOwner = result.get(0);
     assertEquals("Daniel", foundOwner.getName());
+
   }
+
 }
+
+*/

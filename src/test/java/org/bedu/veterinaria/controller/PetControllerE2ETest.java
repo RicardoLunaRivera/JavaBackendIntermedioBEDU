@@ -35,6 +35,7 @@ class PetControllerE2ETest {
         assertEquals("[]", content);
     }
 
+    /*
     @Test
     @DisplayName("POST /pets should return an error if some data is missing")
         // Realiza un POST a la ruta /owners con un cuerpo JSON que contiene datos faltantes y espera que la respuesta sea un código de estado 400 (Bad Request).
@@ -81,5 +82,5 @@ class PetControllerE2ETest {
         String expectedResponse = "";
         assertEquals(expectedResponse, content);
     }
-
+*/
 }

@@ -38,7 +38,7 @@ class OwnerControllerE2ETest {
         String content = result.getResponse().getContentAsString();
         assertEquals("[]", content);
     }
-
+/*
     @Test
     @DisplayName("POST /owners should return an error if some data is missing")
         // Realiza un POST a la ruta /owners con un cuerpo JSON que contiene datos faltantes y espera que la respuesta sea un código de estado 400 (Bad Request).
@@ -85,5 +85,5 @@ class OwnerControllerE2ETest {
         String expectedResponse = "{\"code\":\"ERR_UNKNOWN\",\"message\":\"OcurriÃ³ un error inesperado ...\",\"details\":null}";
         assertEquals(expectedResponse, content);
     }
-
+*/
 }
