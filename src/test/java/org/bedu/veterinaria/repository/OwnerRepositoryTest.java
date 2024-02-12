@@ -35,7 +35,7 @@ class OwnerRepositoryTest {
   }
 
   @Test
-  @DisplayName("Filtro por nombre de dueños de mascota")
+  @DisplayName("Repository should find an Owner")
   void findOwnerByName(){
     Owner owner1 = new Owner();
     Owner owner2 = new Owner();
@@ -46,6 +46,7 @@ class OwnerRepositoryTest {
     owner1.setAddress("1111 Nay");
     owner1.setPhone("111-111-1111");
     owner1.setEmail("test@mail.com");
+
 
     owner2.setName("Daniel");
     owner2.setLastname("Rivas");

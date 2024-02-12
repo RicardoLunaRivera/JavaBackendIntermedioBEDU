@@ -35,13 +35,13 @@ class VeterinarianControllerTest {
   private VeterinarianController veterinarianController;
 
   @Test
-  @DisplayName("Smoke test")
+  @DisplayName("Controller should be inyected")
   void smokeTest(){
     assertNotNull(veterinarianController);
   }
 
   @Test
-  @DisplayName("Lista de veterinarios")
+  @DisplayName("Controller should return a list for the Veterinarian")
   void findAllTest(){
     List<VeterinarianDTO> fakeInfo = new LinkedList<>();
 
@@ -64,7 +64,7 @@ class VeterinarianControllerTest {
   }
 
   @Test
-  @DisplayName("Guardar un veterinario nuevo")
+  @DisplayName("Controller should return confirmation that a new veterinarian is added")
   void saveVet(){
     CreateVeterinarianDTO createVeterinarianDTO = new CreateVeterinarianDTO();
 
@@ -100,7 +100,7 @@ class VeterinarianControllerTest {
   }
 
   @Test
-  @DisplayName("Actualizar un veterinario")
+  @DisplayName("Controller should return confirmation that the veterinarian is updated")
   void updateVet() throws VeterinarianNotFoundException{
     long idVet = 200L;
     UpdateVeterinarianDTO update = new UpdateVeterinarianDTO();
@@ -116,7 +116,7 @@ class VeterinarianControllerTest {
   }
 
   @Test
-  @DisplayName("Borrar un vet")
+  @DisplayName("Controller should return confirmation that the veterinarian is deleted")
   void deleteVet() throws VeterinarianNotFoundException{
     long idVet = 200L;
     veterinarianController.deleteOwner(idVet);

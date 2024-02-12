@@ -37,13 +37,13 @@ class PetServiceTest {
   private PetService petService;
 
   @Test
-  @DisplayName("El servicio debe ser inyectado")
+  @DisplayName("Service should be injected")
   void smokeTest(){
     assertNotNull(petService);
   }
 
   @Test
-  @DisplayName("El servicio debe regresar la lista")
+  @DisplayName("Service should return a list for the pets")
   void findAllTest(){
     List<Pet> data = new LinkedList<>();
 
@@ -70,7 +70,7 @@ class PetServiceTest {
   }
 
   @Test
-  @DisplayName("El servicio de mascotas debe guardarse en el repositorio")
+  @DisplayName("Service should return confirmation that a new pet is added")
   void saveOwnerTest(){
     CreatePetDTO dto = new CreatePetDTO();
 
@@ -98,7 +98,7 @@ class PetServiceTest {
   }
 
   @Test
-  @DisplayName("El servicio debe actualizar las mascotas")
+  @DisplayName("Service should return confirmation that the pet is updated")
   void updateTest() throws OwnerNotFoundException, PetNotFoundException {
 
     UpdatePetDTO dto = new UpdatePetDTO();
@@ -128,7 +128,7 @@ class PetServiceTest {
   }
 
   @Test
-  @DisplayName("El servicio debe de retornar una exepcion")
+  @DisplayName("Service should return an exception that the pet is missing")
   void updateWithErrors(){
     UpdatePetDTO dto = new UpdatePetDTO();
     Optional<Pet> dummy = Optional.empty();
@@ -139,7 +139,7 @@ class PetServiceTest {
   }
 
   @Test
-  @DisplayName("El servicio debe eliminar la mascota")
+  @DisplayName("Service should return confirmation that the pet is deleted")
   void deleteByIdTest() throws PetNotFoundException {
 
     Pet pet = new Pet();
@@ -159,7 +159,7 @@ class PetServiceTest {
   }
 
   @Test
-  @DisplayName("El servicio da un error al eliminar una mascota")
+  @DisplayName("Service should return an exception that the pet is missing")
   void deleteWithErrors(){
     DeletePetDTO dto = new DeletePetDTO();
     Optional<Pet> dummy = Optional.empty();

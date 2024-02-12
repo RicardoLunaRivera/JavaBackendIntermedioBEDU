@@ -42,7 +42,7 @@ class PetControllerTest {
   }
 
   @Test
-  @DisplayName("Lista de mascotas")
+  @DisplayName("Controller should return a list for the pets")
   void findAllTest(){
     List<PetDTO> fakeInfo = new LinkedList<>();
 
@@ -66,7 +66,7 @@ class PetControllerTest {
   }
 
   @Test
-  @DisplayName("Guardar nueva mascota")
+  @DisplayName("Controller should return confirmation that a new pet is added")
   void savePet(){
     //Configuración  comportamiento esperado // Arrange
     CreatePetDTO createPetDTO = new CreatePetDTO();
@@ -107,7 +107,7 @@ class PetControllerTest {
   }
 
   @Test
-  @DisplayName("Actualizar una mascota")
+  @DisplayName("Controller should return confirmation that the pet is updated")
   void updatePet() throws PetNotFoundException {
     long idPet = 100L;
     UpdatePetDTO update = new UpdatePetDTO();
@@ -125,7 +125,7 @@ class PetControllerTest {
   }
 
   @Test
-  @DisplayName("Eliminar una mascota")
+  @DisplayName("Controller should return confirmation that the pet is deleted")
   void deletePet() throws PetNotFoundException {
     // Arrange
     long idPet = 100L;
